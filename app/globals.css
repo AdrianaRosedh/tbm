@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Brand palette — extracted from sinrelato.space (BeTheme post-2.css) */
+  --color-brand-red: #e4432e;
+  --color-brand-indigo: #1d173b;
+  --color-brand-indigo-deep: #0f0b26;
+
+  /* Semantic foregrounds */
+  --color-fg: #171717;
+  --color-fg-muted: #626262;
+  --color-fg-subtle: #b5b4c7;
+
+  /* Semantic background — dark sections use bg-brand-indigo / bg-brand-indigo-deep */
+  --color-bg: #ffffff;
+
+  /* Typography */
+  --font-sans: var(--font-kanit), ui-sans-serif, system-ui, -apple-system,
+    sans-serif;
+
+  /* Display scale — modular, tighter than BeTheme's ad-hoc ladder */
+  --text-display-sm: 2rem;
+  --text-display-sm--line-height: 1.1;
+  --text-display-md: 3rem;
+  --text-display-md--line-height: 1.05;
+  --text-display-lg: 4.5rem;
+  --text-display-lg--line-height: 1;
+  --text-display-xl: 6rem;
+  --text-display-xl--line-height: 0.95;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
