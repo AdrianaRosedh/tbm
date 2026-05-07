@@ -3,7 +3,11 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { Reveal } from "@/components/site/reveal";
 import { ServiceGrid } from "@/components/site/service-grid";
-import { SERVICE_FEATURES } from "@/lib/content/services";
+import {
+  SERVICES_AI,
+  SERVICES_TECH,
+  SERVICE_FEATURES,
+} from "@/lib/content/services";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 
@@ -63,10 +67,10 @@ export default function ServicesPage() {
         <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
           <Reveal>
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
-              Logistics Solutions
+              Integrated Logistics Solutions
             </p>
             <h2 className="mt-3 max-w-3xl font-display text-display-sm font-bold tracking-tight text-balance sm:text-display-md">
-              Built for cross-border, ready for everything else
+              Designed for performance and reliability
             </h2>
           </Reveal>
           <ul className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -77,6 +81,63 @@ export default function ServicesPage() {
                     {feature.title}
                   </h3>
                   <p className="mt-3 text-fg-subtle">{feature.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* AI / CARTA PORTE */}
+      <section className="bg-white py-24 md:py-32">
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-4 lg:grid-cols-2 md:px-8">
+          <Reveal>
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
+              {SERVICES_AI.eyebrow}
+            </p>
+            <h2 className="mt-3 font-display text-display-sm font-bold tracking-tight text-balance sm:text-display-md">
+              {SERVICES_AI.headline}
+            </h2>
+            <p className="mt-6 text-base leading-relaxed text-fg-muted md:text-lg">
+              {SERVICES_AI.body}
+            </p>
+          </Reveal>
+          <Reveal
+            delay={0.1}
+            className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted"
+          >
+            <Image
+              src={SERVICES_AI.image}
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* TECHNOLOGY */}
+      <section className="bg-muted/30 py-24 md:py-32">
+        <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
+          <Reveal>
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
+              {SERVICES_TECH.eyebrow}
+            </p>
+            <h2 className="mt-3 max-w-3xl font-display text-display-sm font-bold tracking-tight text-balance sm:text-display-md">
+              {SERVICES_TECH.headline}
+            </h2>
+          </Reveal>
+          <ul className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2">
+            {SERVICES_TECH.items.map((item, i) => (
+              <Reveal as="li" key={item.title} delay={i * 0.08}>
+                <div className="h-full rounded-2xl border border-black/5 bg-white p-8 transition-colors hover:border-brand-red/30">
+                  <h3 className="font-display text-xl font-bold uppercase tracking-wider">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-base leading-relaxed text-fg-muted">
+                    {item.body}
+                  </p>
                 </div>
               </Reveal>
             ))}

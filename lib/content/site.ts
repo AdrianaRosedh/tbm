@@ -48,6 +48,77 @@ export const OFFICES = [
   },
 ] as const;
 
+export const FACILITIES = {
+  us: {
+    region: "United States",
+    legalName: "TBM Carriers Inc. / TBM Logistics",
+    headquarters: {
+      name: "Headquarters",
+      address: ["5718 University Heights Blvd, Suite 204", "San Antonio, TX 78249"],
+    },
+    terminals: [
+      { city: "Calexico, CA", address: "363 Nina Lee, Calexico, CA 92231" },
+      { city: "Nogales, AZ" },
+      { city: "Del Rio, TX", address: "108 Frontera, Del Rio, TX 78840" },
+      { city: "Laredo, TX", address: "8402 Killam Industrial Blvd, Laredo, TX 78405" },
+    ],
+    dropYards: [
+      "Ferndale, WA",
+      "Otay Mesa, CA",
+      "El Paso, TX",
+      "Hopkinsville, KY",
+      "Charlotte, NC",
+      "Indianapolis, IN",
+      "Batesville, IN",
+      "Troy, OH",
+      "Detroit, MI",
+    ],
+    borderCrossings: [
+      "Otay Mesa, CA",
+      "Tecate, CA",
+      "Calexico, CA",
+      "Nogales, AZ",
+      "El Paso, TX",
+      "Del Rio, TX",
+      "Eagle Pass, TX",
+      "Laredo, TX",
+      "Blaine, WA",
+      "Sweet Grass, MT",
+      "Detroit, MI",
+      "Port Huron, MI",
+      "Lewiston, NY",
+      "Champlain, NY",
+    ],
+  },
+  mx: {
+    region: "Mexico",
+    legalName: "TBM Carriers México S.A. de C.V.",
+    offices: [
+      {
+        city: "Mexicali, BC",
+        address: "Av. Madero #1590, Col. Nueva, CP 21100",
+      },
+      {
+        city: "Saltillo, Coah.",
+        address: "Blvd. José Narro Robles #494 Int. 1, Col. Los Rodríguez, CP 25207",
+      },
+      {
+        city: "Querétaro, Qro.",
+        address: "Av. Industrialización No 7, Oficina 302, Fracc. Zona Industrial, CP 76160",
+      },
+    ],
+    borderCrossings: [
+      "Tecate, BC",
+      "Mexicali, BC",
+      "Nogales, Son.",
+      "Acuña, Coah.",
+      "Piedras Negras, Coah.",
+      "Nuevo Laredo, Tamps.",
+    ],
+    maintenance: ["Mexicali, BC", "Acuña, Coah.", "Nuevo Laredo, Tamps."],
+  },
+} as const;
+
 export const DEPARTMENTS = [
   {
     name: "Sales",

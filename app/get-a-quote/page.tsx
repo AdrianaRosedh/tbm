@@ -75,6 +75,24 @@ export default function GetAQuotePage() {
           </Reveal>
         </div>
       </section>
+
+      {/* CLOSER — Streamline your shipping */}
+      <section className="bg-brand-indigo py-20 text-white md:py-24">
+        <Reveal className="mx-auto max-w-3xl px-4 text-center md:px-8">
+          <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
+            What Happens Next
+          </p>
+          <h2 className="mt-3 font-display text-display-sm font-bold tracking-tight text-balance sm:text-display-md">
+            Streamline your shipping with industry experts
+          </h2>
+          <p className="mt-6 text-base leading-relaxed text-fg-subtle md:text-lg">
+            Within 24 hours, a dedicated CSR reviews your lane, confirms
+            equipment availability, and replies with a quote. From there, you
+            have one number, one inbox, and one accountable team — across
+            1,200+ cities in the U.S., Mexico, and Canada.
+          </p>
+        </Reveal>
+      </section>
     </>
   );
 }

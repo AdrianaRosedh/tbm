@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { ContactForm } from "@/components/site/contact-form";
 import { Reveal } from "@/components/site/reveal";
-import { DEPARTMENTS, OFFICES, SITE } from "@/lib/content/site";
+import { DEPARTMENTS, FACILITIES, OFFICES, SITE } from "@/lib/content/site";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "Contact" };
@@ -148,6 +148,147 @@ export default function ContactPage() {
               </Reveal>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* FACILITIES (extended) */}
+      <section className="bg-brand-indigo py-24 text-white md:py-32">
+        <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
+          <Reveal>
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
+              Our Facilities
+            </p>
+            <h2 className="mt-3 max-w-3xl font-display text-display-sm font-bold tracking-tight text-balance sm:text-display-md">
+              Where TBM operates
+            </h2>
+          </Reveal>
+          <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
+            {/* US */}
+            <Reveal>
+              <div className="h-full rounded-2xl border border-white/10 bg-white/[0.04] p-8">
+                <p className="text-xs font-semibold uppercase tracking-widest text-brand-red">
+                  {FACILITIES.us.region}
+                </p>
+                <p className="mt-3 font-display text-2xl font-bold uppercase tracking-wider">
+                  {FACILITIES.us.legalName}
+                </p>
+
+                <div className="mt-8 space-y-8">
+                  <div>
+                    <h3 className="text-xs font-semibold uppercase tracking-widest text-fg-subtle">
+                      Terminals
+                    </h3>
+                    <ul className="mt-3 space-y-3">
+                      {FACILITIES.us.terminals.map((t) => (
+                        <li key={t.city} className="text-sm">
+                          <span className="font-medium">{t.city}</span>
+                          {t.address && (
+                            <span className="block text-fg-subtle">
+                              {t.address}
+                            </span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xs font-semibold uppercase tracking-widest text-fg-subtle">
+                      Drop Yards
+                    </h3>
+                    <ul className="mt-3 flex flex-wrap gap-2">
+                      {FACILITIES.us.dropYards.map((y) => (
+                        <li
+                          key={y}
+                          className="rounded-full border border-white/15 bg-white/[0.02] px-3 py-1 text-xs"
+                        >
+                          {y}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xs font-semibold uppercase tracking-widest text-fg-subtle">
+                      Border Crossings
+                    </h3>
+                    <ul className="mt-3 flex flex-wrap gap-2">
+                      {FACILITIES.us.borderCrossings.map((b) => (
+                        <li
+                          key={b}
+                          className="rounded-full border border-white/15 bg-white/[0.02] px-3 py-1 text-xs"
+                        >
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* MX */}
+            <Reveal delay={0.1}>
+              <div className="h-full rounded-2xl border border-white/10 bg-white/[0.04] p-8">
+                <p className="text-xs font-semibold uppercase tracking-widest text-brand-red">
+                  {FACILITIES.mx.region}
+                </p>
+                <p className="mt-3 font-display text-2xl font-bold uppercase tracking-wider">
+                  {FACILITIES.mx.legalName}
+                </p>
+
+                <div className="mt-8 space-y-8">
+                  <div>
+                    <h3 className="text-xs font-semibold uppercase tracking-widest text-fg-subtle">
+                      Offices
+                    </h3>
+                    <ul className="mt-3 space-y-3">
+                      {FACILITIES.mx.offices.map((o) => (
+                        <li key={o.city} className="text-sm">
+                          <span className="font-medium">{o.city}</span>
+                          <span className="block text-fg-subtle">
+                            {o.address}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xs font-semibold uppercase tracking-widest text-fg-subtle">
+                      Border Crossings
+                    </h3>
+                    <ul className="mt-3 flex flex-wrap gap-2">
+                      {FACILITIES.mx.borderCrossings.map((b) => (
+                        <li
+                          key={b}
+                          className="rounded-full border border-white/15 bg-white/[0.02] px-3 py-1 text-xs"
+                        >
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xs font-semibold uppercase tracking-widest text-fg-subtle">
+                      Maintenance
+                    </h3>
+                    <ul className="mt-3 flex flex-wrap gap-2">
+                      {FACILITIES.mx.maintenance.map((m) => (
+                        <li
+                          key={m}
+                          className="rounded-full border border-white/15 bg-white/[0.02] px-3 py-1 text-xs"
+                        >
+                          {m}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
       </section>
 
