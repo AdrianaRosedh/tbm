@@ -4,21 +4,21 @@ export const ABOUT = {
     headline: "TBM Carriers: The Route to Excellence",
     subhead:
       "Built on expertise, technology, and people. Operating across the USMCA region since 1999.",
-    bgImage: "/brand/TBM-C-22.jpg",
+    bgImage: "/brand/tbm-c-9090.jpg",
   },
 
   pillars: [
     {
       title: "Safety",
-      body: "C-TPAT, FAST, and SmartWay certified. AI-powered cameras and continuous GPS monitoring on every load.",
+      body: "Safety is the highest priority — embedded in our policies, procedures, and daily operations. Every employee, driver, customer, and partner depends on it, and we treat it like a load that can never be late.",
     },
     {
       title: "Equipment",
-      body: "Modern fleet maintained in-house by certified technicians. DOT-compliant inspections on a strict cadence.",
+      body: "Late-model Kenworth and International tractors on a three-year replacement cycle, maintained in-house by certified technicians. We exceed federal safety and emissions standards because the alternative is downtime.",
     },
     {
       title: "Facilities",
-      body: "Asset-based terminals on both sides of the border. Bonded warehousing and cross-dock for time-critical flows.",
+      body: "Strategically located along the U.S.–Mexico border with advanced surveillance, controlled access, and on-site security 24/7. Designed for safe, efficient cross-border operations at the lanes that move the most freight.",
     },
   ],
 

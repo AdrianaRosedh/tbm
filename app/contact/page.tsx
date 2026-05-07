@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { ContactForm } from "@/components/site/contact-form";
 import { Reveal } from "@/components/site/reveal";
-import { OFFICES, SITE } from "@/lib/content/site";
+import { DEPARTMENTS, OFFICES, SITE } from "@/lib/content/site";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "Contact" };
@@ -35,6 +35,46 @@ export default function ContactPage() {
             One number, one inbox, one accountable team — on both sides of the
             border.
           </p>
+        </div>
+      </section>
+
+      {/* DEPARTMENTS */}
+      <section className="bg-muted/30 py-24 md:py-32">
+        <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
+          <Reveal>
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
+              Contact Our Team
+            </p>
+            <h2 className="mt-3 max-w-3xl font-display text-display-sm font-bold tracking-tight text-balance sm:text-display-md">
+              Talk to the right person, fast
+            </h2>
+          </Reveal>
+          <ul className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {DEPARTMENTS.map((dept, i) => (
+              <Reveal as="li" key={dept.name} delay={i * 0.08}>
+                <div className="h-full rounded-2xl border border-black/5 bg-white p-8 transition-colors hover:border-brand-red/30">
+                  <p className="text-xs font-semibold uppercase tracking-widest text-brand-red">
+                    {dept.name}
+                  </p>
+                  <ul className="mt-5 space-y-4">
+                    {dept.contacts.map((c) => (
+                      <li key={c.email}>
+                        <p className="font-display text-base font-bold uppercase tracking-wider text-foreground">
+                          {c.name}
+                        </p>
+                        <a
+                          href={`mailto:${c.email}`}
+                          className="mt-1 block text-sm text-fg-muted transition-colors hover:text-brand-red"
+                        >
+                          {c.email}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </section>
 

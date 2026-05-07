@@ -47,3 +47,23 @@ export const OFFICES = [
     phones: ["(686) 555-7029", "(800) 732-7506"],
   },
 ] as const;
+
+export const DEPARTMENTS = [
+  {
+    name: "Sales",
+    contacts: [
+      { name: "Gerardo Villarreal", email: "gerardo@tbmcarriers.com" },
+      { name: "Gilberto Mejia", email: "gilberto.mejia@tbmcarriers.com" },
+    ],
+  },
+  {
+    name: "Customer Service",
+    contacts: [
+      { name: "Eva Pamela Jimenez", email: "evap.jimenez@tbmcarriers.com" },
+    ],
+  },
+  {
+    name: "Human Resources",
+    contacts: [{ name: "HR Department", email: "recruit@tbmcarriers.com" }],
+  },
+] as const;

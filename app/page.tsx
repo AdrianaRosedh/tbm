@@ -123,6 +123,66 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CROSS-BORDER LOGISTICS SOLUTIONS */}
+      <section className="bg-muted/30 py-24 md:py-32">
+        <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
+          <Reveal>
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
+              {HOME.crossBorder.eyebrow}
+            </p>
+            <h2 className="mt-3 max-w-2xl font-display text-display-sm font-bold tracking-tight text-balance sm:text-display-md">
+              {HOME.crossBorder.headline}
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-fg-muted md:text-lg">
+              {HOME.crossBorder.subhead}
+            </p>
+          </Reveal>
+          <ul className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {HOME.crossBorder.pillars.map((pillar, i) => (
+              <Reveal as="li" key={pillar.title} delay={i * 0.08}>
+                <div className="h-full rounded-2xl border border-black/5 bg-white p-8 transition-colors hover:border-brand-red/30">
+                  <h3 className="font-display text-xl font-bold uppercase tracking-wider">
+                    {pillar.title}
+                  </h3>
+                  <p className="mt-3 text-base leading-relaxed text-fg-muted">
+                    {pillar.body}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* CROSS-BORDER DOCK OPERATIONS */}
+      <section className="bg-white py-24 md:py-32">
+        <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-4 lg:grid-cols-2 md:px-8">
+          <Reveal>
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
+              {HOME.crossDock.eyebrow}
+            </p>
+            <h2 className="mt-3 font-display text-display-sm font-bold tracking-tight text-balance sm:text-display-md">
+              {HOME.crossDock.headline}
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-fg-muted md:text-lg">
+              {HOME.crossDock.body}
+            </p>
+          </Reveal>
+          <Reveal
+            delay={0.1}
+            className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted"
+          >
+            <Image
+              src={HOME.crossDock.image}
+              alt=""
+              fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
+          </Reveal>
+        </div>
+      </section>
+
       {/* HOW IT WORKS */}
       <section className="bg-brand-indigo py-24 text-white md:py-32">
         <div className="mx-auto w-full max-w-7xl px-4 md:px-8">

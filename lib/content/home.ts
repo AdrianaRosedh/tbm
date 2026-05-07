@@ -48,6 +48,35 @@ export const HOME = {
     ],
   },
 
+  crossBorder: {
+    eyebrow: "Cross-Border Logistics Solutions",
+    headline: "Integrated, asset-based, cost-optimized",
+    subhead:
+      "Three pillars behind cross-border freight that doesn't get stuck at the border.",
+    pillars: [
+      {
+        title: "Asset-based + integrated",
+        body: "Our own trucks, drivers, and terminals — supported by 25+ C-TPAT-certified partner carriers for surge capacity. Fewer handoffs, fewer surprises, faster transit.",
+      },
+      {
+        title: "Seamless international network",
+        body: "Coordinated origin-to-destination handoffs that minimize cargo handling, lower operating cost, and reduce damage and theft risk across the U.S.–Mexico–Canada corridor.",
+      },
+      {
+        title: "Ferromex intermodal integration",
+        body: "Partnership with Ferromex plugs Mexico's intermodal rail network into your supply chain — scalable, efficient, and cost-optimized for high-volume lanes.",
+      },
+    ],
+  },
+
+  crossDock: {
+    eyebrow: "Cross-Border Dock Operations",
+    headline:
+      "Simplify your shipping experience with cross-border docking",
+    body: "Bonded cross-dock facilities at the major U.S./Mexico gateways let us consolidate, deconsolidate, and re-route in minutes — not days. The result: shorter transit windows, lower handling cost, and tighter compliance on both sides of the line.",
+    image: "/brand/tbm-back-team.jpg",
+  },
+
   network: {
     eyebrow: "Our Network",
     headline:

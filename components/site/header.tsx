@@ -1,9 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { buttonVariants } from "@/components/ui/button";
 import { NavLinks } from "./nav-links";
 import { MobileNav } from "./mobile-nav";
-import { cn } from "@/lib/utils";
 
 export function Header() {
   return (
@@ -29,10 +27,7 @@ export function Header() {
 
         <Link
           href="/get-a-quote"
-          className={cn(
-            buttonVariants(),
-            "hidden h-10 rounded-full px-6 hover:bg-primary/85 lg:inline-flex"
-          )}
+          className="hidden h-10 items-center justify-center rounded-full border border-white/30 bg-white/[0.04] px-6 text-sm font-medium uppercase tracking-wider text-white transition-colors hover:border-brand-red hover:bg-brand-red lg:inline-flex"
         >
           Free Quote
         </Link>
