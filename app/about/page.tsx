@@ -29,7 +29,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-brand-indigo/85" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-indigo-deep/70" />
         </div>
-        <div className="relative mx-auto flex min-h-[55svh] w-full max-w-screen-2xl flex-col justify-center px-4 py-24 text-white md:px-8">
+        <div className="relative mx-auto flex min-h-[55dvh] w-full max-w-screen-2xl flex-col justify-center px-4 py-20 text-white md:py-24 md:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
             {ABOUT.hero.eyebrow}
           </p>
@@ -43,7 +43,7 @@ export default function AboutPage() {
       </section>
 
       {/* PILLARS */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white py-16 md:py-24 lg:py-32">
         <div className="mx-auto w-full max-w-screen-2xl px-4 md:px-8">
           <ul className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {ABOUT.pillars.map((pillar, i) => {
@@ -67,7 +67,7 @@ export default function AboutPage() {
       </section>
 
       {/* STORY */}
-      <section className="bg-muted/30 py-24 md:py-32">
+      <section className="bg-muted/30 py-16 md:py-24 lg:py-32">
         <div className="mx-auto grid w-full max-w-screen-2xl grid-cols-1 items-center gap-12 px-4 lg:grid-cols-2 md:px-8">
           <Reveal>
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
@@ -98,7 +98,7 @@ export default function AboutPage() {
       </section>
 
       {/* FACILITIES */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white py-16 md:py-24 lg:py-32">
         <div className="mx-auto grid w-full max-w-screen-2xl grid-cols-1 items-center gap-12 px-4 lg:grid-cols-2 md:px-8">
           <Reveal className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted">
             <Image
@@ -124,7 +124,7 @@ export default function AboutPage() {
       </section>
 
       {/* AI / CARTA PORTE */}
-      <section className="bg-brand-indigo py-24 text-white md:py-32">
+      <section className="bg-brand-indigo py-16 text-white md:py-24 lg:py-32">
         <div className="mx-auto w-full max-w-3xl px-4 text-center md:px-8">
           <Reveal>
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
@@ -141,7 +141,7 @@ export default function AboutPage() {
       </section>
 
       {/* CERTIFICATIONS */}
-      <section className="bg-muted/30 py-24 md:py-32">
+      <section className="bg-muted/30 py-16 md:py-24 lg:py-32">
         <div className="mx-auto w-full max-w-screen-2xl px-4 md:px-8">
           <Reveal>
             <p className="text-center text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
@@ -158,7 +158,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-white py-20 md:py-24">
+      <section className="bg-white py-14 md:py-20 lg:py-24">
         <Reveal className="mx-auto flex max-w-screen-2xl flex-col items-center gap-6 px-4 text-center md:px-8">
           <h2 className="font-display text-display-sm font-bold tracking-tight text-balance sm:text-display-md">
             Ready to ship with confidence?
@@ -167,7 +167,7 @@ export default function AboutPage() {
             href="/get-a-quote"
             className={cn(
               buttonVariants(),
-              "h-12 rounded-full px-8 text-base hover:bg-primary/85"
+              "h-12 rounded-full px-8 text-base transition-all hover:bg-primary/85 active:scale-[0.98]"
             )}
           >
             Get a Quote

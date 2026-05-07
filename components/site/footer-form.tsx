@@ -90,7 +90,7 @@ export function FooterForm() {
       <Button
         type="submit"
         disabled={pending}
-        className="rounded-full bg-primary px-6 text-primary-foreground hover:bg-primary/85 sm:shrink-0"
+        className="h-11 rounded-full bg-primary px-6 text-base text-primary-foreground transition-all hover:bg-primary/85 active:scale-[0.98] sm:shrink-0"
       >
         {pending ? "Sending…" : "Get a Quote"}
       </Button>

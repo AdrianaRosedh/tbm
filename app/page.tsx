@@ -40,7 +40,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand-indigo-deep/70" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[78svh] w-full max-w-screen-2xl flex-col justify-center px-4 py-24 text-white md:px-8">
+        <div className="relative mx-auto flex min-h-[80dvh] w-full max-w-screen-2xl flex-col justify-center px-4 py-20 text-white md:py-24 md:px-8">
           <p className="text-sm font-medium uppercase tracking-[0.25em] text-brand-red">
             {HOME.hero.eyebrow}
           </p>
@@ -50,19 +50,19 @@ export default function Home() {
           <p className="mt-6 max-w-xl text-base leading-relaxed text-fg-subtle md:text-lg">
             {HOME.hero.subhead}
           </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
             <Link
               href="/get-a-quote"
               className={cn(
                 buttonVariants(),
-                "h-12 rounded-full px-8 text-base hover:bg-primary/85"
+                "h-12 rounded-full px-8 text-base transition-all hover:bg-primary/85 active:scale-[0.98]"
               )}
             >
               Get a Quote
             </Link>
             <Link
               href="/services"
-              className="inline-flex h-12 items-center justify-center rounded-full border border-white/20 bg-white/5 px-8 text-base font-medium backdrop-blur-sm transition-colors hover:bg-white/10"
+              className="inline-flex h-12 items-center justify-center rounded-full border border-white/20 bg-white/5 px-8 text-base font-medium backdrop-blur-sm transition-all hover:bg-white/10 active:scale-[0.98]"
             >
               Our Services
             </Link>
@@ -71,7 +71,7 @@ export default function Home() {
 
         {/* Stats strip — animated counters */}
         <div className="relative border-t border-white/10 bg-brand-indigo-deep/80 backdrop-blur-md">
-          <div className="mx-auto grid w-full max-w-screen-2xl grid-cols-1 divide-y divide-white/10 px-4 py-10 sm:grid-cols-3 sm:divide-x sm:divide-y-0 md:px-8">
+          <div className="mx-auto grid w-full max-w-screen-2xl grid-cols-3 divide-x divide-white/10 px-4 py-8 md:py-10 md:px-8">
             {HOME.stats.map((stat) => (
               <StatCounter
                 key={stat.label}
@@ -84,7 +84,7 @@ export default function Home() {
       </section>
 
       {/* ABOUT BAND */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white py-16 md:py-24 lg:py-32">
         <div className="mx-auto grid w-full max-w-screen-2xl grid-cols-1 items-center gap-12 px-4 lg:grid-cols-2 md:px-8">
           <Reveal className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted">
             <Image
@@ -114,7 +114,7 @@ export default function Home() {
               href="/about"
               className={cn(
                 buttonVariants({ variant: "outline" }),
-                "mt-8 h-11 rounded-full px-6"
+                "mt-8 h-11 rounded-full px-6 transition-all active:scale-[0.98]"
               )}
             >
               Learn About Us
@@ -124,7 +124,7 @@ export default function Home() {
       </section>
 
       {/* CROSS-BORDER LOGISTICS SOLUTIONS */}
-      <section className="bg-muted/30 py-24 md:py-32">
+      <section className="bg-muted/30 py-16 md:py-24 lg:py-32">
         <div className="mx-auto w-full max-w-screen-2xl px-4 md:px-8">
           <Reveal>
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
@@ -155,7 +155,7 @@ export default function Home() {
       </section>
 
       {/* CROSS-BORDER DOCK OPERATIONS */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white py-16 md:py-24 lg:py-32">
         <div className="mx-auto grid w-full max-w-screen-2xl grid-cols-1 items-center gap-12 px-4 lg:grid-cols-2 md:px-8">
           <Reveal>
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
@@ -184,7 +184,7 @@ export default function Home() {
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="bg-brand-indigo py-24 text-white md:py-32">
+      <section className="bg-brand-indigo py-16 text-white md:py-24 lg:py-32">
         <div className="mx-auto w-full max-w-screen-2xl px-4 md:px-8">
           <Reveal>
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
@@ -225,7 +225,7 @@ export default function Home() {
       </section>
 
       {/* NETWORK */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white py-16 md:py-24 lg:py-32">
         <div className="mx-auto w-full max-w-screen-2xl px-4 md:px-8">
           <Reveal>
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
@@ -272,7 +272,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES (BENTO) */}
-      <section className="bg-muted/30 py-24 md:py-32">
+      <section className="bg-muted/30 py-16 md:py-24 lg:py-32">
         <div className="mx-auto w-full max-w-screen-2xl px-4 md:px-8">
           <Reveal>
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
@@ -291,7 +291,7 @@ export default function Home() {
               href="/services"
               className={cn(
                 buttonVariants({ variant: "outline" }),
-                "h-11 rounded-full px-6"
+                "h-11 rounded-full px-6 transition-all active:scale-[0.98]"
               )}
             >
               See all services
@@ -301,7 +301,7 @@ export default function Home() {
       </section>
 
       {/* WHY US */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white py-16 md:py-24 lg:py-32">
         <div className="mx-auto w-full max-w-screen-2xl px-4 md:px-8">
           <Reveal>
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
@@ -370,7 +370,7 @@ export default function Home() {
               href="/get-a-quote"
               className={cn(
                 buttonVariants(),
-                "mt-10 h-12 rounded-full px-8 text-base hover:bg-primary/85"
+                "mt-10 h-12 rounded-full px-8 text-base transition-all hover:bg-primary/85 active:scale-[0.98]"
               )}
             >
               Get a Quote

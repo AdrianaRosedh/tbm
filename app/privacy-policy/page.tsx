@@ -12,7 +12,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       {/* HERO */}
-      <section className="bg-brand-indigo py-20 text-white md:py-28">
+      <section className="bg-brand-indigo py-14 text-white md:py-20 lg:py-28">
         <div className="mx-auto w-full max-w-4xl px-4 md:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
             Legal
@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
       </section>
 
       {/* TOC + BODY */}
-      <section className="bg-white py-20 md:py-28">
+      <section className="bg-white py-14 md:py-20 lg:py-28">
         <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-12 px-4 lg:grid-cols-[220px_1fr] md:px-8">
           <nav
             aria-label="On this page"

@@ -42,7 +42,7 @@ function SubmitButton() {
     <Button
       type="submit"
       disabled={pending}
-      className="h-12 w-full rounded-full px-6 text-base hover:bg-primary/85 sm:w-auto"
+      className="h-12 w-full rounded-full px-6 text-base transition-all hover:bg-primary/85 active:scale-[0.98] sm:w-auto"
     >
       {pending ? "Submitting…" : "Submit quote request"}
     </Button>

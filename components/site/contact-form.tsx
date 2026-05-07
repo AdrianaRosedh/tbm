@@ -17,7 +17,7 @@ function SubmitButton() {
     <Button
       type="submit"
       disabled={pending}
-      className="h-11 rounded-full px-6 text-base hover:bg-primary/85"
+      className="h-12 w-full rounded-full px-6 text-base transition-all hover:bg-primary/85 active:scale-[0.98] sm:h-11 sm:w-auto"
     >
       {pending ? "Sending…" : "Send message"}
     </Button>

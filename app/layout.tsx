@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
+import { MobileCtaBar } from "@/components/site/mobile-cta-bar";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -43,6 +44,7 @@ export default function RootLayout({
         <Header />
         <main className="flex flex-1 flex-col">{children}</main>
         <Footer />
+        <MobileCtaBar />
       </body>
     </html>
   );

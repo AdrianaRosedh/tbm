@@ -31,7 +31,7 @@ export default function GetAQuotePage() {
           <div className="absolute inset-0 bg-brand-indigo/85" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brand-indigo-deep/70" />
         </div>
-        <div className="relative mx-auto flex min-h-[40svh] w-full max-w-screen-2xl flex-col justify-center px-4 py-20 text-white md:px-8">
+        <div className="relative mx-auto flex min-h-[40dvh] w-full max-w-screen-2xl flex-col justify-center px-4 py-16 text-white md:py-20 md:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
             Request a Free Quote
           </p>
@@ -46,7 +46,7 @@ export default function GetAQuotePage() {
       </section>
 
       {/* FORM + SIDE PANEL */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white py-16 md:py-24 lg:py-32">
         <div className="mx-auto grid w-full max-w-screen-2xl grid-cols-1 gap-16 px-4 lg:grid-cols-[1fr_360px] md:px-8">
           <Reveal>
             <QuoteForm />
@@ -77,7 +77,7 @@ export default function GetAQuotePage() {
       </section>
 
       {/* CLOSER — Streamline your shipping */}
-      <section className="bg-brand-indigo py-20 text-white md:py-24">
+      <section className="bg-brand-indigo py-14 text-white md:py-20 lg:py-24">
         <Reveal className="mx-auto max-w-3xl px-4 text-center md:px-8">
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
             What Happens Next

@@ -23,7 +23,7 @@ export function MobileNav() {
           <Button
             variant="ghost"
             size="icon"
-            className="text-white hover:bg-white/10 hover:text-white lg:hidden"
+            className="size-11 text-white transition-transform hover:bg-white/10 hover:text-white active:scale-95 lg:hidden"
             aria-label="Open menu"
           />
         }
@@ -39,11 +39,11 @@ export function MobileNav() {
         </SheetHeader>
         <nav
           aria-label="Mobile"
-          className="mt-4 flex h-full flex-col gap-1 px-4 pb-8"
+          className="mt-4 flex h-full flex-col gap-1 px-4 pb-[max(env(safe-area-inset-bottom),2rem)]"
         >
           {NAV_ITEMS.map((item) => {
             const className =
-              "rounded-md px-3 py-2 text-base font-medium uppercase tracking-wider transition-colors hover:bg-white/10";
+              "flex min-h-11 items-center rounded-md px-3 py-2 text-base font-medium uppercase tracking-wider transition-colors hover:bg-white/10 active:bg-white/15";
 
             if (item.external) {
               return (
@@ -74,7 +74,7 @@ export function MobileNav() {
           <Link
             href="/get-a-quote"
             onClick={() => setOpen(false)}
-            className="mt-4 rounded-full bg-primary px-6 py-3 text-center text-base font-medium text-primary-foreground transition-colors hover:bg-primary/85"
+            className="mt-4 flex min-h-12 items-center justify-center rounded-full bg-primary px-6 py-3 text-center text-base font-medium text-primary-foreground transition-all hover:bg-primary/85 active:scale-[0.98]"
           >
             Free Quote
           </Link>
@@ -84,7 +84,7 @@ export function MobileNav() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="px-3 text-xs text-fg-subtle transition-colors hover:text-white"
+                className="px-3 py-1.5 text-xs text-fg-subtle transition-colors hover:text-white"
               >
                 {item.label}
               </Link>

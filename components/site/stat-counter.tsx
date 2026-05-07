@@ -49,12 +49,12 @@ export function StatCounter({ value, label }: StatCounterProps) {
   return (
     <div
       ref={ref}
-      className="flex flex-col items-center gap-2 px-4 py-2 text-center sm:py-0"
+      className="flex flex-col items-center gap-1.5 px-2 py-1 text-center sm:gap-2 sm:px-4 sm:py-0"
     >
-      <p className="font-display text-display-sm font-bold tabular-nums tracking-tight text-brand-red sm:text-display-md">
+      <p className="font-display text-2xl font-bold tabular-nums tracking-tight text-brand-red sm:text-display-sm md:text-display-md">
         {reduce ? value : <motion.span>{display}</motion.span>}
       </p>
-      <p className="text-xs uppercase tracking-widest text-fg-subtle">
+      <p className="text-[10px] uppercase tracking-widest text-fg-subtle sm:text-xs">
         {label}
       </p>
     </div>
