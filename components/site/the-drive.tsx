@@ -24,8 +24,6 @@ type TheDriveProps = {
   stages: readonly Stage[];
 };
 
-/** vw between roadside billboards */
-const SPACING = 72;
 /** vw offset of the first billboard inside the world */
 const WORLD_PAD = 60;
 /** where the parked truck sits, vw from the left */
@@ -59,6 +57,9 @@ function DriveScene({ eyebrow, headline, body, stages }: TheDriveProps) {
   }, []);
   const perStage = isMobile ? 68 : 78;
   const cardTarget = isMobile ? 10 : 33;
+  // Billboard spacing must exceed card width (86vw on phones), or adjacent
+  // cards physically overlap: one full screen per stage on mobile.
+  const spacing = isMobile ? 100 : 72;
 
   const { scrollYProgress } = useScroll({
     target: wrapRef,
@@ -75,7 +76,7 @@ function DriveScene({ eyebrow, headline, body, stages }: TheDriveProps) {
   const worldX = useTransform(
     progress,
     (v) =>
-      `${cardTarget - WORLD_PAD - v * (stages.length - 1) * SPACING}vw`
+      `${cardTarget - WORLD_PAD - v * (stages.length - 1) * spacing}vw`
   );
   const midX = useTransform(progress, (v) => `${-v * 26}vw`);
   const farX = useTransform(progress, (v) => `${-v * 9}vw`);
@@ -105,7 +106,7 @@ function DriveScene({ eyebrow, headline, body, stages }: TheDriveProps) {
   });
 
   // Border gate sits between stages 03 and 04.
-  const gateLeft = WORLD_PAD + 2.5 * SPACING;
+  const gateLeft = WORLD_PAD + 2.5 * spacing;
 
   return (
     <section
@@ -210,7 +211,7 @@ function DriveScene({ eyebrow, headline, body, stages }: TheDriveProps) {
               <div
                 key={stage.n}
                 className="absolute top-[38%] w-[min(360px,86vw)] -translate-y-1/2 md:top-4 md:w-[min(400px,30vw)] md:translate-y-0 [@media(max-height:820px)]:md:w-[min(360px,26vw)]"
-                style={{ left: `${WORLD_PAD + i * SPACING}vw` }}
+                style={{ left: `${WORLD_PAD + i * spacing}vw` }}
               >
                 {/* Gantry hanger (desktop) — cards hang overhead, truck owns the road */}
                 <div
