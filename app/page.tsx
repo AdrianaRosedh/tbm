@@ -3,9 +3,11 @@ import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpRight,
+  Building2,
   Globe2,
   Headphones,
   ShieldCheck,
+  Wrench,
   Zap,
   type LucideIcon,
 } from "lucide-react";
@@ -25,9 +27,12 @@ import { TextReveal } from "@/components/site/text-reveal";
 import { CertGrid } from "@/components/site/cert-grid";
 import { ABOUT } from "@/lib/content/about";
 import { HOME } from "@/lib/content/home";
-import { SERVICES_TECH, SERVICE_FEATURES } from "@/lib/content/services";
+import { COMPLIANCE_PRACTICES } from "@/lib/content/compliance";
+import { SERVICES_AI, SERVICES_TECH, SERVICE_FEATURES } from "@/lib/content/services";
 import { SITE, TECH_PARTNERS } from "@/lib/content/site";
 import { cn, mailtoHref } from "@/lib/utils";
+
+const KNOW_US_PILLAR_ICONS: readonly LucideIcon[] = [ShieldCheck, Wrench, Building2];
 
 const WHY_US_ICONS: Record<string, LucideIcon> = {
   Zap,
@@ -40,7 +45,7 @@ export default function Home() {
   return (
     <>
       {/* HERO — full first screen: content centers, stats dock at the fold */}
-      <section className="grain relative isolate flex min-h-[calc(100dvh-4.5rem)] flex-col overflow-hidden md:min-h-[calc(100dvh-5rem)]">
+      <section className="grain relative isolate flex min-h-dvh flex-col overflow-hidden">
         <div aria-hidden="true" className="absolute inset-0 -z-10">
           <ParallaxLayer amount={56} scale={1.12}>
             <Image
@@ -65,7 +70,7 @@ export default function Home() {
           <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-brand-indigo-deep/60 to-transparent" />
         </div>
 
-        <div className="relative mx-auto flex w-full max-w-screen-2xl flex-1 flex-col justify-center px-4 py-12 text-white md:py-10 md:px-8">
+        <div className="relative mx-auto flex w-full max-w-screen-2xl flex-1 flex-col justify-center px-4 pb-10 pt-28 text-white md:pb-10 md:pt-32 md:px-8">
           <div className="animate-rise">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/90 backdrop-blur-sm sm:px-4 sm:text-[11px] sm:tracking-[0.22em]">
               <span className="relative flex h-2 w-2">
@@ -215,6 +220,44 @@ export default function Home() {
                 </SpotlightCard>
               </Reveal>
             ))}
+          </ul>
+
+          {/* Built on expertise — the About pillars, elevated here */}
+          <Reveal className="mt-20">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
+              {ABOUT.pillarsIntro.eyebrow}
+            </p>
+            <TextReveal
+              as="h3"
+              text={ABOUT.pillarsIntro.headline}
+              className="mt-3 max-w-3xl font-display text-display-sm font-extrabold tracking-tight"
+            />
+            <p className="mt-5 max-w-3xl text-base leading-relaxed text-fg-muted md:text-lg">
+              {ABOUT.pillarsIntro.body}
+            </p>
+          </Reveal>
+          <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden">
+            {ABOUT.pillars.map((pillar, i) => {
+              const Icon = KNOW_US_PILLAR_ICONS[i];
+              return (
+                <Reveal as="li" key={pillar.title} delay={i * 0.08} className="max-md:w-[82vw] max-md:shrink-0 max-md:snap-center">
+                  <SpotlightCard
+                    className="h-full rounded-2xl border border-black/5 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/30 hover:shadow-lg hover:shadow-brand-indigo/10 lg:p-8"
+                    glow="color-mix(in oklab, var(--color-brand-red) 12%, transparent)"
+                  >
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red ring-1 ring-brand-red/20 transition-transform duration-300 group-hover/spot:scale-110">
+                      <Icon className="h-6 w-6" aria-hidden="true" />
+                    </div>
+                    <h4 className="mt-6 font-display text-xl font-extrabold uppercase tracking-wider">
+                      {pillar.title}
+                    </h4>
+                    <p className="mt-3 text-sm leading-relaxed text-fg-muted">
+                      {pillar.body}
+                    </p>
+                  </SpotlightCard>
+                </Reveal>
+              );
+            })}
           </ul>
         </div>
       </section>
@@ -506,6 +549,37 @@ export default function Home() {
               ))}
             </div>
           </Reveal>
+
+          {/* Utilizing AI to simplify Carta Porte (from the Services page) */}
+          <div className="mt-20 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+            <Reveal>
+              <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
+                {SERVICES_AI.eyebrow}
+              </p>
+              <TextReveal
+                as="h3"
+                text={SERVICES_AI.headline}
+                className="mt-3 font-display text-display-sm font-extrabold tracking-tight"
+              />
+              <p className="mt-5 text-base leading-relaxed text-fg-muted md:text-lg">
+                {SERVICES_AI.body}
+              </p>
+            </Reveal>
+            <Reveal
+              delay={0.1}
+              className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted"
+            >
+              <ParallaxLayer amount={32}>
+                <Image
+                  src={SERVICES_AI.image}
+                  alt=""
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </ParallaxLayer>
+            </Reveal>
+          </div>
         </div>
       </section>
 
@@ -605,6 +679,23 @@ export default function Home() {
               safety of international trade operations across North America.
             </p>
           </Reveal>
+          <ul className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-x-10 gap-y-4 text-left sm:grid-cols-2">
+            {COMPLIANCE_PRACTICES.map((practice, i) => (
+              <Reveal
+                as="li"
+                key={practice}
+                delay={i * 0.05}
+                y={12}
+                className="flex items-start gap-3 text-sm leading-relaxed text-fg-muted"
+              >
+                <span
+                  aria-hidden="true"
+                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-red"
+                />
+                <span>{practice}</span>
+              </Reveal>
+            ))}
+          </ul>
           <Reveal delay={0.1} className="mt-12">
             <CertGrid variant="strip" />
           </Reveal>

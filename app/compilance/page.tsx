@@ -7,6 +7,7 @@ import { Reveal } from "@/components/site/reveal";
 import { SpotlightCard } from "@/components/site/spotlight-card";
 import { TextReveal } from "@/components/site/text-reveal";
 import { CERTIFICATIONS } from "@/lib/content/certifications";
+import { COMPLIANCE_PRACTICES } from "@/lib/content/compliance";
 import { SITE } from "@/lib/content/site";
 import { mailtoHref } from "@/lib/utils";
 import type { Metadata } from "next";
@@ -17,14 +18,7 @@ export const metadata: Metadata = {
     "TBM Carriers is C-TPAT, FAST, OEA, and SmartWay certified. How our supply-chain security program protects every load.",
 };
 
-const PRACTICES = [
-  "Cooperating with U.S. Customs and Border Protection (CBP) and relevant authorities to strengthen supply chain security.",
-  "Meeting and exceeding recommended business and security standards across all operations.",
-  "Supporting global initiatives to prevent terrorism and protect international trade.",
-  "Providing security guidelines and training for employees, contractors, service providers, and affiliated partners.",
-  "Ensuring a safe and secure environment for employees, customers, vendors, and visitors.",
-  "Investigating and responding promptly to any security incidents related to cargo security or C-TPAT/OEA compliance, and notifying the appropriate authorities when required.",
-];
+
 
 export default function CompliancePage() {
   return (
@@ -103,7 +97,7 @@ export default function CompliancePage() {
               </p>
             </div>
             <ul className="mt-6 space-y-4">
-              {PRACTICES.map((practice, i) => (
+              {COMPLIANCE_PRACTICES.map((practice, i) => (
                 <Reveal
                   as="li"
                   key={practice}

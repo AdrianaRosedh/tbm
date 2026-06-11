@@ -13,6 +13,17 @@ import { cn } from "@/lib/utils";
  * the full-screen overlay. On detail pages, items deep-link back to the
  * homepage sections.
  */
+/** Homepage sections the spy watches; `services` rolls up into the
+ *  "Network & Services" tab (section: "network"). */
+const SPY_IDS = ["know-us", "network", "services", "compliance"] as const;
+const SECTION_TO_TAB: Record<string, string> = {
+  "know-us": "know-us",
+  network: "network",
+  services: "network",
+  compliance: "compliance",
+  top: "top",
+};
+
 export function NavLinks() {
   const pathname = usePathname();
   const onHome = pathname === "/";
@@ -21,12 +32,9 @@ export function NavLinks() {
   // Scroll-spy over the homepage sections.
   useEffect(() => {
     if (!onHome) return;
-    const ids = NAV_ITEMS.map((i) => i.section).filter(
-      (s): s is string => !!s && s !== "top"
+    const sections = SPY_IDS.map((id) => document.getElementById(id)).filter(
+      (el): el is HTMLElement => !!el
     );
-    const sections = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => !!el);
     if (sections.length === 0) return;
 
     const visible = new Map<string, number>();
@@ -65,7 +73,7 @@ export function NavLinks() {
         const isActive = item.overlay
           ? !onHome && pathname.startsWith("/contact")
           : onHome
-            ? item.section === activeSection
+            ? item.section === (SECTION_TO_TAB[activeSection] ?? activeSection)
             : false; // detail pages: items deep-link home, none is "current"
 
         const baseClass =

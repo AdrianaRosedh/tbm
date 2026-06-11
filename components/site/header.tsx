@@ -24,14 +24,15 @@ export function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 flex h-[4.5rem] w-full items-center md:h-20">
-      <div className="mx-auto w-full max-w-7xl px-3 sm:px-4">
+    // Fixed overlay: the capsule floats over the hero (no in-flow strip).
+    <header className="fixed inset-x-0 top-0 z-50 flex h-20 w-full items-center md:h-24">
+      <div className="mx-auto w-full max-w-[88rem] px-3 sm:px-5">
         <div
           className={cn(
-            "relative flex items-center justify-between gap-4 rounded-full border px-4 transition-all duration-500 sm:px-5",
+            "relative flex items-center justify-between gap-4 rounded-full border px-4 transition-all duration-500 sm:px-6",
             scrolled
-              ? "h-12 border-white/15 bg-brand-indigo/85 shadow-[0_14px_44px_-14px_rgba(0,0,0,0.75)] backdrop-blur-xl backdrop-saturate-150 md:h-[3.25rem]"
-              : "h-14 border-white/10 bg-brand-indigo/70 shadow-[0_10px_36px_-16px_rgba(0,0,0,0.6)] backdrop-blur-lg md:h-[3.75rem]"
+              ? "h-14 border-white/15 bg-brand-indigo/85 shadow-[0_14px_44px_-14px_rgba(0,0,0,0.75)] backdrop-blur-xl backdrop-saturate-150 md:h-[3.75rem]"
+              : "h-16 border-white/10 bg-brand-indigo/70 shadow-[0_10px_36px_-16px_rgba(0,0,0,0.6)] backdrop-blur-lg md:h-[4.25rem]"
           )}
         >
           {/* Brand hairline that wakes up on scroll */}
@@ -56,7 +57,7 @@ export function Header() {
               sizes="(max-width: 768px) 132px, 156px"
               className={cn(
                 "w-auto transition-all duration-500",
-                scrolled ? "h-7" : "h-8 md:h-9"
+                scrolled ? "h-8" : "h-9 md:h-10"
               )}
               loading="eager"
               fetchPriority="high"
@@ -66,7 +67,7 @@ export function Header() {
           <NavLinks />
 
           <div className="flex shrink-0 items-center gap-2">
-            <TrackShipmentLink className="shine-hover group/cta hidden h-9 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.05] px-4 text-xs font-medium uppercase tracking-wider text-white transition-colors hover:border-brand-red hover:bg-brand-red md:inline-flex lg:px-5 lg:text-sm">
+            <TrackShipmentLink className="shine-hover group/cta hidden h-10 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.05] px-5 text-xs font-medium uppercase tracking-wider text-white transition-colors hover:border-brand-red hover:bg-brand-red md:inline-flex lg:px-6 lg:text-sm">
               <Truck
                 className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-0.5"
                 aria-hidden="true"
