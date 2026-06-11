@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { ContactOverlay } from "@/components/site/contact-overlay";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
 import { MobileCtaBar } from "@/components/site/mobile-cta-bar";
@@ -89,6 +90,7 @@ export default function RootLayout({
         <main className="flex flex-1 flex-col">{children}</main>
         <Footer />
         <MobileCtaBar />
+        <ContactOverlay />
         <Analytics />
         <SpeedInsights />
       </body>

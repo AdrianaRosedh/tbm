@@ -22,8 +22,12 @@ import { SpotlightCard } from "@/components/site/spotlight-card";
 import { ContactSalesLink } from "@/components/site/site-links";
 import { StatCounter } from "@/components/site/stat-counter";
 import { TextReveal } from "@/components/site/text-reveal";
+import { CertGrid } from "@/components/site/cert-grid";
+import { ABOUT } from "@/lib/content/about";
 import { HOME } from "@/lib/content/home";
-import { cn } from "@/lib/utils";
+import { SERVICES_TECH, SERVICE_FEATURES } from "@/lib/content/services";
+import { SITE, TECH_PARTNERS } from "@/lib/content/site";
+import { cn, mailtoHref } from "@/lib/utils";
 
 const WHY_US_ICONS: Record<string, LucideIcon> = {
   Zap,
@@ -36,7 +40,7 @@ export default function Home() {
   return (
     <>
       {/* HERO — full first screen: content centers, stats dock at the fold */}
-      <section className="grain relative isolate flex min-h-[calc(100dvh-6.25rem)] flex-col overflow-hidden md:min-h-[calc(100dvh-7.25rem)]">
+      <section className="grain relative isolate flex min-h-[calc(100dvh-4.5rem)] flex-col overflow-hidden md:min-h-[calc(100dvh-5rem)]">
         <div aria-hidden="true" className="absolute inset-0 -z-10">
           <ParallaxLayer amount={56} scale={1.12}>
             <Image
@@ -136,7 +140,7 @@ export default function Home() {
       <MarqueeBand words={HOME.kinetic} />
 
       {/* ABOUT BAND */}
-      <section className="bg-white py-16 md:py-24 lg:py-32">
+      <section id="know-us" className="scroll-mt-24 bg-white py-16 md:py-24 lg:py-32">
         <div className="mx-auto grid w-full max-w-screen-2xl grid-cols-1 items-center gap-12 px-4 lg:grid-cols-2 md:px-8">
           <Reveal className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted">
             <ParallaxLayer amount={36}>
@@ -176,6 +180,42 @@ export default function Home() {
               Learn About Us
             </Link>
           </Reveal>
+        </div>
+      </section>
+
+      {/* KNOW US — mission, vision, history (from the About page, elevated here) */}
+      <section className="bg-muted/30 py-16 md:py-24 lg:py-32">
+        <div className="mx-auto w-full max-w-screen-2xl px-4 md:px-8">
+          <Reveal>
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
+              {ABOUT.mvh.eyebrow}
+            </p>
+            <TextReveal
+              as="h2"
+              text={ABOUT.mvh.headline}
+              className="mt-3 max-w-3xl font-display text-display-sm font-extrabold tracking-tight sm:text-display-md"
+            />
+          </Reveal>
+          <ul className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden">
+            {ABOUT.mvh.items.map((item, i) => (
+              <Reveal as="li" key={item.label} delay={i * 0.08} className="max-md:w-[82vw] max-md:shrink-0 max-md:snap-center">
+                <SpotlightCard
+                  className="h-full rounded-2xl border border-black/5 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/30 hover:shadow-xl hover:shadow-brand-indigo/10"
+                  glow="color-mix(in oklab, var(--color-brand-red) 12%, transparent)"
+                >
+                  <span className="font-display text-sm font-extrabold tracking-[0.3em] text-brand-red/60">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.25em] text-brand-red">
+                    {item.label}
+                  </p>
+                  <p className="mt-4 text-base leading-relaxed text-fg-muted">
+                    {item.body}
+                  </p>
+                </SpotlightCard>
+              </Reveal>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -372,7 +412,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES (BENTO) */}
-      <section className="bg-muted/30 py-16 md:py-24 lg:py-32">
+      <section id="services" className="scroll-mt-24 bg-muted/30 py-16 md:py-24 lg:py-32">
         <div className="mx-auto w-full max-w-screen-2xl px-4 md:px-8">
           <Reveal>
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
@@ -398,6 +438,74 @@ export default function Home() {
               See all services
             </Link>
           </div>
+
+          {/* Integrated solutions + technology (from the Services page, elevated here) */}
+          <Reveal className="mt-20">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
+              Integrated Logistics Solutions
+            </p>
+            <TextReveal
+              as="h3"
+              text="Designed for performance and reliability"
+              className="mt-3 max-w-3xl font-display text-display-sm font-extrabold tracking-tight"
+            />
+          </Reveal>
+          <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden">
+            {SERVICE_FEATURES.map((feature, i) => (
+              <Reveal as="li" key={feature.title} delay={i * 0.08} className="max-md:w-[82vw] max-md:shrink-0 max-md:snap-center">
+                <SpotlightCard
+                  className="h-full rounded-2xl border border-black/5 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/30 hover:shadow-lg hover:shadow-brand-indigo/10 lg:p-8"
+                  glow="color-mix(in oklab, var(--color-brand-red) 12%, transparent)"
+                >
+                  <span className="font-display text-sm font-extrabold tracking-[0.3em] text-brand-red">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h4 className="mt-3 font-display text-xl font-extrabold uppercase tracking-wider">
+                    {feature.title}
+                  </h4>
+                  <p className="mt-3 text-sm leading-relaxed text-fg-muted">
+                    {feature.body}
+                  </p>
+                </SpotlightCard>
+              </Reveal>
+            ))}
+          </ul>
+
+          <div className="mt-12 grid grid-cols-1 gap-6 lg:grid-cols-2">
+            {SERVICES_TECH.items.map((item, i) => (
+              <Reveal key={item.title} delay={i * 0.08}>
+                <SpotlightCard
+                  className="h-full rounded-2xl border border-black/5 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/30 hover:shadow-lg hover:shadow-brand-indigo/10 lg:p-8"
+                  glow="color-mix(in oklab, var(--color-brand-red) 12%, transparent)"
+                >
+                  <h4 className="font-display text-lg font-extrabold uppercase tracking-wider">
+                    {item.title}
+                  </h4>
+                  <p className="mt-3 text-sm leading-relaxed text-fg-muted">
+                    {item.body}
+                  </p>
+                </SpotlightCard>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={0.15} className="mt-12">
+            <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-fg-subtle">
+              Powered by industry-leading platforms
+            </p>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-10 opacity-80 grayscale transition-[opacity,filter] hover:opacity-100 hover:grayscale-0">
+              {TECH_PARTNERS.map((p) => (
+                <Image
+                  key={p.name}
+                  src={p.logo}
+                  alt={p.name}
+                  width={140}
+                  height={48}
+                  className="h-9 w-auto"
+                />
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -475,6 +583,55 @@ export default function Home() {
               />
             </Link>
           </p>
+        </div>
+      </section>
+
+
+      {/* COMPLIANCE & SECURITY — certified, audit-ready (full detail on /compilance) */}
+      <section id="compliance" className="scroll-mt-24 bg-white py-16 md:py-24 lg:py-32">
+        <div className="mx-auto w-full max-w-screen-2xl px-4 md:px-8">
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
+              Compliance & Security
+            </p>
+            <TextReveal
+              as="h2"
+              text="Two programs, one security playbook"
+              className="mt-3 font-display text-display-sm font-extrabold tracking-tight sm:text-display-md"
+            />
+            <p className="mt-5 text-base leading-relaxed text-fg-muted md:text-lg">
+              As a trusted C-TPAT/OEA member, TBM Carriers meets rigorous
+              security standards to ensure the integrity, reliability, and
+              safety of international trade operations across North America.
+            </p>
+          </Reveal>
+          <Reveal delay={0.1} className="mt-12">
+            <CertGrid variant="strip" />
+          </Reveal>
+          <Reveal
+            delay={0.15}
+            className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm"
+          >
+            <a
+              href={mailtoHref(
+                SITE.safetyEmail,
+                "Compliance / C-TPAT inquiry — TBM Carriers"
+              )}
+              className="font-medium text-brand-red underline-offset-4 hover:underline"
+            >
+              Email our safety team
+            </a>
+            <Link
+              href="/compilance"
+              className="group inline-flex items-center gap-1.5 font-medium text-fg-muted transition-colors hover:text-brand-red"
+            >
+              Partnerships and certifications
+              <ArrowRight
+                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
+                aria-hidden="true"
+              />
+            </Link>
+          </Reveal>
         </div>
       </section>
 

@@ -15,6 +15,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { OPEN_CONTACT_EVENT } from "./contact-overlay";
 import { ContactSalesLink, TrackShipmentLink } from "./site-links";
 import { FOOTER_LEGAL_ITEMS, NAV_ITEMS, OFFICES } from "@/lib/content/site";
 import { cn, telHref } from "@/lib/utils";
@@ -52,12 +53,12 @@ export function MobileNav() {
           <Button
             variant="ghost"
             size="icon"
-            className="size-11 text-white transition-transform hover:bg-white/10 hover:text-white active:scale-95 lg:hidden"
+            className="size-9 text-white transition-transform hover:bg-white/10 hover:text-white active:scale-95 lg:hidden"
             aria-label="Open menu"
           />
         }
       >
-        <Menu className="h-6 w-6" />
+        <Menu className="h-5 w-5" />
       </SheetTrigger>
 
       <SheetContent
@@ -162,7 +163,20 @@ export function MobileNav() {
 
               return (
                 <motion.div key={item.href} variants={itemVariants}>
-                  {item.external ? (
+                  {item.overlay ? (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setOpen(false);
+                        window.dispatchEvent(
+                          new CustomEvent(OPEN_CONTACT_EVENT)
+                        );
+                      }}
+                      className={cn(className, "w-full text-left")}
+                    >
+                      {inner}
+                    </button>
+                  ) : item.external ? (
                     <a
                       href={item.href}
                       target="_blank"

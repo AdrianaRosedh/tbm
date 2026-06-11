@@ -20,14 +20,22 @@ export type NavItem = {
   label: string;
   href: string;
   external?: boolean;
+  /** Opens the full-screen contact overlay instead of navigating */
+  overlay?: boolean;
+  /** Home-page section id this item scroll-spies against */
+  section?: string;
 };
 
+/**
+ * One-page navigation: items anchor to homepage sections (the detail pages
+ * remain live for SEO/deep links). "Contact Us" opens the overlay.
+ */
 export const NAV_ITEMS: readonly NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "Network & Services", href: "/services" },
-  { label: "Know Us", href: "/about" },
-  { label: "Compliance & Security", href: "/compilance" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "Home", href: "/", section: "top" },
+  { label: "Network & Services", href: "/#services", section: "services" },
+  { label: "Know Us", href: "/#know-us", section: "know-us" },
+  { label: "Compliance & Security", href: "/#compliance", section: "compliance" },
+  { label: "Contact Us", href: "/contact", overlay: true },
 ] as const;
 
 export const FOOTER_LEGAL_ITEMS = [

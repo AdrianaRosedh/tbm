@@ -3,16 +3,17 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Mail, Phone, Truck } from "lucide-react";
+import { Truck } from "lucide-react";
 import { NavLinks } from "./nav-links";
 import { MobileNav } from "./mobile-nav";
-import { ContactSalesLink, TrackShipmentLink } from "./site-links";
-import { OFFICES } from "@/lib/content/site";
-import { cn, telHref } from "@/lib/utils";
+import { TrackShipmentLink } from "./site-links";
+import { cn } from "@/lib/utils";
 
+/**
+ * Floating glass capsule navbar. Sits in-flow (h-18/h-20) so heroes can
+ * size against it; the visible pill tightens and glows once scrolled.
+ */
 export function Header() {
-  const usPhone = OFFICES[0].phones[0];
-  const mxPhone = OFFICES[1].phones[0];
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -23,69 +24,28 @@ export function Header() {
   }, []);
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full transition-[background-color,box-shadow] duration-500",
-        scrolled
-          ? "bg-brand-indigo/80 shadow-[0_10px_40px_-16px_rgba(0,0,0,0.7)] backdrop-blur-xl backdrop-saturate-150"
-          : "bg-brand-indigo/95 backdrop-blur-md"
-      )}
-    >
-      {/* Utility bar — collapses on scroll for a sleeker bar */}
-      <div
-        className={cn(
-          "overflow-hidden border-white/[0.06] bg-brand-indigo-deep/70 transition-all duration-500",
-          scrolled ? "max-h-0 opacity-0" : "max-h-12 border-b opacity-100"
-        )}
-      >
-        <div className="mx-auto flex h-9 w-full max-w-screen-2xl items-center gap-6 px-6 text-[11px] text-fg-subtle md:px-12">
-          <div className="hidden items-center gap-6 md:flex">
-            <a
-              href={telHref(usPhone)}
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-white"
-            >
-              <Phone className="h-3 w-3 text-brand-red" aria-hidden="true" />
-              <span className="font-semibold tracking-wider">US</span>
-              <span className="tabular-nums">{usPhone}</span>
-            </a>
-            <a
-              href={telHref(mxPhone)}
-              className="inline-flex items-center gap-1.5 transition-colors hover:text-white"
-            >
-              <Phone className="h-3 w-3 text-brand-red" aria-hidden="true" />
-              <span className="font-semibold tracking-wider">MX</span>
-              <span className="tabular-nums">{mxPhone}</span>
-            </a>
-          </div>
-          <ContactSalesLink className="group/cs ml-auto inline-flex items-center gap-1.5 font-medium uppercase tracking-[0.18em] transition-colors hover:text-brand-red">
-            <Mail
-              className="h-3 w-3 text-brand-red transition-transform duration-300 group-hover/cs:-translate-y-0.5"
-              aria-hidden="true"
-            />
-            Contact Sales
-          </ContactSalesLink>
-        </div>
-      </div>
-
-      {/* Main bar */}
-      <div className="relative border-b border-white/10">
-        {/* Animated brand hairline that fades in once scrolled */}
-        <div
-          aria-hidden="true"
-          className={cn(
-            "pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-brand-red/70 to-transparent transition-opacity duration-700",
-            scrolled ? "opacity-100" : "opacity-0"
-          )}
-        />
+    <header className="sticky top-0 z-50 flex h-[4.5rem] w-full items-center md:h-20">
+      <div className="mx-auto w-full max-w-7xl px-3 sm:px-4">
         <div
           className={cn(
-            "mx-auto flex w-full max-w-screen-2xl items-center justify-between gap-6 px-6 transition-[height] duration-500 md:px-12",
-            scrolled ? "h-14 md:h-16" : "h-16 md:h-20"
+            "relative flex items-center justify-between gap-4 rounded-full border px-4 transition-all duration-500 sm:px-5",
+            scrolled
+              ? "h-12 border-white/15 bg-brand-indigo/85 shadow-[0_14px_44px_-14px_rgba(0,0,0,0.75)] backdrop-blur-xl backdrop-saturate-150 md:h-[3.25rem]"
+              : "h-14 border-white/10 bg-brand-indigo/70 shadow-[0_10px_36px_-16px_rgba(0,0,0,0.6)] backdrop-blur-lg md:h-[3.75rem]"
           )}
         >
+          {/* Brand hairline that wakes up on scroll */}
+          <div
+            aria-hidden="true"
+            className={cn(
+              "pointer-events-none absolute inset-x-6 bottom-0 h-px bg-gradient-to-r from-transparent via-brand-red/70 to-transparent transition-opacity duration-700",
+              scrolled ? "opacity-100" : "opacity-0"
+            )}
+          />
+
           <Link
             href="/"
-            className="flex items-center"
+            className="flex shrink-0 items-center"
             aria-label="TBM Carriers — home"
           >
             <Image
@@ -93,10 +53,10 @@ export function Header() {
               alt="TBM Carriers"
               width={663}
               height={204}
-              sizes="(max-width: 768px) 160px, 200px"
+              sizes="(max-width: 768px) 132px, 156px"
               className={cn(
                 "w-auto transition-all duration-500",
-                scrolled ? "h-8 md:h-9" : "h-9 md:h-11"
+                scrolled ? "h-7" : "h-8 md:h-9"
               )}
               loading="eager"
               fetchPriority="high"
@@ -105,15 +65,16 @@ export function Header() {
 
           <NavLinks />
 
-          <TrackShipmentLink className="shine-hover group/cta hidden h-10 items-center justify-center gap-2 rounded-full border border-white/30 bg-white/[0.04] px-5 text-sm font-medium uppercase tracking-wider text-white transition-colors hover:border-brand-red hover:bg-brand-red md:inline-flex">
-            <Truck
-              className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-0.5"
-              aria-hidden="true"
-            />
-            Track Shipment
-          </TrackShipmentLink>
-
-          <MobileNav />
+          <div className="flex shrink-0 items-center gap-2">
+            <TrackShipmentLink className="shine-hover group/cta hidden h-9 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.05] px-4 text-xs font-medium uppercase tracking-wider text-white transition-colors hover:border-brand-red hover:bg-brand-red md:inline-flex lg:px-5 lg:text-sm">
+              <Truck
+                className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-0.5"
+                aria-hidden="true"
+              />
+              Track Shipment
+            </TrackShipmentLink>
+            <MobileNav />
+          </div>
         </div>
       </div>
     </header>
