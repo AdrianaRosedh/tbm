@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ContactPopupLink } from "@/components/site/contact-popup-link";
 import { TERMS } from "@/lib/content/legal";
 import { SITE } from "@/lib/content/site";
 import type { Metadata } from "next";
@@ -97,12 +97,9 @@ export default function TermsPage() {
                   by email
                 </a>{" "}
                 or through our{" "}
-                <Link
-                  href="/contact"
-                  className="font-medium text-brand-red underline-offset-4 hover:underline"
-                >
+                <ContactPopupLink className="font-medium text-brand-red underline-offset-4 hover:underline">
                   contact page
-                </Link>
+                </ContactPopupLink>
                 .
               </p>
             </section>

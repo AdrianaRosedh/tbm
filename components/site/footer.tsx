@@ -9,6 +9,8 @@ import {
 } from "@/lib/content/site";
 import { CERTIFICATIONS } from "@/lib/content/certifications";
 import { ContactSalesLink, TrackShipmentLink } from "./site-links";
+import { FooterNavItems } from "./footer-nav";
+import { JumpLink } from "./jump-link";
 import { BackToTop } from "./back-to-top";
 import { Reveal } from "./reveal";
 import { telHref } from "@/lib/utils";
@@ -73,8 +75,8 @@ export function Footer() {
           <ul className="mt-6 flex flex-wrap items-start justify-center gap-3 sm:gap-4">
             {CERTIFICATIONS.map((cert) => (
               <li key={cert.slug}>
-                <Link
-                  href="/compilance#certifications"
+                <JumpLink
+                  to="compliance"
                   title={cert.full}
                   className="group/cert flex w-32 flex-col items-center gap-2"
                 >
@@ -90,13 +92,13 @@ export function Footer() {
                   <span className="text-center text-[10px] font-semibold uppercase tracking-widest text-fg-subtle transition-colors group-hover/cert:text-white">
                     {cert.short}
                   </span>
-                </Link>
+                </JumpLink>
               </li>
             ))}
           </ul>
           <p className="mt-5 text-center">
-            <Link
-              href="/compilance"
+            <JumpLink
+              to="compliance"
               className="group/all inline-flex items-center gap-1.5 text-xs font-medium text-fg-subtle transition-colors hover:text-brand-red"
             >
               See how our security program works
@@ -104,7 +106,7 @@ export function Footer() {
                 className="h-3.5 w-3.5 transition-transform duration-300 group-hover/all:translate-x-0.5"
                 aria-hidden="true"
               />
-            </Link>
+            </JumpLink>
           </p>
         </div>
       </div>
@@ -173,22 +175,7 @@ export function Footer() {
             Navigate
           </p>
           <ul className="mt-3 space-y-2 text-sm">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="group inline-flex items-center gap-1.5 text-fg-subtle transition-colors hover:text-white"
-                >
-                  <ArrowRight
-                    className="h-3.5 w-3.5 -translate-x-1 text-brand-red opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
-                    aria-hidden="true"
-                  />
-                  <span className="-ml-5 transition-all duration-300 group-hover:ml-0">
-                    {item.label}
-                  </span>
-                </Link>
-              </li>
-            ))}
+            <FooterNavItems />
             <li>
               <TrackShipmentLink className="group inline-flex items-center gap-2 text-fg-subtle transition-colors hover:text-white">
                 <Truck className="h-3.5 w-3.5 text-brand-red" aria-hidden="true" />

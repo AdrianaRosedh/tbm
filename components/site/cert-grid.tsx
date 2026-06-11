@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { JumpLink } from "./jump-link";
 import { CERTIFICATIONS } from "@/lib/content/certifications";
 import { cn } from "@/lib/utils";
 
@@ -10,8 +10,8 @@ type CertGridProps = {
 };
 
 /**
- * Certification badges. Every badge links to the detailed program list on
- * /compilance#certifications — proof, not decoration.
+ * Certification badges. Every badge jumps to the compliance section's program
+ * detail (#compliance on the one-page site) — proof, not decoration.
  */
 export function CertGrid({ variant = "grid", className }: CertGridProps) {
   if (variant === "strip") {
@@ -24,8 +24,8 @@ export function CertGrid({ variant = "grid", className }: CertGridProps) {
       >
         {CERTIFICATIONS.map((c) => (
           <li key={c.slug}>
-            <Link
-              href="/compilance#certifications"
+            <JumpLink
+              to="compliance"
               title={c.full}
               className="group flex h-16 w-36 items-center justify-center rounded-xl border border-black/10 bg-white px-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-red/50 hover:shadow-md"
             >
@@ -36,7 +36,7 @@ export function CertGrid({ variant = "grid", className }: CertGridProps) {
                 height={56}
                 className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
-            </Link>
+            </JumpLink>
           </li>
         ))}
       </ul>
@@ -52,8 +52,8 @@ export function CertGrid({ variant = "grid", className }: CertGridProps) {
     >
       {CERTIFICATIONS.map((c) => (
         <li key={c.slug}>
-          <Link
-            href="/compilance#certifications"
+          <JumpLink
+            to="compliance"
             className="group flex h-full flex-col items-center gap-4 rounded-2xl border border-black/10 bg-white p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/50 hover:shadow-lg hover:shadow-brand-indigo/10"
           >
             <div className="flex h-16 w-full items-center justify-center">
@@ -77,7 +77,7 @@ export function CertGrid({ variant = "grid", className }: CertGridProps) {
                 {c.blurb}
               </p>
             </div>
-          </Link>
+          </JumpLink>
         </li>
       ))}
     </ul>

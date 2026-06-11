@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { JumpLink } from "./jump-link";
 import { CERTIFICATIONS } from "@/lib/content/certifications";
 import { cn } from "@/lib/utils";
 
@@ -11,8 +11,8 @@ type CertMarqueeProps = {
 
 /**
  * Auto-scrolling certification strip. CSS-only motion; pauses on hover,
- * respects prefers-reduced-motion (via globals.css). Every badge links to the
- * detailed program list on /compilance#certifications.
+ * respects prefers-reduced-motion (via globals.css). Every badge jumps to the
+ * compliance section (#compliance) on the one-page site.
  */
 export function CertMarquee({ className, speed = "40s" }: CertMarqueeProps) {
   const items = [...CERTIFICATIONS, ...CERTIFICATIONS];
@@ -33,9 +33,9 @@ export function CertMarquee({ className, speed = "40s" }: CertMarqueeProps) {
         style={{ ["--marquee-duration" as string]: speed }}
       >
         {items.map((c, i) => (
-          <Link
+          <JumpLink
             key={`${c.slug}-${i}`}
-            href="/compilance#certifications"
+            to="compliance"
             title={c.full}
             aria-hidden={i >= CERTIFICATIONS.length}
             tabIndex={i >= CERTIFICATIONS.length ? -1 : 0}
@@ -53,7 +53,7 @@ export function CertMarquee({ className, speed = "40s" }: CertMarqueeProps) {
             <span className="text-center text-[10px] font-semibold uppercase tracking-widest text-brand-indigo">
               {c.short}
             </span>
-          </Link>
+          </JumpLink>
         ))}
       </div>
     </div>

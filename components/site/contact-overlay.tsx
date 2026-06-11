@@ -23,6 +23,15 @@ export function ContactOverlay() {
   useEffect(() => {
     const onOpen = () => setOpen(true);
     window.addEventListener(OPEN_CONTACT_EVENT, onOpen);
+
+    // Open from the URL on a fresh load — the /contact route redirects here
+    // with ?contact=open so old links and direct visits land on the one-page
+    // site with the popup already open. Strip the param so refresh/back is clean.
+    if (new URLSearchParams(window.location.search).get("contact") === "open") {
+      setOpen(true);
+      window.history.replaceState(null, "", window.location.pathname);
+    }
+
     return () => window.removeEventListener(OPEN_CONTACT_EVENT, onOpen);
   }, []);
 

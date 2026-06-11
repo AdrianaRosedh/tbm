@@ -24,6 +24,8 @@ import { Reveal } from "@/components/site/reveal";
 import { ServiceGrid } from "@/components/site/service-grid";
 import { SpotlightCard } from "@/components/site/spotlight-card";
 import { ContactSalesLink } from "@/components/site/site-links";
+import { ContactPopupLink } from "@/components/site/contact-popup-link";
+import { JumpLink } from "@/components/site/jump-link";
 import { StatCounter } from "@/components/site/stat-counter";
 import { TextReveal } from "@/components/site/text-reveal";
 import { CertGrid } from "@/components/site/cert-grid";
@@ -107,13 +109,13 @@ export default function Home() {
               Contact Sales
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </ContactSalesLink>
-            <Link
-              href="/services"
+            <JumpLink
+              to="services"
               className="group inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 text-base font-medium backdrop-blur-sm transition-all hover:border-white/40 hover:bg-white/10 active:scale-[0.98]"
             >
               Our Services
               <ArrowUpRight className="h-4 w-4 text-brand-red transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
+            </JumpLink>
           </div>
 
           {/* Scroll cue */}
@@ -177,21 +179,21 @@ export default function Home() {
                 {p}
               </p>
             ))}
-            <Link
-              href="/about"
+            <JumpLink
+              to="about"
               className={cn(
                 buttonVariants({ variant: "outline" }),
                 "mt-8 h-11 rounded-full px-6 transition-all active:scale-[0.98]"
               )}
             >
               Learn About Us
-            </Link>
+            </JumpLink>
           </Reveal>
         </div>
       </section>
 
       {/* KNOW US — mission, vision, history (from the About page, elevated here) */}
-      <section className="bg-muted/30 py-16 md:py-24 lg:py-32">
+      <section id="about" className="scroll-mt-24 bg-muted/30 py-16 md:py-24 lg:py-32">
         <div className="mx-auto w-full max-w-screen-2xl px-4 md:px-8">
           <Reveal>
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
@@ -404,15 +406,14 @@ export default function Home() {
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-fg-subtle md:text-lg">
               {HOME.texasBand.body}
             </p>
-            <Link
-              href="/contact"
+            <ContactPopupLink
               className={cn(
                 buttonVariants(),
                 "mt-10 h-12 rounded-full px-8 text-base transition-all hover:bg-primary/85 active:scale-[0.98]"
               )}
             >
               Contact Us
-            </Link>
+            </ContactPopupLink>
           </Reveal>
         </div>
       </section>
@@ -498,15 +499,15 @@ export default function Home() {
             <ServiceGrid />
           </Reveal>
           <div className="mt-12 flex justify-center">
-            <Link
-              href="/services"
+            <JumpLink
+              to="services"
               className={cn(
                 buttonVariants({ variant: "outline" }),
                 "h-11 rounded-full px-6 transition-all active:scale-[0.98]"
               )}
             >
               See all services
-            </Link>
+            </JumpLink>
           </div>
 
           {/* Integrated solutions + technology (from the Services page, elevated here) */}
@@ -680,8 +681,8 @@ export default function Home() {
             <CertMarquee />
           </div>
           <p className="mt-8 text-center">
-            <Link
-              href="/compilance"
+            <JumpLink
+              to="compliance"
               className="group inline-flex items-center gap-1.5 text-sm font-medium text-fg-subtle transition-colors hover:text-brand-red"
             >
               See how our security program works
@@ -689,7 +690,7 @@ export default function Home() {
                 className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
                 aria-hidden="true"
               />
-            </Link>
+            </JumpLink>
           </p>
         </div>
       </section>
@@ -746,8 +747,8 @@ export default function Home() {
             >
               Email our safety team
             </a>
-            <Link
-              href="/compilance"
+            <JumpLink
+              to="compliance"
               className="group inline-flex items-center gap-1.5 font-medium text-fg-muted transition-colors hover:text-brand-red"
             >
               Partnerships and certifications
@@ -755,7 +756,7 @@ export default function Home() {
                 className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
                 aria-hidden="true"
               />
-            </Link>
+            </JumpLink>
           </Reveal>
         </div>
       </section>
