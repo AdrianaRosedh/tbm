@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Oswald, Cormorant_Garamond } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -82,6 +82,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE.url,
   },
+};
+
+// Dark brand chrome on mobile browsers (address bar / status bar).
+export const viewport: Viewport = {
+  themeColor: "#0f0b26",
 };
 
 export default function RootLayout({
