@@ -14,10 +14,13 @@
   --color-fg-muted: #626262;
   --color-fg-subtle: #b5b4c7;
 
-  /* Typography — Kanit site-wide to match tbmcarriers.com */
-  --font-sans: var(--font-kanit);
-  --font-display: var(--font-kanit);
-  --font-heading: var(--font-kanit);
+  /* Typography — condensed caps for titles (Oswald), elegant serif for the
+     rest (Cormorant Garamond). Inspired by the Richard Mille type system. */
+  /* Body & "the rest of the page" — elegant serif (Cormorant Garamond). */
+  --font-sans: var(--font-cormorant);
+  /* Bold titles — condensed caps (Oswald), RICHARD MILLE energy. */
+  --font-display: var(--font-oswald);
+  --font-heading: var(--font-oswald);
 
   /* Display scale — fluid (mobile-first). Each clamp reaches its ceiling by
      ~1150px, so standard desktop (1280px+) renders the original fixed sizes. */
@@ -151,6 +154,9 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Cormorant Garamond reads light at 400; 500 gives body copy presence
+       and keeps the elegant serif legible at small sizes. */
+    font-weight: 500;
     /* Avoid horizontal scroll from decorative glow/aurora layers */
     overflow-x: clip;
   }

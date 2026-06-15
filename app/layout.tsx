@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Kanit } from "next/font/google";
+import { Oswald, Cormorant_Garamond } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -11,12 +11,22 @@ import { MobileCtaBar } from "@/components/site/mobile-cta-bar";
 import { ScrollProgress } from "@/components/site/scroll-progress";
 import { SITE } from "@/lib/content/site";
 
-const kanit = Kanit({
-  variable: "--font-kanit",
+// Bold titles — tall condensed caps in the spirit of the RICHARD MILLE
+// wordmark. Oswald maxes at 700; font-black/extrabold classes resolve to it.
+const oswald = Oswald({
+  variable: "--font-oswald",
   subsets: ["latin"],
-  // Only the weights actually used — fewer preloads, no console warnings.
-  // 800/900 power the thick display headlines (matching tbmcarriers.com).
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+// The rest of the page — an elegant high-contrast serif echoing the
+// "A Racing Machine On The Wrist" tagline. Italic powers body emphasis/quotes.
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -82,7 +92,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full antialiased", kanit.variable, "font-sans")}
+      className={cn(
+        "h-full antialiased",
+        oswald.variable,
+        cormorant.variable,
+        "font-sans"
+      )}
     >
       <body className="flex min-h-full flex-col">
         <ScrollProgress />
