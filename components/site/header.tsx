@@ -7,6 +7,7 @@ import { Truck } from "lucide-react";
 import { NavLinks } from "./nav-links";
 import { MobileNav } from "./mobile-nav";
 import { TrackShipmentLink } from "./site-links";
+import { LangToggle } from "./lang-toggle";
 import { useContent } from "@/lib/i18n-client";
 import { cn } from "@/lib/utils";
 
@@ -68,7 +69,12 @@ export function Header() {
 
           <NavLinks />
 
-          <div className="flex shrink-0 items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2 md:gap-3">
+            <LangToggle className="hidden md:flex" />
+            <span
+              aria-hidden="true"
+              className="hidden h-5 w-px bg-white/15 md:block"
+            />
             <TrackShipmentLink className="shine-hover group/cta hidden h-10 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/[0.05] px-5 text-xs font-medium uppercase tracking-wider text-white transition-colors hover:border-brand-red hover:bg-brand-red md:inline-flex lg:px-6 lg:text-sm">
               <Truck
                 className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-0.5"

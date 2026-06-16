@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { OPEN_CONTACT_EVENT } from "./contact-overlay";
-import { LangToggle } from "./lang-toggle";
 import { NAV_ITEMS } from "@/lib/content/site";
 import { useContent } from "@/lib/i18n-client";
 import { cn } from "@/lib/utils";
@@ -160,7 +159,6 @@ export function NavLinks() {
           </Link>
         );
       })}
-      <LangToggle className="ml-1" />
     </nav>
   );
 }
