@@ -93,17 +93,20 @@ export function MobileNav() {
               className="h-8 w-auto shrink-0 self-start"
             />
             <SheetTitle className="sr-only">Main menu</SheetTitle>
-            <SheetClose
-              render={
-                <button
-                  type="button"
-                  aria-label="Close menu"
-                  className="inline-flex size-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white backdrop-blur-sm transition-all hover:border-brand-red hover:bg-brand-red active:scale-95"
-                />
-              }
-            >
-              <X className="h-5 w-5" />
-            </SheetClose>
+            <div className="flex items-center gap-3">
+              <LangToggle />
+              <SheetClose
+                render={
+                  <button
+                    type="button"
+                    aria-label="Close menu"
+                    className="inline-flex size-12 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white backdrop-blur-sm transition-all hover:border-brand-red hover:bg-brand-red active:scale-95"
+                  />
+                }
+              >
+                <X className="h-5 w-5" />
+              </SheetClose>
+            </div>
           </SheetHeader>
 
           {/* Oversized nav */}
@@ -244,10 +247,6 @@ export function MobileNav() {
                 <span className="font-semibold text-white/90">MX</span>
                 <span className="truncate tabular-nums">{OFFICES[1].phones[0]}</span>
               </a>
-            </div>
-
-            <div className="flex justify-center pt-1">
-              <LangToggle />
             </div>
 
             <div className="flex items-center justify-between border-t border-white/10 pt-4 text-xs text-fg-subtle">

@@ -490,7 +490,7 @@ export function NetworkMap({
               !corridorsOn ? "opacity-0" : lane ? "opacity-30" : "opacity-100"
             )}
           >
-            {corridors.map((c) => (
+            {corridors.map((c, ci) => (
               <g key={c.id}>
                 <path d={c.d} stroke="rgba(228,67,46,0.16)" strokeWidth={0.85} />
                 <path
@@ -502,6 +502,23 @@ export function NetworkMap({
                 >
                   <title>{c.name}</title>
                 </path>
+                {/* Freight pulses gliding the corridor — the network in motion */}
+                {!reduce &&
+                  [0, 0.5].map((phase) => {
+                    const dur = 7 + ci * 2.5;
+                    return (
+                      <g key={phase}>
+                        <circle r={1.5} fill="rgba(255,138,110,0.22)" />
+                        <circle r={0.6} fill="#ffe2d4" />
+                        <animateMotion
+                          dur={`${dur}s`}
+                          begin={`-${phase * dur}s`}
+                          repeatCount="indefinite"
+                          path={c.d}
+                        />
+                      </g>
+                    );
+                  })}
               </g>
             ))}
           </g>
@@ -517,6 +534,18 @@ export function NetworkMap({
                 strokeDasharray="1.1 2.3"
                 className={reduce ? undefined : "animate-corridor"}
               />
+              {/* Your freight, moving along the planned route */}
+              {!reduce && (
+                <g key={lane.d}>
+                  <circle r={1.9} fill="rgba(255,255,255,0.3)" />
+                  <circle r={0.72} fill="#ffffff" />
+                  <animateMotion
+                    dur="4.5s"
+                    repeatCount="indefinite"
+                    path={lane.d}
+                  />
+                </g>
+              )}
             </g>
           )}
         </svg>

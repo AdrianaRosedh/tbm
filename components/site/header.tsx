@@ -70,7 +70,7 @@ export function Header() {
           <NavLinks />
 
           <div className="flex shrink-0 items-center gap-2 md:gap-3">
-            <LangToggle className="hidden md:flex" />
+            <LangToggle />
             <span
               aria-hidden="true"
               className="hidden h-5 w-px bg-white/15 md:block"
