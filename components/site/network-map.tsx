@@ -23,17 +23,26 @@ import {
   type NetworkRole,
 } from "@/lib/content/network-locations";
 import { ContactSalesLink } from "./site-links";
+import { useContent } from "@/lib/i18n-client";
 import { cn } from "@/lib/utils";
 
 type GroupKey = "terminal" | "dropyard" | "crossing" | "office";
 type Mode = "explore" | "plan";
 
-const GROUPS: Record<GroupKey, { label: string; color: string }> = {
-  terminal: { label: "Terminals & HQ", color: "#e4432e" },
-  dropyard: { label: "Drop Yards", color: "#ffb066" },
-  crossing: { label: "Border Crossings", color: "#8fa2ff" },
-  office: { label: "Offices & Shops", color: "#ffffff" },
+/** Marker colors per asset group (labels come from the locale dictionary). */
+const GROUP_COLORS: Record<GroupKey, string> = {
+  terminal: "#e4432e",
+  dropyard: "#ffb066",
+  crossing: "#8fa2ff",
+  office: "#ffffff",
 };
+
+const GROUP_KEYS: readonly GroupKey[] = [
+  "terminal",
+  "dropyard",
+  "crossing",
+  "office",
+];
 
 const ROLE_TO_GROUP: Record<NetworkRole, GroupKey> = {
   hq: "terminal",
@@ -42,15 +51,6 @@ const ROLE_TO_GROUP: Record<NetworkRole, GroupKey> = {
   crossing: "crossing",
   office: "office",
   maintenance: "office",
-};
-
-const ROLE_LABEL: Record<NetworkRole, string> = {
-  hq: "Headquarters",
-  terminal: "Terminal",
-  dropyard: "Drop yard",
-  crossing: "Border crossing",
-  office: "Office",
-  maintenance: "Maintenance shop",
 };
 
 /** The custom event other components dispatch to spotlight a location. */
@@ -128,6 +128,7 @@ export function NetworkMap({
   frameCap?: string;
 }) {
   const reduce = useReducedMotion();
+  const t = useContent().map;
   const containerRef = useRef<HTMLDivElement>(null);
   const [filter, setFilter] = useState<GroupKey | "all">("all");
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -182,8 +183,8 @@ export function NetworkMap({
   useMotionValueEvent(reveal, "change", (v) => {
     if (!revealing) return;
     // Cascade runs 0.25→0.72 so the tail of the pin is settled map time.
-    const t = Math.min(1, Math.max(0, (v - 0.25) / 0.47));
-    setRevealCount(Math.floor(t * markers.length));
+    const prog = Math.min(1, Math.max(0, (v - 0.25) / 0.47));
+    setRevealCount(Math.floor(prog * markers.length));
     setCorridorsOn(v > 0.18);
     setLegendOn(v > 0.5);
   });
@@ -398,9 +399,9 @@ export function NetworkMap({
               : "border-white/15 bg-white/[0.04] text-fg-subtle hover:border-white/40 hover:text-white"
           )}
         >
-          All
+          {t.all}
         </button>
-        {(Object.keys(GROUPS) as GroupKey[]).map((key) => (
+        {GROUP_KEYS.map((key) => (
           <button
             key={key}
             type="button"
@@ -419,9 +420,9 @@ export function NetworkMap({
             <span
               aria-hidden="true"
               className="h-2 w-2 rounded-full"
-              style={{ backgroundColor: GROUPS[key].color }}
+              style={{ backgroundColor: GROUP_COLORS[key] }}
             />
-            {GROUPS[key].label}
+            {t.groups[key]}
             <span className="tabular-nums text-fg-subtle">{counts[key]}</span>
           </button>
         ))}
@@ -441,7 +442,7 @@ export function NetworkMap({
                   : "text-fg-subtle hover:text-white"
               )}
             >
-              {m === "explore" ? "Explore" : "Plan a lane"}
+              {m === "explore" ? t.explore : t.planLane}
             </button>
           ))}
         </div>
@@ -531,7 +532,7 @@ export function NetworkMap({
               <button
                 key={m.id}
                 type="button"
-                aria-label={`${m.name} — ${m.roles.map((r) => ROLE_LABEL[r]).join(", ")}`}
+                aria-label={`${m.name} — ${m.roles.map((r) => t.roles[r]).join(", ")}`}
                 onMouseEnter={() => {
                   engage();
                   setActiveId(m.id);
@@ -566,7 +567,7 @@ export function NetworkMap({
                           ? "animate-ping"
                           : "animate-pulse-glow"
                       )}
-                      style={{ backgroundColor: GROUPS[m.group].color }}
+                      style={{ backgroundColor: GROUP_COLORS[m.group] }}
                     />
                   )}
                   <span
@@ -579,10 +580,10 @@ export function NetworkMap({
                           : "ring-2 ring-brand-indigo-deep/60"
                     )}
                     style={{
-                      backgroundColor: GROUPS[m.group].color,
+                      backgroundColor: GROUP_COLORS[m.group],
                       boxShadow:
                         isActive || isOrigin || isDest
-                          ? `0 0 14px 3px ${GROUPS[m.group].color}66`
+                          ? `0 0 14px 3px ${GROUP_COLORS[m.group]}66`
                           : undefined,
                     }}
                   />
@@ -610,12 +611,12 @@ export function NetworkMap({
                 <span
                   aria-hidden="true"
                   className="h-2 w-2 shrink-0 rounded-full"
-                  style={{ backgroundColor: GROUPS[active.group].color }}
+                  style={{ backgroundColor: GROUP_COLORS[active.group] }}
                 />
                 {active.name}
               </p>
               <p className="mt-1 text-xs leading-relaxed text-fg-subtle">
-                {active.roles.map((r) => ROLE_LABEL[r]).join(" · ")}
+                {active.roles.map((r) => t.roles[r]).join(" · ")}
               </p>
             </div>
           )}
@@ -634,17 +635,17 @@ export function NetworkMap({
                 {!originId ? (
                   <>
                     <span className="font-semibold text-white">
-                      Tap an origin city
+                      {t.tapOrigin}
                     </span>{" "}
-                    on the map, then a destination.
+                    {t.thenDestination}
                   </>
                 ) : (
                   <>
-                    Origin:{" "}
+                    {t.originColon}{" "}
                     <span className="font-semibold text-white">
                       {byId.get(originId)?.name}
                     </span>{" "}
-                    — now tap a destination.
+                    {t.nowTapDestination}
                   </>
                 )}
               </p>
@@ -655,7 +656,7 @@ export function NetworkMap({
                   className="inline-flex h-9 items-center gap-1.5 rounded-full border border-white/15 px-4 text-xs font-semibold uppercase tracking-wider text-fg-subtle transition-colors hover:border-white/40 hover:text-white"
                 >
                   <RotateCcw className="h-3.5 w-3.5" aria-hidden="true" />
-                  Reset
+                  {t.reset}
                 </button>
               )}
             </div>
@@ -672,8 +673,9 @@ export function NetworkMap({
                   </p>
                   {lane.gateway && (
                     <p className="mt-1 text-xs text-fg-subtle">
-                      via the {lane.gateway.us.name} ↔ {lane.gateway.mx.name}{" "}
-                      gateway
+                      {t.viaPrefix} {lane.gateway.us.name} ↔{" "}
+                      {lane.gateway.mx.name}
+                      {t.viaSuffix ? ` ${t.viaSuffix}` : ""}
                     </p>
                   )}
                 </div>
@@ -683,7 +685,7 @@ export function NetworkMap({
                       {lane.miles.toLocaleString()}
                     </span>{" "}
                     <span className="text-fg-subtle">
-                      mi ({lane.km.toLocaleString()} km)
+                      {t.miAbbr} ({lane.km.toLocaleString()} {t.kmAbbr})
                     </span>
                   </p>
                   <p className="text-sm">
@@ -693,22 +695,22 @@ export function NetworkMap({
                         : `${lane.daysMin}–${lane.daysMax}`}
                     </span>{" "}
                     <span className="text-fg-subtle">
-                      day{lane.daysMax > 1 ? "s" : ""} est. transit
+                      {lane.daysMax > 1 ? t.daysShort : t.dayShort} {t.estTransit}
                     </span>
                   </p>
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
                   <ContactSalesLink
-                    subject={`Lane quote: ${lane.origin.name} → ${lane.dest.name}`}
+                    subject={`${t.laneQuoteSubject}: ${lane.origin.name} → ${lane.dest.name}`}
                     className="shine-hover inline-flex h-10 items-center justify-center gap-2 rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/90 active:scale-[0.98]"
                   >
                     <Mail className="h-4 w-4" aria-hidden="true" />
-                    Get a firm quote
+                    {t.getFirmQuote}
                   </ContactSalesLink>
                   <button
                     type="button"
                     onClick={resetLane}
-                    aria-label="Reset lane"
+                    aria-label={t.resetLane}
                     className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-fg-subtle transition-colors hover:border-white/40 hover:text-white"
                   >
                     <RotateCcw className="h-4 w-4" aria-hidden="true" />
@@ -716,8 +718,7 @@ export function NetworkMap({
                 </div>
               </div>
               <p className="mt-3 text-[11px] leading-relaxed text-fg-subtle">
-                Planning estimates from standard full-truckload driving times —
-                your dedicated CSR confirms exact schedules and pricing.
+                {t.planFootnote}
               </p>
             </>
           )}
@@ -732,8 +733,8 @@ export function NetworkMap({
         )}
       >
         {mode === "plan"
-          ? "Lane planner — tap two cities to sketch a route"
-          : `${counts.terminal} terminals & HQ · ${counts.dropyard} drop yards · ${counts.crossing} border crossings · ${counts.office} offices & shops — flowing lines trace our signature corridors`}
+          ? t.planCaption
+          : `${counts.terminal} ${t.captionTerminals} · ${counts.dropyard} ${t.captionDropYards} · ${counts.crossing} ${t.captionCrossings} · ${counts.office} ${t.captionOffices} — ${t.captionCorridors}`}
       </p>
     </div>
   );

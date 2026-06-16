@@ -93,6 +93,50 @@ export const EN = {
     operatingSince: "Operating since",
     track: "Track",
   },
+
+  /** Interactive network-map labels (filters, lane planner, results). */
+  map: {
+    all: "All",
+    explore: "Explore",
+    planLane: "Plan a lane",
+    groups: {
+      terminal: "Terminals & HQ",
+      dropyard: "Drop Yards",
+      crossing: "Border Crossings",
+      office: "Offices & Shops",
+    },
+    roles: {
+      hq: "Headquarters",
+      terminal: "Terminal",
+      dropyard: "Drop yard",
+      crossing: "Border crossing",
+      office: "Office",
+      maintenance: "Maintenance shop",
+    },
+    tapOrigin: "Tap an origin city",
+    thenDestination: "on the map, then a destination.",
+    originColon: "Origin:",
+    nowTapDestination: "— now tap a destination.",
+    reset: "Reset",
+    resetLane: "Reset lane",
+    viaPrefix: "via the",
+    viaSuffix: "gateway",
+    miAbbr: "mi",
+    kmAbbr: "km",
+    dayShort: "day",
+    daysShort: "days",
+    estTransit: "est. transit",
+    getFirmQuote: "Get a firm quote",
+    laneQuoteSubject: "Lane quote",
+    planFootnote:
+      "Planning estimates from standard full-truckload driving times — your dedicated CSR confirms exact schedules and pricing.",
+    planCaption: "Lane planner — tap two cities to sketch a route",
+    captionTerminals: "terminals & HQ",
+    captionDropYards: "drop yards",
+    captionCrossings: "border crossings",
+    captionOffices: "offices & shops",
+    captionCorridors: "flowing lines trace our signature corridors",
+  },
 } as const;
 
 /** Recursively widen literal types so the Spanish dictionary can supply its
