@@ -7,6 +7,7 @@ import { Truck } from "lucide-react";
 import { NavLinks } from "./nav-links";
 import { MobileNav } from "./mobile-nav";
 import { TrackShipmentLink } from "./site-links";
+import { useContent } from "@/lib/i18n-client";
 import { cn } from "@/lib/utils";
 
 /**
@@ -15,6 +16,7 @@ import { cn } from "@/lib/utils";
  */
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const { ui } = useContent();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -72,7 +74,7 @@ export function Header() {
                 className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-0.5"
                 aria-hidden="true"
               />
-              Track Shipment
+              {ui.trackShipment}
             </TrackShipmentLink>
             <MobileNav />
           </div>

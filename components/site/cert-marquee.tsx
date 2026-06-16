@@ -1,6 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import { JumpLink } from "./jump-link";
-import { CERTIFICATIONS } from "@/lib/content/certifications";
+import { useContent } from "@/lib/i18n-client";
 import { cn } from "@/lib/utils";
 
 type CertMarqueeProps = {
@@ -15,6 +17,7 @@ type CertMarqueeProps = {
  * compliance section (#compliance) on the one-page site.
  */
 export function CertMarquee({ className, speed = "40s" }: CertMarqueeProps) {
+  const CERTIFICATIONS = useContent().certifications;
   const items = [...CERTIFICATIONS, ...CERTIFICATIONS];
 
   return (

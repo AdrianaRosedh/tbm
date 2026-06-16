@@ -3,7 +3,7 @@
 import { MapPin } from "lucide-react";
 import { Reveal } from "./reveal";
 import { FOCUS_LOCATION_EVENT } from "./network-map";
-import { HOME } from "@/lib/content/home";
+import { useContent } from "@/lib/i18n-client";
 import { cn } from "@/lib/utils";
 
 /** Homepage crossing-pair labels → network-map location ids. */
@@ -22,6 +22,7 @@ const US_TO_ID: Record<string, string> = {
  * that gateway on the NetworkMap above (via FOCUS_LOCATION_EVENT).
  */
 export function CrossingChips({ className }: { className?: string }) {
+  const { crossings } = useContent().home.network;
   return (
     <ul
       className={cn(
@@ -29,7 +30,7 @@ export function CrossingChips({ className }: { className?: string }) {
         className
       )}
     >
-      {HOME.network.crossings.map((c, i) => {
+      {crossings.map((c, i) => {
         const id = US_TO_ID[c.us];
         return (
           <Reveal as="li" key={`${c.us}-${c.mx}`} delay={i * 0.04} y={12}>

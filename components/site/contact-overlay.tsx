@@ -7,6 +7,7 @@ import { Mail, Phone, Truck, X } from "lucide-react";
 import { CopyButton } from "./copy-button";
 import { ContactSalesLink, TrackShipmentLink } from "./site-links";
 import { OFFICES } from "@/lib/content/site";
+import { useContent } from "@/lib/i18n-client";
 import { telHref } from "@/lib/utils";
 
 /** Dispatch this on `window` to open the contact overlay from anywhere. */
@@ -19,6 +20,7 @@ export const OPEN_CONTACT_EVENT = "tbm:open-contact";
  */
 export function ContactOverlay() {
   const [open, setOpen] = useState(false);
+  const { ui } = useContent();
 
   useEffect(() => {
     const onOpen = () => setOpen(true);
@@ -71,14 +73,13 @@ export function ContactOverlay() {
             {/* Headline — same words as the contact page */}
             <div className="mt-10 md:mt-14">
               <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
-                Contact
+                {ui.contactEyebrow}
               </p>
               <Dialog.Title className="mt-3 max-w-3xl font-display text-display-md font-black leading-[0.95] tracking-[-0.02em]">
-                Talk to a real person, in either country
+                {ui.contactTitle}
               </Dialog.Title>
               <Dialog.Description className="mt-4 max-w-2xl text-sm leading-relaxed text-fg-subtle md:text-base">
-                One number, one inbox, one accountable team — on both sides of
-                the border.
+                {ui.contactSubtitle}
               </Dialog.Description>
             </div>
 
@@ -86,11 +87,11 @@ export function ContactOverlay() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <ContactSalesLink className="shine-hover group inline-flex h-13 items-center justify-center gap-2 rounded-full bg-primary px-8 text-base font-medium text-primary-foreground shadow-lg shadow-brand-red/25 transition-all hover:bg-primary/90 active:scale-[0.98]">
                 <Mail className="h-4 w-4" aria-hidden="true" />
-                Contact Sales
+                {ui.contactSales}
               </ContactSalesLink>
               <TrackShipmentLink className="inline-flex h-13 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-8 text-base font-medium text-white backdrop-blur-sm transition-all hover:border-brand-red hover:bg-white/[0.08] active:scale-[0.98]">
                 <Truck className="h-4 w-4 text-brand-red" aria-hidden="true" />
-                Track Shipment
+                {ui.trackShipment}
               </TrackShipmentLink>
             </div>
 
@@ -113,7 +114,7 @@ export function ContactOverlay() {
                       height={16}
                       className="h-3.5 w-6 rounded-[2px] object-cover ring-1 ring-white/20"
                     />
-                    {office.region}
+                    {i === 0 ? ui.regionUS : ui.regionMX}
                   </p>
                   <p className="mt-3 font-display text-base font-extrabold uppercase tracking-wider">
                     {office.legalName}
@@ -154,7 +155,7 @@ export function ContactOverlay() {
             </div>
 
             <p className="mt-8 text-center text-[11px] uppercase tracking-[0.2em] text-fg-subtle">
-              We reply within 24 hours
+              {ui.replyWithin}
             </p>
           </div>
         </Dialog.Popup>

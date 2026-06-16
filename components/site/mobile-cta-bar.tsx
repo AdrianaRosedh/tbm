@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Mail, Truck } from "lucide-react";
 import { ContactSalesLink, TrackShipmentLink } from "./site-links";
+import { useContent } from "@/lib/i18n-client";
 
 /**
  * Sticky mobile-only action bar. Appears once the user scrolls past the hero
@@ -11,6 +12,7 @@ import { ContactSalesLink, TrackShipmentLink } from "./site-links";
  */
 export function MobileCtaBar() {
   const pathname = usePathname();
+  const { ui } = useContent();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -48,14 +50,14 @@ export function MobileCtaBar() {
           className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full border border-white/15 bg-brand-indigo/90 px-4 text-sm font-medium text-white shadow-2xl shadow-brand-indigo-deep/40 backdrop-blur-sm transition-all hover:bg-brand-indigo active:scale-[0.98]"
         >
           <Truck className="h-4 w-4 text-brand-red" aria-hidden="true" />
-          Track
+          {ui.track}
         </TrackShipmentLink>
         <ContactSalesLink
           tabIndex={visible ? 0 : -1}
           className="shine-hover inline-flex h-12 flex-[1.4] items-center justify-center gap-2 rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground shadow-2xl shadow-brand-red/30 ring-1 ring-white/10 transition-all hover:bg-primary/90 active:scale-[0.98]"
         >
           <Mail className="h-4 w-4" aria-hidden="true" />
-          Contact Sales
+          {ui.contactSales}
         </ContactSalesLink>
       </div>
     </div>

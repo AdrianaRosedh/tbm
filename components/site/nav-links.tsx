@@ -4,7 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { OPEN_CONTACT_EVENT } from "./contact-overlay";
+import { LangToggle } from "./lang-toggle";
 import { NAV_ITEMS } from "@/lib/content/site";
+import { useContent } from "@/lib/i18n-client";
 import { cn } from "@/lib/utils";
 
 /**
@@ -26,7 +28,8 @@ const SECTION_TO_TAB: Record<string, string> = {
 
 export function NavLinks() {
   const pathname = usePathname();
-  const onHome = pathname === "/";
+  const onHome = pathname === "/" || pathname === "/es";
+  const { nav } = useContent();
   const [activeSection, setActiveSection] = useState<string>("top");
 
   // Scroll-spy over the homepage sections.
@@ -76,6 +79,8 @@ export function NavLinks() {
             ? item.section === (SECTION_TO_TAB[activeSection] ?? activeSection)
             : false; // detail pages: items deep-link home, none is "current"
 
+        const label = nav[item.labelKey];
+
         const baseClass =
           "group/nav relative py-1.5 text-sm font-medium uppercase tracking-wider transition-colors duration-200 cursor-pointer";
 
@@ -101,7 +106,7 @@ export function NavLinks() {
               }
               className="shine-hover inline-flex h-9 items-center justify-center rounded-full bg-primary px-4 text-xs font-medium uppercase tracking-wider text-primary-foreground shadow-md shadow-brand-red/25 transition-all hover:bg-primary/90 active:scale-[0.97] lg:h-10 lg:px-5 lg:text-sm"
             >
-              {item.label}
+              {label}
             </button>
           );
         }
@@ -115,7 +120,7 @@ export function NavLinks() {
               rel="noopener noreferrer"
               className={cn(baseClass, "text-white/85 hover:text-white")}
             >
-              {item.label}
+              {label}
               {underline}
             </a>
           );
@@ -150,11 +155,12 @@ export function NavLinks() {
               isActive ? "text-white" : "text-white/85 hover:text-white"
             )}
           >
-            {item.label}
+            {label}
             {underline}
           </Link>
         );
       })}
+      <LangToggle className="ml-1" />
     </nav>
   );
 }

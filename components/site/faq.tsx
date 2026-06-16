@@ -5,34 +5,35 @@ import { Plus } from "lucide-react";
 import { Reveal } from "./reveal";
 import { TextReveal } from "./text-reveal";
 import { ContactSalesLink } from "./site-links";
-import { HOME } from "@/lib/content/home";
-
-/** FAQPage structured data — same Q&A as the visible accordion, so the
- *  answers are eligible for rich results even while collapsed. */
-const FAQ_SCHEMA = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: HOME.faq.items.map((item) => ({
-    "@type": "Question",
-    name: item.q,
-    acceptedAnswer: { "@type": "Answer", text: item.a },
-  })),
-};
+import { useContent } from "@/lib/i18n-client";
 
 /**
  * One-page FAQ. Oswald carries the questions (structure), Cormorant the
  * answers (reading). Single-open accordion; the panel animates height via
  * Base UI's --accordion-panel-height with the same transition system the
- * contact overlay uses.
+ * contact overlay uses. Localized via the active locale's dictionary.
  */
 export function Faq() {
-  const { eyebrow, headline, body, items } = HOME.faq;
+  const { faq } = useContent().home;
+  const { eyebrow, headline, body, items } = faq;
+
+  // FAQPage structured data — same Q&A as the visible accordion, so the
+  // answers are eligible for rich results even while collapsed.
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 md:px-8">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
       <Reveal>

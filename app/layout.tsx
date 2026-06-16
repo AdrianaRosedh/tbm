@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ContactOverlay } from "@/components/site/contact-overlay";
+import { HtmlLang } from "@/components/site/html-lang";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
 import { MobileCtaBar } from "@/components/site/mobile-cta-bar";
@@ -105,6 +106,7 @@ export default function RootLayout({
       )}
     >
       <body className="flex min-h-full flex-col">
+        <HtmlLang />
         <ScrollProgress />
         <Header />
         <main className="flex flex-1 flex-col">{children}</main>

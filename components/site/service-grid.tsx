@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
-import { SERVICES, type ServiceItem } from "@/lib/content/services";
+import { type ServiceItem } from "@/lib/content/services";
+import { useContent } from "@/lib/i18n-client";
 import { SpotlightCard } from "./spotlight-card";
 import { cn } from "@/lib/utils";
 
@@ -10,6 +13,8 @@ type ServiceGridProps = {
 };
 
 export function ServiceGrid({ variant = "bento", className }: ServiceGridProps) {
+  const c = useContent();
+  const SERVICES = c.services;
   if (variant === "preview") {
     return (
       <ul
@@ -50,7 +55,7 @@ export function ServiceGrid({ variant = "bento", className }: ServiceGridProps) 
           />
         </div>
         <p className="mt-8 text-xs font-semibold uppercase tracking-[0.25em] text-brand-red">
-          Featured Service
+          {c.ui.featuredService}
         </p>
         <h3 className="mt-3 max-w-md font-display text-3xl font-extrabold uppercase tracking-wider text-balance md:text-4xl">
           {feature.title}

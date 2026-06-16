@@ -12,6 +12,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 1,
+      alternates: { languages: { en: SITE.url, es: `${SITE.url}/es` } },
+    },
+    {
+      url: `${SITE.url}/es`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.9,
+      alternates: { languages: { en: SITE.url, es: `${SITE.url}/es` } },
     },
     {
       url: `${SITE.url}/privacy-policy`,

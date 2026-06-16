@@ -17,7 +17,9 @@ import {
 } from "@/components/ui/sheet";
 import { OPEN_CONTACT_EVENT } from "./contact-overlay";
 import { ContactSalesLink, TrackShipmentLink } from "./site-links";
+import { LangToggle } from "./lang-toggle";
 import { FOOTER_LEGAL_ITEMS, NAV_ITEMS, OFFICES } from "@/lib/content/site";
+import { useContent } from "@/lib/i18n-client";
 import { cn, telHref } from "@/lib/utils";
 
 /**
@@ -29,6 +31,7 @@ export function MobileNav() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const reduce = useReducedMotion();
+  const { nav, ui } = useContent();
 
   const list = {
     hidden: {},
@@ -137,7 +140,7 @@ export function MobileNav() {
                       isActive ? "text-white" : "text-white/75 group-hover/m:text-white"
                     )}
                   >
-                    {item.label}
+                    {nav[item.labelKey]}
                     <span
                       aria-hidden="true"
                       className={cn(
@@ -214,13 +217,13 @@ export function MobileNav() {
                 className="shine-hover flex min-h-13 items-center justify-center gap-2 rounded-full bg-primary px-6 text-base font-medium text-primary-foreground shadow-lg shadow-brand-red/25 transition-all hover:bg-primary/90 active:scale-[0.98]"
               >
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                Track Shipment
+                {ui.trackShipment}
               </TrackShipmentLink>
               <ContactSalesLink
                 onClick={() => setOpen(false)}
                 className="flex min-h-13 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-6 text-base font-medium text-white backdrop-blur-sm transition-all hover:border-brand-red hover:bg-white/[0.08] active:scale-[0.98]"
               >
-                Contact Sales
+                {ui.contactSales}
               </ContactSalesLink>
             </div>
 
@@ -241,6 +244,10 @@ export function MobileNav() {
                 <span className="font-semibold text-white/90">MX</span>
                 <span className="truncate tabular-nums">{OFFICES[1].phones[0]}</span>
               </a>
+            </div>
+
+            <div className="flex justify-center pt-1">
+              <LangToggle />
             </div>
 
             <div className="flex items-center justify-between border-t border-white/10 pt-4 text-xs text-fg-subtle">

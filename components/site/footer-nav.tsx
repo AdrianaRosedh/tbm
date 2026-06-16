@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { OPEN_CONTACT_EVENT } from "./contact-overlay";
 import { NAV_ITEMS } from "@/lib/content/site";
+import { useContent } from "@/lib/i18n-client";
 
 /**
  * Footer primary-navigation links. Mirrors the header: overlay items
@@ -11,6 +12,7 @@ import { NAV_ITEMS } from "@/lib/content/site";
  * so the one-page site behaves consistently from the footer too.
  */
 export function FooterNavItems() {
+  const { nav } = useContent();
   const linkClass =
     "group inline-flex items-center gap-1.5 text-fg-subtle transition-colors hover:text-white";
 
@@ -24,7 +26,7 @@ export function FooterNavItems() {
               aria-hidden="true"
             />
             <span className="-ml-5 transition-all duration-300 group-hover:ml-0">
-              {item.label}
+              {nav[item.labelKey]}
             </span>
           </>
         );

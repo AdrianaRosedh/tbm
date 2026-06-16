@@ -1,7 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { JumpLink } from "./jump-link";
-import { CERTIFICATIONS } from "@/lib/content/certifications";
+import { useContent } from "@/lib/i18n-client";
 import { cn } from "@/lib/utils";
 
 type CertGridProps = {
@@ -14,6 +16,7 @@ type CertGridProps = {
  * detail (#compliance on the one-page site) — proof, not decoration.
  */
 export function CertGrid({ variant = "grid", className }: CertGridProps) {
+  const CERTIFICATIONS = useContent().certifications;
   if (variant === "strip") {
     return (
       <ul

@@ -18,6 +18,8 @@ export const SITE = {
 
 export type NavItem = {
   label: string;
+  /** Key into the locale dictionary's `nav` for the localized label. */
+  labelKey: "home" | "knowUs" | "networkServices" | "compliance" | "contact";
   href: string;
   external?: boolean;
   /** Opens the full-screen contact overlay instead of navigating */
@@ -31,11 +33,11 @@ export type NavItem = {
  * remain live for SEO/deep links). "Contact Us" opens the overlay.
  */
 export const NAV_ITEMS: readonly NavItem[] = [
-  { label: "Home", href: "/", section: "top" },
-  { label: "Know Us", href: "/#know-us", section: "know-us" },
-  { label: "Network & Services", href: "/#network", section: "network" },
-  { label: "Compliance & Security", href: "/#compliance", section: "compliance" },
-  { label: "Contact Us", href: "/contact", overlay: true },
+  { label: "Home", labelKey: "home", href: "/", section: "top" },
+  { label: "Know Us", labelKey: "knowUs", href: "/#know-us", section: "know-us" },
+  { label: "Network & Services", labelKey: "networkServices", href: "/#network", section: "network" },
+  { label: "Compliance & Security", labelKey: "compliance", href: "/#compliance", section: "compliance" },
+  { label: "Contact Us", labelKey: "contact", href: "/contact", overlay: true },
 ] as const;
 
 export const FOOTER_LEGAL_ITEMS = [

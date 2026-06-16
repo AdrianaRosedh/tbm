@@ -1,13 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Mail, Phone, Truck } from "lucide-react";
-import {
-  FOOTER_LEGAL_ITEMS,
-  NAV_ITEMS,
-  OFFICES,
-  SITE,
-} from "@/lib/content/site";
-import { CERTIFICATIONS } from "@/lib/content/certifications";
+import { FOOTER_LEGAL_ITEMS, OFFICES, SITE } from "@/lib/content/site";
+import { useContent } from "@/lib/i18n-client";
 import { ContactSalesLink, TrackShipmentLink } from "./site-links";
 import { FooterNavItems } from "./footer-nav";
 import { JumpLink } from "./jump-link";
@@ -16,6 +13,8 @@ import { Reveal } from "./reveal";
 import { telHref } from "@/lib/utils";
 
 export function Footer() {
+  const { ui } = useContent();
+  const CERTIFICATIONS = useContent().certifications;
   return (
     <footer className="grain relative isolate overflow-hidden bg-brand-indigo text-white">
       {/* Decorative background layers */}
@@ -41,24 +40,24 @@ export function Footer() {
             <div className="relative flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
               <div className="max-w-md">
                 <span className="inline-flex items-center gap-2 rounded-full border border-brand-red/30 bg-brand-red/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-red">
-                  Cross-border since {SITE.foundedYear}
+                  {ui.footerCtaEyebrow} {SITE.foundedYear}
                 </span>
                 <h2 className="mt-4 font-display text-display-sm font-extrabold leading-tight">
-                  Ready to ship with{" "}
-                  <span className="text-gradient-brand">confidence?</span>
+                  {ui.footerCtaHeadlineA}{" "}
+                  <span className="text-gradient-brand">{ui.footerCtaHeadlineB}</span>
                 </h2>
                 <p className="mt-3 text-fg-subtle">
-                  Talk to our cross-border specialists — we reply within 24 hours.
+                  {ui.footerCtaBody}
                 </p>
               </div>
               <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
                 <ContactSalesLink className="shine-hover group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-7 text-base font-medium text-primary-foreground shadow-lg shadow-brand-red/25 transition-all hover:bg-primary/90 active:scale-[0.98]">
                   <Mail className="h-4 w-4" aria-hidden="true" />
-                  Contact Sales
+                  {ui.contactSales}
                 </ContactSalesLink>
                 <TrackShipmentLink className="group inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-7 text-base font-medium text-white transition-all hover:border-brand-red hover:bg-white/[0.08] active:scale-[0.98]">
                   <Truck className="h-4 w-4 text-brand-red" aria-hidden="true" />
-                  Track Shipment
+                  {ui.trackShipment}
                 </TrackShipmentLink>
               </div>
             </div>
@@ -70,7 +69,7 @@ export function Footer() {
       <div className="border-b border-white/10">
         <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 md:px-8">
           <p className="text-center text-[11px] font-semibold uppercase tracking-[0.25em] text-fg-subtle">
-            Certified & trusted across North America
+            {ui.footerCertHeading}
           </p>
           <ul className="mt-6 flex flex-wrap items-start justify-center gap-3 sm:gap-4">
             {CERTIFICATIONS.map((cert) => (
@@ -101,7 +100,7 @@ export function Footer() {
               to="compliance"
               className="group/all inline-flex items-center gap-1.5 text-xs font-medium text-fg-subtle transition-colors hover:text-brand-red"
             >
-              See how our security program works
+              {ui.footerSecurityLink}
               <ArrowRight
                 className="h-3.5 w-3.5 transition-transform duration-300 group-hover/all:translate-x-0.5"
                 aria-hidden="true"
@@ -123,14 +122,14 @@ export function Footer() {
             className="h-10 w-auto"
           />
           <p className="mt-6 max-w-xs text-sm leading-relaxed text-fg-subtle">
-            {SITE.tagline}
+            {ui.tagline}
           </p>
           <p className="mt-5 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-fg-subtle">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-red opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-red" />
             </span>
-            Operating since {SITE.foundedYear}
+            {ui.operatingSince} {SITE.foundedYear}
           </p>
         </div>
 
@@ -144,7 +143,7 @@ export function Footer() {
                 height={16}
                 className="h-3.5 w-6 rounded-[2px] object-cover ring-1 ring-white/20"
               />
-              {office.region}
+              {i === 0 ? ui.regionUS : ui.regionMX}
             </p>
             <p className="mt-3 font-medium">{office.legalName}</p>
             <address className="mt-2 not-italic text-sm leading-relaxed text-fg-subtle">
@@ -172,20 +171,20 @@ export function Footer() {
 
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-brand-red">
-            Navigate
+            {ui.footerNavHeading}
           </p>
           <ul className="mt-3 space-y-2 text-sm">
             <FooterNavItems />
             <li>
               <TrackShipmentLink className="group inline-flex items-center gap-2 text-fg-subtle transition-colors hover:text-white">
                 <Truck className="h-3.5 w-3.5 text-brand-red" aria-hidden="true" />
-                Track Shipment
+                {ui.trackShipment}
               </TrackShipmentLink>
             </li>
             <li>
               <ContactSalesLink className="group inline-flex items-center gap-2 text-fg-subtle transition-colors hover:text-white">
                 <Mail className="h-3.5 w-3.5 text-brand-red" aria-hidden="true" />
-                Contact Sales
+                {ui.contactSales}
               </ContactSalesLink>
             </li>
           </ul>
@@ -196,7 +195,7 @@ export function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex w-full max-w-screen-2xl flex-col items-start justify-between gap-4 px-4 py-6 text-xs text-fg-subtle md:flex-row md:items-center md:px-8">
           <p>
-            © {SITE.copyrightYear} {SITE.name}. All rights reserved.
+            © {SITE.copyrightYear} {SITE.name}. {ui.allRightsReserved}
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
             <ul className="flex gap-6">
