@@ -29,7 +29,6 @@ import { ContactPopupLink } from "@/components/site/contact-popup-link";
 import { JumpLink } from "@/components/site/jump-link";
 import { StatCounter } from "@/components/site/stat-counter";
 import { TextReveal } from "@/components/site/text-reveal";
-import { CertGrid } from "@/components/site/cert-grid";
 import { SITE, TECH_PARTNERS } from "@/lib/content/site";
 import { getContent, type Locale } from "@/lib/i18n";
 import { cn, mailtoHref } from "@/lib/utils";
@@ -503,21 +502,13 @@ export function SiteHome({ locale }: { locale: Locale }) {
               text={ui.servicesHeadline}
               className="mt-3 max-w-2xl font-heading text-display-sm font-extrabold tracking-tight sm:text-display-md"
             />
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-fg-muted md:text-lg">
+              {ui.servicesCommitment}
+            </p>
           </Reveal>
           <Reveal delay={0.1} className="mt-12">
             <ServiceGrid />
           </Reveal>
-          <div className="mt-12 flex justify-center">
-            <JumpLink
-              to="services"
-              className={cn(
-                buttonVariants({ variant: "outline" }),
-                "h-11 rounded-full px-6 transition-all active:scale-[0.98]"
-              )}
-            >
-              {ui.seeAllServices}
-            </JumpLink>
-          </div>
 
           {/* Integrated solutions + technology (from the Services page, elevated here) */}
           <Reveal className="mt-20">
@@ -738,13 +729,16 @@ export function SiteHome({ locale }: { locale: Locale }) {
               </Reveal>
             ))}
           </ul>
-          <Reveal delay={0.1} className="mt-12">
-            <CertGrid variant="strip" />
-          </Reveal>
           <Reveal
             delay={0.15}
             className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm"
           >
+            <a
+              href="tel:+12107323400;ext=5310"
+              className="font-medium tabular-nums text-fg-muted transition-colors hover:text-brand-red"
+            >
+              +1 (210) 732-3400 ext. 5310
+            </a>
             <a
               href={mailtoHref(
                 SITE.safetyEmail,
@@ -754,16 +748,6 @@ export function SiteHome({ locale }: { locale: Locale }) {
             >
               {ui.emailSafetyTeam}
             </a>
-            <JumpLink
-              to="compliance"
-              className="group inline-flex items-center gap-1.5 font-medium text-fg-muted transition-colors hover:text-brand-red"
-            >
-              {ui.partnershipsCerts}
-              <ArrowRight
-                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
-                aria-hidden="true"
-              />
-            </JumpLink>
           </Reveal>
         </div>
       </section>

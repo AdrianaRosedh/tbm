@@ -75,6 +75,8 @@ export const EN = {
     partnershipsCerts: "Partnerships and certifications",
     // Section headers hardcoded in the homepage body
     servicesHeadline: "Efficiency and reliability built into every shipment",
+    servicesCommitment:
+      "Every shipment receives the attention it deserves — no matter the size.",
     integratedEyebrow: "Integrated Logistics Solutions",
     integratedHeadline: "Designed for performance and reliability",
     complianceHeadline: "Two programs, one security playbook",

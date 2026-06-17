@@ -477,6 +477,8 @@ export const ES: Dictionary = {
     networkPlanLane: "Planear una ruta",
     partnershipsCerts: "Alianzas y certificaciones",
     servicesHeadline: "Eficiencia y confiabilidad en cada embarque",
+    servicesCommitment:
+      "Cada embarque recibe la atención que merece — sin importar el tamaño.",
     integratedEyebrow: "Soluciones logísticas integradas",
     integratedHeadline: "Diseñadas para el desempeño y la confiabilidad",
     complianceHeadline: "Dos programas, un solo manual de seguridad",

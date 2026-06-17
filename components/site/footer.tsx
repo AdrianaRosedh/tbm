@@ -2,19 +2,17 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Mail, Phone, Truck } from "lucide-react";
+import { Mail, Phone, Truck } from "lucide-react";
 import { FOOTER_LEGAL_ITEMS, OFFICES, SITE } from "@/lib/content/site";
 import { useContent } from "@/lib/i18n-client";
 import { ContactSalesLink, TrackShipmentLink } from "./site-links";
 import { FooterNavItems } from "./footer-nav";
-import { JumpLink } from "./jump-link";
 import { BackToTop } from "./back-to-top";
 import { Reveal } from "./reveal";
 import { telHref } from "@/lib/utils";
 
 export function Footer() {
   const { ui } = useContent();
-  const CERTIFICATIONS = useContent().certifications;
   return (
     <footer className="grain relative isolate overflow-hidden bg-brand-indigo text-white">
       {/* Decorative background layers */}
@@ -62,51 +60,6 @@ export function Footer() {
               </div>
             </div>
           </Reveal>
-        </div>
-      </div>
-
-      {/* Certifications trust strip */}
-      <div className="border-b border-white/10">
-        <div className="mx-auto w-full max-w-screen-2xl px-4 py-10 md:px-8">
-          <p className="text-center text-[11px] font-semibold uppercase tracking-[0.25em] text-fg-subtle">
-            {ui.footerCertHeading}
-          </p>
-          <ul className="mt-6 flex flex-wrap items-start justify-center gap-3 sm:gap-4">
-            {CERTIFICATIONS.map((cert) => (
-              <li key={cert.slug}>
-                <JumpLink
-                  to="compliance"
-                  title={cert.full}
-                  className="group/cert flex w-32 flex-col items-center gap-2"
-                >
-                  <span className="flex h-16 w-full items-center justify-center rounded-xl border border-white/10 bg-white/90 px-3 grayscale transition-all duration-300 group-hover/cert:-translate-y-1 group-hover/cert:border-brand-red/50 group-hover/cert:shadow-lg group-hover/cert:shadow-brand-red/10 group-hover/cert:grayscale-0">
-                    <Image
-                      src={cert.logo}
-                      alt={cert.full}
-                      width={120}
-                      height={48}
-                      className="h-9 w-auto object-contain"
-                    />
-                  </span>
-                  <span className="text-center text-[10px] font-semibold uppercase tracking-widest text-fg-subtle transition-colors group-hover/cert:text-white">
-                    {cert.short}
-                  </span>
-                </JumpLink>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-5 text-center">
-            <JumpLink
-              to="compliance"
-              className="group/all inline-flex items-center gap-1.5 text-xs font-medium text-fg-subtle transition-colors hover:text-brand-red"
-            >
-              {ui.footerSecurityLink}
-              <ArrowRight
-                className="h-3.5 w-3.5 transition-transform duration-300 group-hover/all:translate-x-0.5"
-                aria-hidden="true"
-              />
-            </JumpLink>
-          </p>
         </div>
       </div>
 
