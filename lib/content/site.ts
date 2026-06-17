@@ -166,7 +166,7 @@ export const DEPARTMENTS = [
     name: "Sales",
     icon: "/brand/TBM-iconos-sales.png",
     contacts: [
-      { name: "Gerardo Villarreal", email: "gerardo@tbmcarriers.com" },
+      { name: "Gerardo Villarreal", email: "gerardo.villarreal@tbmcarriers.com" },
       { name: "Gilberto Mejia", email: "gilberto.mejia@tbmcarriers.com" },
     ],
   },
