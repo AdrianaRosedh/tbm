@@ -17,8 +17,8 @@
   /* Richard Mille type system:
      - heading: wide squared techno (Orbitron) — the big bold titles + stats.
      - display: condensed caps (Oswald) — nav, buttons, eyebrows, labels.
-     - sans:    elegant serif (Cormorant Garamond) — body / reading text. */
-  --font-sans: var(--font-cormorant);
+     - sans:    high-contrast editorial serif (Fraunces) — body / reading text. */
+  --font-sans: var(--font-fraunces);
   --font-display: var(--font-oswald);
   --font-heading: var(--font-orbitron);
 
@@ -154,9 +154,9 @@
   }
   body {
     @apply bg-background text-foreground;
-    /* Cormorant Garamond reads light at 400; 500 gives body copy presence
-       and keeps the elegant serif legible at small sizes. */
-    font-weight: 500;
+    /* Fraunces is substantial at 400 — a light, editorial "Canela" feel that
+       still reads cleanly at body sizes. */
+    font-weight: 400;
     /* Avoid horizontal scroll from decorative glow/aurora layers */
     overflow-x: clip;
   }
@@ -170,7 +170,7 @@
     -webkit-tap-highlight-color: transparent;
   }
 
-  /* Type system split by function: the elegant serif (Cormorant) carries
+  /* Type system split by function: the editorial serif (Fraunces) carries
      reading text, while the condensed display face (Oswald) carries every
      uppercase label — nav, eyebrows, stats, badges — so structure reads
      crisp and authoritative. Uppercase is only ever used for labels here,

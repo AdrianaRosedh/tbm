@@ -8,7 +8,7 @@ import { ContactSalesLink } from "./site-links";
 import { useContent } from "@/lib/i18n-client";
 
 /**
- * One-page FAQ. Oswald carries the questions (structure), Cormorant the
+ * One-page FAQ. Oswald carries the questions (structure), Fraunces the
  * answers (reading). Single-open accordion; the panel animates height via
  * Base UI's --accordion-panel-height with the same transition system the
  * contact overlay uses. Localized via the active locale's dictionary.

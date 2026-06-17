@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Oswald, Orbitron, Cormorant_Garamond } from "next/font/google";
+import { Oswald, Orbitron, Fraunces } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -31,10 +31,11 @@ const oswald = Oswald({
   display: "swap",
 });
 
-// The rest of the page — an elegant high-contrast serif echoing the
-// "A Racing Machine On The Wrist" tagline. Italic powers body emphasis/quotes.
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+// The rest of the page — a high-contrast editorial serif with soft wedge
+// serifs (Canela / Austin / Noe Display family). Fraunces has true optical
+// sizing, so it stays readable as body text. Italic powers emphasis/quotes.
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
@@ -112,7 +113,7 @@ export default function RootLayout({
         "h-full antialiased",
         orbitron.variable,
         oswald.variable,
-        cormorant.variable,
+        fraunces.variable,
         "font-sans"
       )}
     >
