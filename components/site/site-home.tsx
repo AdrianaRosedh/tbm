@@ -490,6 +490,18 @@ export function SiteHome({ locale }: { locale: Locale }) {
         />
         <div className="mx-auto w-full max-w-screen-2xl px-4 pb-16 pt-6 md:px-8 md:pb-24 md:pt-10">
           <CrossingChips />
+          <div className="mt-10 text-center">
+            <Link
+              href={locale === "es" ? "/es/network" : "/network"}
+              className="group inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-brand-red transition-opacity hover:opacity-70"
+            >
+              {ui.learnMore}
+              <ArrowRight
+                className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                aria-hidden="true"
+              />
+            </Link>
+          </div>
         </div>
       </section>
 
