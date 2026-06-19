@@ -56,12 +56,12 @@ export function MobileNav() {
           <Button
             variant="ghost"
             size="icon"
-            className="size-9 text-white transition-transform hover:bg-white/10 hover:text-white active:scale-95 lg:hidden"
+            className="size-11 text-white transition-transform hover:bg-white/10 hover:text-white active:scale-95 lg:hidden"
             aria-label={ui.openMenu}
           />
         }
       >
-        <Menu className="h-5 w-5" />
+        <Menu className="h-6 w-6" />
       </SheetTrigger>
 
       <SheetContent
@@ -207,6 +207,7 @@ export function MobileNav() {
                     <Link
                       href={item.href}
                       onClick={() => setOpen(false)}
+                      aria-current={isActive ? "page" : undefined}
                       className={className}
                     >
                       {inner}

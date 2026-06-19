@@ -168,6 +168,9 @@
     /* Account for the sticky header when jumping to in-page anchors */
     scroll-padding-top: 6rem;
     -webkit-tap-highlight-color: transparent;
+    /* Keep iOS from inflating type on orientation change (mobile legibility) */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   /* Type system split by function: the editorial serif (Fraunces) carries

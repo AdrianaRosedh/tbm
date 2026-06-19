@@ -393,7 +393,7 @@ export function NetworkMap({
           }}
           aria-pressed={filter === "all"}
           className={cn(
-            "h-9 rounded-full border px-4 text-xs font-semibold uppercase tracking-wider transition-colors",
+            "h-9 max-lg:h-11 rounded-full border px-4 text-xs font-semibold uppercase tracking-wider transition-colors",
             filter === "all"
               ? "border-brand-red bg-brand-red text-white"
               : "border-white/15 bg-white/[0.04] text-fg-subtle hover:border-white/40 hover:text-white"
@@ -411,7 +411,7 @@ export function NetworkMap({
             }}
             aria-pressed={filter === key}
             className={cn(
-              "inline-flex h-9 items-center gap-2 rounded-full border px-4 text-xs font-semibold uppercase tracking-wider transition-colors",
+              "inline-flex h-9 max-lg:h-11 items-center gap-2 rounded-full border px-4 text-xs font-semibold uppercase tracking-wider transition-colors",
               filter === key
                 ? "border-white/60 bg-white/10 text-white"
                 : "border-white/15 bg-white/[0.04] text-fg-subtle hover:border-white/40 hover:text-white"
@@ -436,7 +436,7 @@ export function NetworkMap({
               onClick={() => switchMode(m)}
               aria-pressed={mode === m}
               className={cn(
-                "h-7 rounded-full px-3.5 text-[11px] font-semibold uppercase tracking-wider transition-colors",
+                "h-7 max-lg:h-10 rounded-full px-3.5 text-[11px] font-semibold uppercase tracking-wider transition-colors",
                 mode === m
                   ? "bg-brand-red text-white"
                   : "text-fg-subtle hover:text-white"

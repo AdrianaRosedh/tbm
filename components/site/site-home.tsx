@@ -23,6 +23,7 @@ import { ParallaxDrift } from "@/components/site/parallax-drift";
 import { StepProgress } from "@/components/site/step-progress";
 import { Reveal } from "@/components/site/reveal";
 import { ServiceGrid } from "@/components/site/service-grid";
+import { SnapCarousel } from "@/components/site/snap-carousel";
 import { SpotlightCard } from "@/components/site/spotlight-card";
 import { ContactSalesLink } from "@/components/site/site-links";
 import { ContactPopupLink } from "@/components/site/contact-popup-link";
@@ -64,8 +65,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
               src={HOME.hero.bgImage}
               alt=""
               fill
-              loading="eager"
-              fetchPriority="high"
+              priority
               sizes="100vw"
               className="object-cover"
             />
@@ -213,7 +213,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
               className="mt-3 max-w-3xl font-heading text-display-sm font-extrabold tracking-tight sm:text-display-md"
             />
           </Reveal>
-          <ul className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden">
+          <ul className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:[touch-action:pan-x] max-md:overscroll-x-contain max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden">
             {ABOUT.mvh.items.map((item, i) => (
               <Reveal as="li" key={item.label} delay={i * 0.08} className="max-md:w-[82vw] max-md:shrink-0 max-md:snap-center">
                 <ParallaxDrift index={i}>
@@ -250,7 +250,10 @@ export function SiteHome({ locale }: { locale: Locale }) {
               {ABOUT.pillarsIntro.body}
             </p>
           </Reveal>
-          <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden">
+          <SnapCarousel
+            label={ABOUT.pillarsIntro.eyebrow}
+            className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:[touch-action:pan-x] max-md:overscroll-x-contain max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden"
+          >
             {ABOUT.pillars.map((pillar, i) => {
               const Icon = KNOW_US_PILLAR_ICONS[i];
               return (
@@ -274,7 +277,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
                 </Reveal>
               );
             })}
-          </ul>
+          </SnapCarousel>
         </div>
       </section>
 
@@ -294,7 +297,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
               {HOME.crossBorder.subhead}
             </p>
           </Reveal>
-          <ul className="mt-12 grid grid-cols-1 gap-6 md:hidden max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden">
+          <ul className="mt-12 grid grid-cols-1 gap-6 md:hidden max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:[touch-action:pan-x] max-md:overscroll-x-contain max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden">
             {HOME.crossBorder.pillars.map((pillar, i) => (
               <Reveal as="li" key={pillar.title} delay={i * 0.08} className="max-md:w-[82vw] max-md:shrink-0 max-md:snap-center">
                 <SpotlightCard
@@ -440,7 +443,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
               {HOME.howItWorks.body}
             </p>
           </Reveal>
-          <ol className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-3 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden">
+          <ol className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-3 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:[touch-action:pan-x] max-md:overscroll-x-contain max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden">
             {HOME.howItWorks.steps.map((step, i) => (
               <Reveal as="li" key={step.n} delay={i * 0.1} className="max-md:w-[82vw] max-md:shrink-0 max-md:snap-center">
                 <ParallaxDrift index={i}>
@@ -521,7 +524,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
               className="mt-3 max-w-3xl font-heading text-display-sm font-extrabold tracking-tight"
             />
           </Reveal>
-          <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden">
+          <ul className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:[touch-action:pan-x] max-md:overscroll-x-contain max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden">
             {SERVICE_FEATURES.map((feature, i) => (
               <Reveal as="li" key={feature.title} delay={i * 0.08} className="max-md:w-[82vw] max-md:shrink-0 max-md:snap-center">
                 <SpotlightCard
@@ -632,7 +635,10 @@ export function SiteHome({ locale }: { locale: Locale }) {
               {HOME.whyUs.body}
             </p>
           </Reveal>
-          <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden">
+          <SnapCarousel
+            label={HOME.whyUs.eyebrow}
+            className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:[touch-action:pan-x] max-md:overscroll-x-contain max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden"
+          >
             {HOME.whyUs.features.map((feature, i) => {
               const Icon = WHY_US_ICONS[feature.icon];
               return (
@@ -656,7 +662,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
                 </Reveal>
               );
             })}
-          </ul>
+          </SnapCarousel>
         </div>
       </section>
 

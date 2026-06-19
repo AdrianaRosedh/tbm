@@ -96,6 +96,7 @@ export const EN = {
     track: "Track",
     // Screen-reader / control labels
     openMenu: "Open menu",
+    skipToContent: "Skip to content",
     mobileNav: "Mobile navigation",
     showOnMap: "show on the network map",
     certifications: "Certifications",

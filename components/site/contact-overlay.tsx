@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
 import { Dialog } from "@base-ui/react/dialog";
 import { Mail, Phone, Truck, X } from "lucide-react";
 import { CopyButton } from "./copy-button";
@@ -21,6 +21,44 @@ export const OPEN_CONTACT_EVENT = "tbm:open-contact";
 export function ContactOverlay() {
   const [open, setOpen] = useState(false);
   const { ui } = useContent();
+  const popupRef = useRef<HTMLDivElement | null>(null);
+  const drag = useRef({ y0: 0, active: false });
+
+  // Swipe the grab-handle down to dismiss the mobile/tablet bottom-sheet.
+  // Touch-only and scoped to the handle, so it never fights content scroll;
+  // the sheet animates itself off-screen for a smooth, native release.
+  const onDragStart = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "touch" || !popupRef.current) return;
+    drag.current = { y0: e.clientY, active: true };
+    popupRef.current.style.transition = "none";
+    e.currentTarget.setPointerCapture?.(e.pointerId);
+  };
+  const onDragMove = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (!drag.current.active || !popupRef.current) return;
+    const dy = Math.max(0, e.clientY - drag.current.y0);
+    popupRef.current.style.translate = `0 ${dy}px`;
+  };
+  const onDragEnd = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (!drag.current.active || !popupRef.current) return;
+    drag.current.active = false;
+    const el = popupRef.current;
+    const dy = Math.max(0, e.clientY - drag.current.y0);
+    el.style.transition = "translate 260ms cubic-bezier(0.32,0.72,0,1)";
+    if (dy > 120) {
+      el.style.translate = "0 100%";
+      window.setTimeout(() => setOpen(false), 230);
+    } else {
+      el.style.translate = "0 0";
+    }
+  };
+
+  // Clear any leftover drag transform whenever the sheet (re)opens.
+  useEffect(() => {
+    if (open && popupRef.current) {
+      popupRef.current.style.translate = "";
+      popupRef.current.style.transition = "";
+    }
+  }, [open]);
 
   useEffect(() => {
     const onOpen = () => setOpen(true);
@@ -41,7 +79,9 @@ export function ContactOverlay() {
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Portal>
         <Dialog.Backdrop className="fixed inset-0 z-[70] bg-brand-indigo-deep/60 backdrop-blur-sm transition-opacity duration-300 data-ending-style:opacity-0 data-starting-style:opacity-0" />
-        <Dialog.Popup className="fixed inset-0 z-[80] flex flex-col overflow-y-auto overscroll-contain bg-brand-indigo-deep text-white transition-all duration-300 data-ending-style:scale-[0.985] data-ending-style:opacity-0 data-starting-style:scale-[0.985] data-starting-style:opacity-0">
+        {/* Mobile: rises as a rounded bottom-sheet (slide-up) leaving a backdrop
+            strip on top. Desktop (md+): unchanged full-screen scale/fade takeover. */}
+        <Dialog.Popup ref={popupRef} className="fixed inset-x-0 bottom-0 top-0 z-[80] flex flex-col overflow-y-auto overscroll-contain bg-brand-indigo-deep text-white transition-all duration-300 ease-out data-ending-style:opacity-0 data-starting-style:opacity-0 max-lg:top-16 max-lg:rounded-t-3xl max-lg:shadow-2xl max-lg:data-ending-style:translate-y-full max-lg:data-starting-style:translate-y-full lg:data-ending-style:scale-[0.985] lg:data-starting-style:scale-[0.985]">
           {/* Backdrop layers */}
           <div aria-hidden="true" className="pointer-events-none absolute inset-0">
             <div className="absolute inset-0 bg-gradient-to-b from-brand-indigo via-brand-indigo-deep to-brand-indigo-deep" />
@@ -51,7 +91,20 @@ export function ContactOverlay() {
             <div className="grain-layer absolute inset-0 opacity-[0.06] mix-blend-overlay" />
           </div>
 
-          <div className="relative mx-auto flex min-h-full w-full max-w-5xl flex-col px-5 pb-[max(env(safe-area-inset-bottom),2rem)] pt-[max(env(safe-area-inset-top),1.25rem)] sm:px-8">
+          <div className="relative mx-auto flex min-h-full w-full max-w-5xl flex-col px-5 pb-[max(env(safe-area-inset-bottom),2rem)] pt-5 sm:px-8">
+            {/* Swipe-down-to-dismiss grab handle (mobile/tablet only) */}
+            <div
+              onPointerDown={onDragStart}
+              onPointerMove={onDragMove}
+              onPointerUp={onDragEnd}
+              onPointerCancel={onDragEnd}
+              className="mx-auto mb-3 flex w-32 shrink-0 cursor-grab touch-none items-center justify-center py-2.5 active:cursor-grabbing lg:hidden"
+            >
+              <span
+                aria-hidden="true"
+                className="h-1.5 w-11 rounded-full bg-white/25"
+              />
+            </div>
             {/* Top bar */}
             <div className="flex items-center justify-between">
               <Image

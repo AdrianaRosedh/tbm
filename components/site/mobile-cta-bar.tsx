@@ -44,17 +44,19 @@ export function MobileCtaBar() {
       }}
       className="fixed inset-x-0 bottom-0 z-40 flex justify-center px-3 pb-[max(env(safe-area-inset-bottom),0.75rem)] lg:hidden"
     >
-      <div className="flex w-full max-w-md items-center gap-2">
+      {/* Frosted-glass action dock — a single floating bar (iOS-style) holding
+          a subtle Track segment + the prominent Contact Sales primary. */}
+      <div className="flex w-full max-w-md items-stretch gap-1.5 rounded-[1.4rem] border border-white/12 bg-brand-indigo-deep/80 p-1.5 shadow-[0_12px_44px_-12px_rgba(6,4,20,0.9)] backdrop-blur-xl">
         <TrackShipmentLink
           tabIndex={visible ? 0 : -1}
-          className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full border border-white/15 bg-brand-indigo/90 px-4 text-sm font-medium text-white shadow-2xl shadow-brand-indigo-deep/40 backdrop-blur-sm transition-all hover:bg-brand-indigo active:scale-[0.98]"
+          className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-[1rem] bg-white/[0.06] text-sm font-medium text-white/90 transition-all hover:bg-white/[0.1] active:scale-[0.96]"
         >
           <Truck className="h-4 w-4 text-brand-red" aria-hidden="true" />
           {ui.track}
         </TrackShipmentLink>
         <ContactSalesLink
           tabIndex={visible ? 0 : -1}
-          className="shine-hover inline-flex h-12 flex-[1.4] items-center justify-center gap-2 rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground shadow-2xl shadow-brand-red/30 ring-1 ring-white/10 transition-all hover:bg-primary/90 active:scale-[0.98]"
+          className="shine-hover inline-flex h-12 flex-[1.5] items-center justify-center gap-2 rounded-[1rem] bg-primary text-sm font-semibold text-primary-foreground shadow-lg shadow-brand-red/30 transition-all hover:bg-primary/90 active:scale-[0.96]"
         >
           <Mail className="h-4 w-4" aria-hidden="true" />
           {ui.contactSales}

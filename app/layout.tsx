@@ -10,6 +10,7 @@ import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
 import { MobileCtaBar } from "@/components/site/mobile-cta-bar";
 import { ScrollProgress } from "@/components/site/scroll-progress";
+import { SkipLink } from "@/components/site/skip-link";
 import { SITE } from "@/lib/content/site";
 
 // Bold titles — squared, wide, extended techno caps in the spirit of the
@@ -119,9 +120,10 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col">
         <HtmlLang />
+        <SkipLink />
         <ScrollProgress />
         <Header />
-        <main className="flex flex-1 flex-col">{children}</main>
+        <main id="main-content" className="flex flex-1 flex-col">{children}</main>
         <Footer />
         <MobileCtaBar />
         <ContactOverlay />

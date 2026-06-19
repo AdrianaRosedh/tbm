@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { type ServiceItem } from "@/lib/content/services";
 import { useContent } from "@/lib/i18n-client";
+import { SnapCarousel } from "./snap-carousel";
 import { SpotlightCard } from "./spotlight-card";
 import { cn } from "@/lib/utils";
 
@@ -17,16 +18,17 @@ export function ServiceGrid({ variant = "bento", className }: ServiceGridProps) 
   const SERVICES = c.services;
   if (variant === "preview") {
     return (
-      <ul
+      <SnapCarousel
+        label={c.ui.ourServices}
         className={cn(
-          "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden",
+          "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:[touch-action:pan-x] max-md:overscroll-x-contain max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden",
           className
         )}
       >
         {SERVICES.slice(0, 3).map((service) => (
           <ServiceCard key={service.slug} service={service} />
         ))}
-      </ul>
+      </SnapCarousel>
     );
   }
 
@@ -34,9 +36,10 @@ export function ServiceGrid({ variant = "bento", className }: ServiceGridProps) 
   const [feature, ...rest] = SERVICES;
 
   return (
-    <ul
+    <SnapCarousel
+      label={c.ui.ourServices}
       className={cn(
-        "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:auto-rows-fr lg:grid-cols-3 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden",
+        "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:auto-rows-fr lg:grid-cols-3 max-md:-mx-4 max-md:flex max-md:snap-x max-md:snap-mandatory max-md:overflow-x-auto max-md:[touch-action:pan-x] max-md:overscroll-x-contain max-md:px-4 max-md:pb-3 max-md:[scrollbar-width:none] max-md:[&::-webkit-scrollbar]:hidden",
         className
       )}
     >
@@ -68,7 +71,7 @@ export function ServiceGrid({ variant = "bento", className }: ServiceGridProps) 
       {rest.map((service) => (
         <ServiceCard key={service.slug} service={service} />
       ))}
-    </ul>
+    </SnapCarousel>
   );
 }
 

@@ -497,6 +497,7 @@ export const ES: Dictionary = {
     operatingSince: "Operando desde",
     track: "Rastrear",
     openMenu: "Abrir menú",
+    skipToContent: "Saltar al contenido",
     mobileNav: "Navegación móvil",
     showOnMap: "ver en el mapa de la red",
     certifications: "Certificaciones",
