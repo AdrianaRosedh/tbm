@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ServicePageView } from "@/components/site/service-page-view";
-import { SERVICES, SERVICE_DETAILS } from "@/lib/content/services";
+import { SERVICES, SERVICE_DETAILS_ES } from "@/lib/content/services";
+import { getContent } from "@/lib/i18n";
 import { SITE } from "@/lib/content/site";
 
 // Only the known service slugs exist; anything else is a 404.
@@ -11,22 +12,20 @@ export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
 }
 
-const getService = (slug: string) => SERVICES.find((s) => s.slug === slug);
-
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const service = getService(slug);
+  const service = getContent("es").services.find((s) => s.slug === slug);
   if (!service) return {};
-  const detail = SERVICE_DETAILS[slug];
+  const detail = SERVICE_DETAILS_ES[slug];
   return {
     title: detail?.keyword ?? service.title,
     description: service.short,
     alternates: {
-      canonical: `/services/${slug}`,
+      canonical: `/es/services/${slug}`,
       languages: {
         en: `/services/${slug}`,
         es: `/es/services/${slug}`,
@@ -35,19 +34,20 @@ export async function generateMetadata({
     },
     openGraph: {
       type: "website",
+      locale: "es_MX",
       title: `${service.title} — ${SITE.name}`,
       description: service.short,
-      url: `${SITE.url}/services/${slug}`,
+      url: `${SITE.url}/es/services/${slug}`,
     },
   };
 }
 
-export default async function ServicePage({
+export default async function ServicePageEs({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  if (!getService(slug)) notFound();
-  return <ServicePageView locale="en" slug={slug} />;
+  if (!SERVICES.some((s) => s.slug === slug)) notFound();
+  return <ServicePageView locale="es" slug={slug} />;
 }

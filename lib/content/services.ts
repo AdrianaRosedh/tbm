@@ -126,6 +126,63 @@ export const SERVICE_DETAILS: Record<
   },
 };
 
+/** Spanish counterpart of SERVICE_DETAILS (es-MX). Same grounded facts. */
+export const SERVICE_DETAILS_ES: Record<
+  string,
+  { keyword: string; highlights: readonly string[] }
+> = {
+  "border-crossing": {
+    keyword: "Carga transfronteriza y cruce de frontera",
+    highlights: [
+      "Conductores y equipo propios de TBM mueven la carga de extremo a extremo — sin transferencias a terceros en la frontera.",
+      "Certificados C-TPAT, FAST y OEA, manteniendo la carga elegible en los carriles exprés.",
+      "Cobertura en los principales cruces EE. UU.–México: Laredo, Otay Mesa, El Paso, Nogales y Calexico.",
+      "Carta Porte y documentación aduanal validadas con IA antes de que la carga salga del andén.",
+    ],
+  },
+  "distribution-warehousing": {
+    keyword: "Almacenaje fiscal y distribución",
+    highlights: [
+      "Almacenaje fiscal (bonded) en ambos lados de la frontera.",
+      "Operaciones de cross-dock para transbordo rápido y con mínima manipulación.",
+      "Visibilidad de inventario mediante sistemas integrados de nuestros socios.",
+      "Diseñado para flujos de alto volumen en retail, automotriz e industrial.",
+    ],
+  },
+  "customer-service": {
+    keyword: "Atención al cliente dedicada en logística",
+    highlights: [
+      "Un Representante de Atención al Cliente dedicado, asignado a tu cuenta.",
+      "Un solo número, un solo correo — soporte bilingüe en ambos lados de la frontera.",
+      "Actualizaciones proactivas de estatus, tiempos estimados y excepciones.",
+    ],
+  },
+  shops: {
+    keyword: "Mantenimiento de flota propio",
+    highlights: [
+      "Inspecciones DOT y mantenimiento preventivo en casa.",
+      "Técnicos certificados y equipo de grado de fábrica.",
+      "Talleres distribuidos en la red para mantener los camiones en movimiento.",
+    ],
+  },
+  "gps-tracking": {
+    keyword: "Rastreo y visibilidad de carga en tiempo real",
+    highlights: [
+      "Rastreo GPS en cada camión mediante telemática Samsara.",
+      "Cámaras con IA orientadas al conductor y al camino.",
+      "Alertas proactivas ante desviaciones de ruta y retrasos.",
+    ],
+  },
+  location: {
+    keyword: "Red transfronteriza con activos propios",
+    highlights: [
+      "Activos propios: TBM es dueño de los camiones, remolques, terminales y talleres.",
+      "Terminales en ambos lados de la frontera EE. UU.–México.",
+      "Mayor control y responsabilidad sobre cada carga.",
+    ],
+  },
+};
+
 export const SERVICE_FEATURES = [
   {
     title: "Logistics Solutions",

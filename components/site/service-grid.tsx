@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { type ServiceItem } from "@/lib/content/services";
-import { useContent } from "@/lib/i18n-client";
+import { useContent, useLocale } from "@/lib/i18n-client";
 import { SnapCarousel } from "./snap-carousel";
 import { SpotlightCard } from "./spotlight-card";
 import { cn } from "@/lib/utils";
@@ -17,6 +17,7 @@ type ServiceGridProps = {
 
 export function ServiceGrid({ variant = "bento", className }: ServiceGridProps) {
   const c = useContent();
+  const base = useLocale() === "es" ? "/es" : "";
   const SERVICES = c.services;
   if (variant === "preview") {
     return (
@@ -69,7 +70,7 @@ export function ServiceGrid({ variant = "bento", className }: ServiceGridProps) 
           {feature.full ?? feature.short}
         </p>
         <Link
-          href={`/services/${feature.slug}`}
+          href={`${base}/services/${feature.slug}`}
           className="group/lm mt-6 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wider text-brand-red transition-colors hover:text-[#ff8a6e]"
         >
           {c.ui.learnMore}
@@ -89,6 +90,7 @@ export function ServiceGrid({ variant = "bento", className }: ServiceGridProps) 
 
 function ServiceCard({ service }: { service: ServiceItem }) {
   const { ui } = useContent();
+  const base = useLocale() === "es" ? "/es" : "";
   return (
     <SpotlightCard
       as="li"
@@ -109,7 +111,7 @@ function ServiceCard({ service }: { service: ServiceItem }) {
         {service.short}
       </p>
       <Link
-        href={`/services/${service.slug}`}
+        href={`${base}/services/${service.slug}`}
         className="group/lm mt-4 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wider text-brand-red transition-opacity hover:opacity-70"
       >
         {ui.learnMore}

@@ -7,12 +7,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // One-page site: /about, /services, /compilance and /contact are folded
   // into the homepage (they 308-redirect to its sections). The canonical "/"
   // plus the standalone service landing pages and legal pages belong here.
-  const services: MetadataRoute.Sitemap = SERVICES.map((s) => ({
-    url: `${SITE.url}/services/${s.slug}`,
-    lastModified,
-    changeFrequency: "monthly",
-    priority: 0.8,
-  }));
+  const services: MetadataRoute.Sitemap = SERVICES.flatMap((s) => {
+    const languages = {
+      en: `${SITE.url}/services/${s.slug}`,
+      es: `${SITE.url}/es/services/${s.slug}`,
+    };
+    return [
+      {
+        url: languages.en,
+        lastModified,
+        changeFrequency: "monthly" as const,
+        priority: 0.8,
+        alternates: { languages },
+      },
+      {
+        url: languages.es,
+        lastModified,
+        changeFrequency: "monthly" as const,
+        priority: 0.7,
+        alternates: { languages },
+      },
+    ];
+  });
 
   return [
     {
