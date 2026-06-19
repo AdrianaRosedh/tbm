@@ -3,23 +3,24 @@ import { AboutPageView } from "@/components/site/about-page-view";
 import { getContent } from "@/lib/i18n";
 import { SITE } from "@/lib/content/site";
 
-const en = getContent("en").about;
+const es = getContent("es").about;
 
 export const metadata: Metadata = {
-  title: en.hero.eyebrow,
-  description: en.hero.subhead,
+  title: es.hero.eyebrow,
+  description: es.hero.subhead,
   alternates: {
-    canonical: "/about",
+    canonical: "/es/about",
     languages: { en: "/about", es: "/es/about", "x-default": "/about" },
   },
   openGraph: {
     type: "website",
-    title: `${en.hero.headline} — ${SITE.name}`,
-    description: en.hero.subhead,
-    url: `${SITE.url}/about`,
+    locale: "es_MX",
+    title: `${es.hero.headline} — ${SITE.name}`,
+    description: es.hero.subhead,
+    url: `${SITE.url}/es/about`,
   },
 };
 
-export default function AboutPage() {
-  return <AboutPageView locale="en" />;
+export default function AboutPageEs() {
+  return <AboutPageView locale="es" />;
 }

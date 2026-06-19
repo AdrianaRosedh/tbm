@@ -3,23 +3,24 @@ import { ContactPageView } from "@/components/site/contact-page-view";
 import { getContent } from "@/lib/i18n";
 import { SITE } from "@/lib/content/site";
 
-const en = getContent("en").ui;
+const es = getContent("es").ui;
 
 export const metadata: Metadata = {
-  title: en.contactEyebrow,
-  description: en.contactSubtitle,
+  title: es.contactEyebrow,
+  description: es.contactSubtitle,
   alternates: {
-    canonical: "/contact",
+    canonical: "/es/contact",
     languages: { en: "/contact", es: "/es/contact", "x-default": "/contact" },
   },
   openGraph: {
     type: "website",
-    title: `${en.contactTitle} — ${SITE.name}`,
-    description: en.contactSubtitle,
-    url: `${SITE.url}/contact`,
+    locale: "es_MX",
+    title: `${es.contactTitle} — ${SITE.name}`,
+    description: es.contactSubtitle,
+    url: `${SITE.url}/es/contact`,
   },
 };
 
-export default function ContactPage() {
-  return <ContactPageView locale="en" />;
+export default function ContactPageEs() {
+  return <ContactPageView locale="es" />;
 }

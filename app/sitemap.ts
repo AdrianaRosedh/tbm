@@ -95,6 +95,42 @@ export default function sitemap(): MetadataRoute.Sitemap {
       },
     },
     {
+      url: `${SITE.url}/about`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+      alternates: {
+        languages: { en: `${SITE.url}/about`, es: `${SITE.url}/es/about` },
+      },
+    },
+    {
+      url: `${SITE.url}/es/about`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.6,
+      alternates: {
+        languages: { en: `${SITE.url}/about`, es: `${SITE.url}/es/about` },
+      },
+    },
+    {
+      url: `${SITE.url}/contact`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.6,
+      alternates: {
+        languages: { en: `${SITE.url}/contact`, es: `${SITE.url}/es/contact` },
+      },
+    },
+    {
+      url: `${SITE.url}/es/contact`,
+      lastModified,
+      changeFrequency: "yearly",
+      priority: 0.5,
+      alternates: {
+        languages: { en: `${SITE.url}/contact`, es: `${SITE.url}/es/contact` },
+      },
+    },
+    {
       url: `${SITE.url}/privacy-policy`,
       lastModified,
       changeFrequency: "yearly",

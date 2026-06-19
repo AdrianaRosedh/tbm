@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, Truck } from "lucide-react";
 import { FOOTER_LEGAL_ITEMS, OFFICES, SITE } from "@/lib/content/site";
-import { useContent } from "@/lib/i18n-client";
+import { useContent, useLocale } from "@/lib/i18n-client";
 import { ContactSalesLink, TrackShipmentLink } from "./site-links";
 import { FooterNavItems } from "./footer-nav";
 import { BackToTop } from "./back-to-top";
@@ -12,7 +12,9 @@ import { Reveal } from "./reveal";
 import { telHref } from "@/lib/utils";
 
 export function Footer() {
-  const { ui } = useContent();
+  const c = useContent();
+  const { ui } = c;
+  const base = useLocale() === "es" ? "/es" : "";
   return (
     <footer className="grain relative isolate overflow-hidden bg-brand-indigo text-white">
       {/* Decorative background layers */}
@@ -151,7 +153,23 @@ export function Footer() {
             © {SITE.copyrightYear} {SITE.name}. {ui.allRightsReserved}
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-            <ul className="flex gap-6">
+            <ul className="flex flex-wrap gap-6">
+              <li>
+                <Link
+                  href={`${base}/about`}
+                  className="transition-colors hover:text-white"
+                >
+                  {c.about.hero.eyebrow}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={`${base}/contact`}
+                  className="transition-colors hover:text-white"
+                >
+                  {c.nav.contact}
+                </Link>
+              </li>
               {FOOTER_LEGAL_ITEMS.map((item) => (
                 <li key={item.href}>
                   <Link
