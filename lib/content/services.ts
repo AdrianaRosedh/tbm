@@ -63,6 +63,69 @@ export const SERVICES: readonly ServiceItem[] = [
   },
 ] as const;
 
+/**
+ * Extra, EN-only depth for the standalone service landing pages
+ * (/services/[slug]). Kept separate from SERVICES so it doesn't enter the
+ * bilingual dictionary shape — Spanish landing pages are a later addition.
+ * Every point is grounded in facts already published on the site (certs,
+ * gateways, asset-based model, tech partners) — review for voice before scaling.
+ */
+export const SERVICE_DETAILS: Record<
+  string,
+  { keyword: string; highlights: readonly string[] }
+> = {
+  "border-crossing": {
+    keyword: "Cross-border freight & border crossing",
+    highlights: [
+      "TBM drivers and TBM-owned tractors and trailers move freight end-to-end — no third-party handoffs at the border.",
+      "C-TPAT, FAST, and OEA certified, keeping eligible loads in the expedited lanes.",
+      "Coverage across the major U.S.–Mexico gateways: Laredo, Otay Mesa, El Paso, Nogales, and Calexico.",
+      "Carta Porte and customs paperwork validated with AI tooling before the load leaves the dock.",
+    ],
+  },
+  "distribution-warehousing": {
+    keyword: "Bonded warehousing & distribution",
+    highlights: [
+      "Bonded warehousing on both sides of the border.",
+      "Cross-dock operations for fast, low-touch transloading.",
+      "Inventory visibility through integrated partner systems.",
+      "Built for high-volume retail, automotive, and industrial flows.",
+    ],
+  },
+  "customer-service": {
+    keyword: "Dedicated logistics customer service",
+    highlights: [
+      "A dedicated Customer Service Representative assigned to your account.",
+      "One number, one inbox — bilingual support on both sides of the border.",
+      "Proactive updates on status, ETAs, and exceptions.",
+    ],
+  },
+  shops: {
+    keyword: "In-house fleet maintenance",
+    highlights: [
+      "In-house DOT inspections and preventative maintenance.",
+      "Certified technicians and factory-grade equipment.",
+      "Maintenance facilities positioned across the network to keep trucks rolling.",
+    ],
+  },
+  "gps-tracking": {
+    keyword: "Real-time freight tracking & visibility",
+    highlights: [
+      "GPS tracking on every truck via Samsara telematics.",
+      "AI-powered driver- and road-facing cameras.",
+      "Proactive alerts for route deviations and delays.",
+    ],
+  },
+  location: {
+    keyword: "Asset-based cross-border network",
+    highlights: [
+      "Asset-based: TBM owns the trucks, trailers, terminals, and shops.",
+      "Terminals on both sides of the U.S.–Mexico border.",
+      "Greater control and accountability over every load.",
+    ],
+  },
+};
+
 export const SERVICE_FEATURES = [
   {
     title: "Logistics Solutions",

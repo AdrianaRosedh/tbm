@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { type ServiceItem } from "@/lib/content/services";
 import { useContent } from "@/lib/i18n-client";
 import { SnapCarousel } from "./snap-carousel";
@@ -66,6 +68,16 @@ export function ServiceGrid({ variant = "bento", className }: ServiceGridProps) 
         <p className="mt-4 max-w-md text-base leading-relaxed text-fg-subtle md:text-lg">
           {feature.full ?? feature.short}
         </p>
+        <Link
+          href={`/services/${feature.slug}`}
+          className="group/lm mt-6 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wider text-brand-red transition-colors hover:text-[#ff8a6e]"
+        >
+          {c.ui.learnMore}
+          <ArrowRight
+            className="h-4 w-4 transition-transform group-hover/lm:translate-x-1"
+            aria-hidden="true"
+          />
+        </Link>
       </SpotlightCard>
 
       {rest.map((service) => (
@@ -76,6 +88,7 @@ export function ServiceGrid({ variant = "bento", className }: ServiceGridProps) 
 }
 
 function ServiceCard({ service }: { service: ServiceItem }) {
+  const { ui } = useContent();
   return (
     <SpotlightCard
       as="li"
@@ -95,6 +108,16 @@ function ServiceCard({ service }: { service: ServiceItem }) {
       <p className="mt-3 text-sm leading-relaxed text-fg-muted">
         {service.short}
       </p>
+      <Link
+        href={`/services/${service.slug}`}
+        className="group/lm mt-4 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wider text-brand-red transition-opacity hover:opacity-70"
+      >
+        {ui.learnMore}
+        <ArrowRight
+          className="h-4 w-4 transition-transform group-hover/lm:translate-x-1"
+          aria-hidden="true"
+        />
+      </Link>
     </SpotlightCard>
   );
 }

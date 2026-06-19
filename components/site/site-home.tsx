@@ -163,7 +163,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
             <ParallaxLayer amount={36}>
               <Image
                 src={HOME.about.image}
-                alt=""
+                alt="A row of TBM Carriers' blue tractors lined up at a terminal"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
@@ -382,7 +382,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
             <ParallaxLayer amount={36}>
               <Image
                 src={HOME.crossDock.image}
-                alt=""
+                alt="A TBM Carriers tractor-trailer backed into a numbered loading dock"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"

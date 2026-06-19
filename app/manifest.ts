@@ -23,5 +23,20 @@ export default function manifest(): MetadataRoute.Manifest {
         purpose: "maskable",
       },
     ],
+    // Long-press the installed app icon → quick actions (in-scope only).
+    shortcuts: [
+      {
+        name: "Contact Sales",
+        short_name: "Contact",
+        url: "/?contact=open",
+        icons: [{ src: "/icons/192", sizes: "192x192", type: "image/png" }],
+      },
+      {
+        name: "Our Network",
+        short_name: "Network",
+        url: "/#network",
+        icons: [{ src: "/icons/192", sizes: "192x192", type: "image/png" }],
+      },
+    ],
   };
 }
