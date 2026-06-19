@@ -14,8 +14,8 @@ import { useContent } from "@/lib/i18n-client";
  * contact overlay uses. Localized via the active locale's dictionary.
  */
 export function Faq() {
-  const { faq } = useContent().home;
-  const { eyebrow, headline, body, items } = faq;
+  const { home, ui } = useContent();
+  const { eyebrow, headline, body, items } = home.faq;
 
   // FAQPage structured data — same Q&A as the visible accordion, so the
   // answers are eligible for rich results even while collapsed.
@@ -85,10 +85,10 @@ export function Faq() {
         className="mt-12 flex flex-col items-center gap-4 text-center"
       >
         <p className="text-sm uppercase tracking-widest text-fg-subtle">
-          Still have a question?
+          {ui.stillHaveQuestion}
         </p>
         <ContactSalesLink className="shine-hover group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 text-base font-medium text-primary-foreground shadow-lg shadow-brand-red/25 transition-all hover:bg-primary/90 active:scale-[0.98]">
-          Contact Sales
+          {ui.contactSales}
         </ContactSalesLink>
       </Reveal>
     </div>

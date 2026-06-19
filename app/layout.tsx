@@ -8,6 +8,7 @@ import { ContactOverlay } from "@/components/site/contact-overlay";
 import { HtmlLang } from "@/components/site/html-lang";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
+import { JsonLd } from "@/components/site/json-ld";
 import { MobileCtaBar } from "@/components/site/mobile-cta-bar";
 import { ScrollProgress } from "@/components/site/scroll-progress";
 import { SkipLink } from "@/components/site/skip-link";
@@ -72,6 +73,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
+    alternateLocale: ["es_MX"],
     url: SITE.url,
     siteName: SITE.name,
     title: SITE.name,
@@ -92,9 +94,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  alternates: {
-    canonical: SITE.url,
-  },
+  // No layout-level canonical: each route sets its own (a shared canonical
+  // would make every sub-page canonicalize to the homepage). metadataBase
+  // resolves the per-page relative canonicals below.
 };
 
 // Dark brand chrome on mobile browsers (address bar / status bar).
@@ -119,6 +121,7 @@ export default function RootLayout({
       )}
     >
       <body className="flex min-h-full flex-col">
+        <JsonLd />
         <HtmlLang />
         <SkipLink />
         <ScrollProgress />
