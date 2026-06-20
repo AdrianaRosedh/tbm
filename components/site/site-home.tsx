@@ -18,7 +18,6 @@ import { Faq } from "@/components/site/faq";
 import { CrossingChips } from "@/components/site/crossing-chips";
 import { MarqueeBand } from "@/components/site/marquee-band";
 import { NetworkReveal } from "@/components/site/network-reveal";
-import { BrandMark } from "@/components/site/brand-mark";
 import { ParallaxLayer } from "@/components/site/parallax";
 import { ParallaxDrift } from "@/components/site/parallax-drift";
 import { StepProgress } from "@/components/site/step-progress";
@@ -69,7 +68,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
               priority
               quality={72}
               sizes="100vw"
-              className="object-cover"
+              className="hero-pan object-cover motion-reduce:animate-none"
             />
           </ParallaxLayer>
           {/* Scrim — dark enough for legible text, light enough to let the
@@ -85,35 +84,6 @@ export function SiteHome({ locale }: { locale: Locale }) {
           <div className="grain-layer absolute inset-0 opacity-[0.06] mix-blend-overlay" />
           {/* Top vignette so the glass header blends */}
           <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-brand-indigo-deep/60 to-transparent" />
-          {/* Live highway light-trails — fan from the vanishing point and rush
-              toward the viewer. Pure CSS; hidden under reduced motion. */}
-          <div className="pointer-events-none absolute inset-0 overflow-hidden motion-reduce:hidden">
-            {[
-              { rot: -26, delay: "0s", dur: "6.2s" },
-              { rot: -15, delay: "1.9s", dur: "7s" },
-              { rot: -6, delay: "0.9s", dur: "5.6s" },
-              { rot: 4, delay: "2.7s", dur: "6.6s" },
-              { rot: 13, delay: "1.3s", dur: "7.3s" },
-              { rot: 23, delay: "3.3s", dur: "6.2s" },
-            ].map((t, i) => (
-              <span
-                key={i}
-                className="absolute left-[51%] top-[42%] origin-top"
-                style={{ transform: `rotate(${t.rot}deg)` }}
-              >
-                <span
-                  className="hero-trail"
-                  style={{ animationDelay: t.delay, animationDuration: t.dur }}
-                />
-              </span>
-            ))}
-          </div>
-          {/* Brand mark gliding down the corridor — the road is the route */}
-          <div className="pointer-events-none absolute inset-0 overflow-hidden motion-reduce:hidden">
-            <div className="absolute left-1/2 top-[42%] -translate-x-1/2">
-              <BrandMark className="hero-vehicle h-8 w-auto text-brand-red-bright [filter:drop-shadow(0_0_12px_rgba(240,86,59,0.85))]" />
-            </div>
-          </div>
         </div>
 
         <div className="relative mx-auto flex w-full max-w-screen-2xl flex-1 flex-col justify-center px-4 pb-10 pt-28 text-white md:pb-10 md:pt-32 md:px-8">

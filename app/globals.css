@@ -417,71 +417,21 @@
   isolation: isolate;
 }
 
-/* Hero highway light-trails — thin glints that fan out from the vanishing
-   point and rush toward the viewer, evoking live traffic on the corridor.
-   Pure GPU transform/opacity; the layer is hidden under reduced motion. */
-@keyframes hero-trail {
+/* Hero Ken Burns — a slow drift + zoom on the highway photo so the frame
+   breathes like film footage (the light-trails drift as the camera moves).
+   Pure GPU transform; disabled under reduced motion via motion-reduce. */
+@keyframes hero-pan {
   0% {
-    opacity: 0;
-    transform: translateY(-1.5rem) scaleY(0.35);
-  }
-  14% {
-    opacity: 0.72;
-  }
-  78% {
-    opacity: 0.5;
+    transform: scale(1.03) translate3d(1%, 0.6%, 0);
   }
   100% {
-    opacity: 0;
-    transform: translateY(56vh) scaleY(1.5);
+    transform: scale(1.07) translate3d(-1.2%, -0.8%, 0);
   }
 }
 
-@utility hero-trail {
-  position: absolute;
-  top: 0;
-  height: 13rem;
-  width: 2px;
-  border-radius: 9999px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--color-brand-red-bright),
-    #fff 86%,
-    transparent
-  );
-  filter: blur(0.6px);
-  opacity: 0;
-  will-change: transform, opacity;
-  animation: hero-trail 6s linear infinite;
-}
-
-/* The brand mark gliding down the corridor toward the viewer — grows with
-   perspective like a vehicle approaching on the highway. The road IS the
-   route. Disabled under reduced motion (layer uses motion-reduce:hidden). */
-@keyframes hero-vehicle {
-  0% {
-    opacity: 0;
-    transform: translate(0, 0) scale(0.22);
-  }
-  10% {
-    opacity: 1;
-  }
-  55% {
-    transform: translate(-3vw, 20vh) scale(0.66);
-  }
-  86% {
-    opacity: 0.95;
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-13vw, 47vh) scale(1.4);
-  }
-}
-
-@utility hero-vehicle {
-  will-change: transform, opacity;
-  animation: hero-vehicle 8s ease-in-out infinite;
+@utility hero-pan {
+  will-change: transform;
+  animation: hero-pan 28s ease-in-out infinite alternate;
 }
 
 /* Sheen that sweeps across an element on hover (CTAs, cards) */
