@@ -6,7 +6,7 @@
 
 @theme inline {
   /* Brand palette — extracted from sinrelato.space (BeTheme post-2.css) */
-  --color-brand-red: #e4432e;
+  --color-brand-red: #d53d28;
   --color-brand-indigo: #1d173b;
   --color-brand-indigo-deep: #0f0b26;
 
@@ -85,7 +85,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
   /* Primary mapped to brand red so bg-primary == TBM CTA color */
-  --primary: #e4432e;
+  --primary: #d53d28;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -121,7 +121,7 @@
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
   /* Brand color stays in dark mode too */
-  --primary: #e4432e;
+  --primary: #d53d28;
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
