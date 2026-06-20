@@ -128,20 +128,20 @@ export function ContactOverlay() {
             </div>
 
             {/* Headline — same words as the contact page */}
-            <div className="mt-6 md:mt-14">
+            <div className="mt-4 md:mt-14">
               <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red-bright">
                 {ui.contactEyebrow}
               </p>
               <Dialog.Title className="mt-2 max-w-3xl font-heading text-[1.75rem] font-black leading-[1.02] tracking-[-0.02em] sm:mt-3 sm:text-display-md sm:leading-[0.95]">
                 {ui.contactTitle}
               </Dialog.Title>
-              <Dialog.Description className="mt-3 max-w-2xl text-sm leading-relaxed text-fg-subtle sm:mt-4 md:text-base">
+              <Dialog.Description className="mt-2 max-w-2xl text-sm leading-relaxed text-fg-subtle sm:mt-4 md:text-base">
                 {ui.contactSubtitle}
               </Dialog.Description>
             </div>
 
             {/* Primary actions */}
-            <div className="mt-6 flex gap-3 sm:mt-8">
+            <div className="mt-5 flex gap-3 sm:mt-8">
               <ContactSalesLink className="shine-hover group inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground shadow-lg shadow-brand-red/25 transition-all hover:bg-primary/90 active:scale-[0.98] sm:h-13 sm:flex-none sm:px-8 sm:text-base">
                 <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
                 {ui.contactSales}
@@ -153,13 +153,13 @@ export function ContactOverlay() {
             </div>
 
             {/* Phones + offices */}
-            <div className="mt-6 grid flex-1 grid-cols-2 content-start gap-3 sm:mt-10 sm:gap-4">
+            <div className="mt-4 grid flex-1 grid-cols-1 content-start gap-3 sm:mt-10 sm:grid-cols-2 sm:gap-4">
               {OFFICES.map((office, i) => (
                 <div
                   key={office.region}
                   className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-sm sm:p-6"
                 >
-                  <p className="flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-wider text-brand-red-bright sm:text-xs sm:tracking-widest">
+                  <p className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-widest text-brand-red-bright">
                     <Image
                       src={
                         i === 0
@@ -173,17 +173,17 @@ export function ContactOverlay() {
                     />
                     {i === 0 ? ui.regionUS : ui.regionMX}
                   </p>
-                  <p className="mt-2.5 font-display text-sm font-extrabold uppercase tracking-wider sm:mt-3 sm:text-base">
+                  <p className="mt-2.5 font-display text-base font-extrabold uppercase tracking-wider">
                     {office.legalName}
                   </p>
-                  <address className="mt-1.5 not-italic text-xs leading-relaxed text-fg-subtle sm:mt-2 sm:text-sm">
+                  <address className="mt-1.5 not-italic text-sm leading-relaxed text-fg-subtle">
                     {office.address.map((line) => (
                       <span key={line} className="block">
                         {line}
                       </span>
                     ))}
                   </address>
-                  <ul className="mt-3 space-y-1.5 text-xs sm:mt-4 sm:space-y-2 sm:text-sm">
+                  <ul className="mt-3 space-y-1.5 text-sm">
                     {office.phones.map((p) => (
                       <li
                         key={p}
@@ -211,7 +211,7 @@ export function ContactOverlay() {
               ))}
             </div>
 
-            <p className="mt-6 text-center text-[11px] uppercase tracking-[0.2em] text-fg-subtle sm:mt-8">
+            <p className="mt-4 text-center text-[11px] uppercase tracking-[0.2em] text-fg-subtle sm:mt-8">
               {ui.replyWithin}
             </p>
           </div>
