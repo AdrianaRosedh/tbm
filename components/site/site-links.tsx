@@ -57,7 +57,6 @@ export function ContactSalesLink({
         onClick?.(e);
       }}
       className={cn("font-display", className)}
-      aria-label={ui.contactByEmail}
       {...rest}
     >
       {children}
