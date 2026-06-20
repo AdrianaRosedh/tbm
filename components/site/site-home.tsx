@@ -225,7 +225,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
               <Reveal as="li" key={item.label} delay={i * 0.08} className="max-md:w-[82vw] max-md:shrink-0 max-md:snap-center">
                 <ParallaxDrift index={i}>
                 <SpotlightCard
-                  className="h-full rounded-2xl border border-black/5 bg-white p-8 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/30 hover:shadow-xl hover:shadow-brand-indigo/10"
+                  className="h-full rounded-2xl border border-black/5 bg-white p-8 transition-all duration-300 md:hover:-translate-y-1 hover:border-brand-red/30 md:hover:shadow-xl hover:shadow-brand-indigo/10"
                   glow="color-mix(in oklab, var(--color-brand-red) 12%, transparent)"
                 >
                   <span className="font-display text-sm font-extrabold tracking-[0.3em] text-brand-indigo/70">
@@ -267,7 +267,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
                 <Reveal as="li" key={pillar.title} delay={i * 0.08} className="max-md:w-[82vw] max-md:shrink-0 max-md:snap-center">
                   <ParallaxDrift index={i}>
                   <SpotlightCard
-                    className="h-full rounded-2xl border border-black/5 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/30 hover:shadow-lg hover:shadow-brand-indigo/10 lg:p-8"
+                    className="h-full rounded-2xl border border-black/5 bg-white p-6 transition-all duration-300 md:hover:-translate-y-1 hover:border-brand-red/30 md:hover:shadow-lg hover:shadow-brand-indigo/10 lg:p-8"
                     glow="color-mix(in oklab, var(--color-brand-red) 12%, transparent)"
                   >
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red ring-1 ring-brand-red/20 transition-transform duration-300 group-hover/spot:scale-110">
@@ -308,7 +308,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
             {HOME.crossBorder.pillars.map((pillar, i) => (
               <Reveal as="li" key={pillar.title} delay={i * 0.08} className="max-md:w-[82vw] max-md:shrink-0 max-md:snap-center">
                 <SpotlightCard
-                  className="h-full rounded-2xl border border-black/5 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/30 hover:shadow-xl hover:shadow-brand-indigo/10 lg:p-8"
+                  className="h-full rounded-2xl border border-black/5 bg-white p-6 transition-all duration-300 md:hover:-translate-y-1 hover:border-brand-red/30 md:hover:shadow-xl hover:shadow-brand-indigo/10 lg:p-8"
                   glow="color-mix(in oklab, var(--color-brand-red) 12%, transparent)"
                 >
                   <span className="mb-5 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-brand-red/10 font-display text-sm font-extrabold text-brand-indigo">
@@ -449,7 +449,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
               <Reveal as="li" key={step.n} delay={i * 0.1} className="max-md:w-[82vw] max-md:shrink-0 max-md:snap-center">
                 <ParallaxDrift index={i}>
                 <SpotlightCard
-                  className="h-full rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/40"
+                  className="h-full rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm transition-all duration-300 md:hover:-translate-y-1 hover:border-brand-red/40"
                   glow="color-mix(in oklab, var(--color-brand-red) 20%, transparent)"
                 >
                   <div className="relative aspect-[3/2] overflow-hidden">
@@ -541,7 +541,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
             {SERVICE_FEATURES.map((feature, i) => (
               <Reveal as="li" key={feature.title} delay={i * 0.08} className="max-md:w-[82vw] max-md:shrink-0 max-md:snap-center">
                 <SpotlightCard
-                  className="h-full rounded-2xl border border-black/5 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/30 hover:shadow-lg hover:shadow-brand-indigo/10 lg:p-8"
+                  className="h-full rounded-2xl border border-black/5 bg-white p-6 transition-all duration-300 md:hover:-translate-y-1 hover:border-brand-red/30 md:hover:shadow-lg hover:shadow-brand-indigo/10 lg:p-8"
                   glow="color-mix(in oklab, var(--color-brand-red) 12%, transparent)"
                 >
                   <span className="font-display text-sm font-extrabold tracking-[0.3em] text-brand-red">
@@ -563,7 +563,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
               <Reveal key={item.title} delay={i * 0.08}>
                 <ParallaxDrift index={i}>
                 <SpotlightCard
-                  className="h-full rounded-2xl border border-black/5 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/30 hover:shadow-lg hover:shadow-brand-indigo/10 lg:p-8"
+                  className="h-full rounded-2xl border border-black/5 bg-white p-6 transition-all duration-300 md:hover:-translate-y-1 hover:border-brand-red/30 md:hover:shadow-lg hover:shadow-brand-indigo/10 lg:p-8"
                   glow="color-mix(in oklab, var(--color-brand-red) 12%, transparent)"
                 >
                   <span className="font-display text-sm font-extrabold tracking-[0.2em] text-brand-red">
@@ -658,7 +658,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
                 <Reveal as="li" key={feature.title} delay={i * 0.08} y={16} className="max-md:w-[82vw] max-md:shrink-0 max-md:snap-center">
                   <ParallaxDrift index={i}>
                   <SpotlightCard
-                    className="h-full rounded-2xl border border-black/5 bg-muted/30 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/30 hover:shadow-lg hover:shadow-brand-indigo/10"
+                    className="h-full rounded-2xl border border-black/5 bg-muted/30 p-6 transition-all duration-300 md:hover:-translate-y-1 hover:border-brand-red/30 md:hover:shadow-lg hover:shadow-brand-indigo/10"
                     glow="color-mix(in oklab, var(--color-brand-red) 12%, transparent)"
                   >
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red ring-1 ring-brand-red/20 transition-transform duration-300 group-hover/spot:scale-110">

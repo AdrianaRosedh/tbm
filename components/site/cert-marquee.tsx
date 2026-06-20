@@ -43,7 +43,7 @@ export function CertMarquee({ className, speed = "40s" }: CertMarqueeProps) {
             title={c.full}
             aria-hidden={i >= CERTIFICATIONS.length}
             tabIndex={i >= CERTIFICATIONS.length ? -1 : 0}
-            className="group/badge flex w-44 shrink-0 flex-col items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-red/50 hover:shadow-lg hover:shadow-brand-red/10"
+            className="group/badge flex w-44 shrink-0 flex-col items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white p-4 shadow-sm transition-colors duration-300 hover:border-brand-red/50"
           >
             <span className="flex h-12 items-center justify-center">
               <Image
