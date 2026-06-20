@@ -85,9 +85,9 @@ export function ContactOverlay() {
         <Dialog.Backdrop className="fixed inset-0 z-[70] bg-brand-indigo-deep/60 backdrop-blur-sm transition-opacity duration-300 data-ending-style:opacity-0 data-starting-style:opacity-0" />
         {/* Mobile: rises as a rounded bottom-sheet (slide-up) leaving a backdrop
             strip on top. Desktop (md+): unchanged full-screen scale/fade takeover. */}
-        <Dialog.Popup ref={popupRef} className="fixed inset-x-0 bottom-0 top-0 z-[80] flex flex-col overflow-y-auto overscroll-contain bg-brand-indigo-deep text-white transition-[opacity,translate,scale] duration-300 ease-out data-ending-style:opacity-0 data-starting-style:opacity-0 max-lg:shadow-2xl max-lg:data-ending-style:translate-y-full max-lg:data-starting-style:translate-y-full lg:data-ending-style:scale-[0.985] lg:data-starting-style:scale-[0.985]">
+        <Dialog.Popup ref={popupRef} className="fixed inset-x-0 bottom-0 top-0 z-[80] flex flex-col overflow-y-auto overflow-x-hidden overscroll-contain bg-brand-indigo-deep text-white transition-[opacity,translate,scale] duration-300 ease-out data-ending-style:opacity-0 data-starting-style:opacity-0 max-lg:shadow-2xl max-lg:data-ending-style:translate-y-full max-lg:data-starting-style:translate-y-full lg:data-ending-style:scale-[0.985] lg:data-starting-style:scale-[0.985]">
           {/* Backdrop layers */}
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-brand-indigo via-brand-indigo-deep to-brand-indigo-deep" />
             <div className="bg-grid absolute inset-0 opacity-[0.15]" />
             <div className="animate-aurora absolute -right-24 -top-24 h-96 w-96 rounded-full bg-brand-red/20 blur-3xl" />
