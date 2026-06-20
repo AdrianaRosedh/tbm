@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Dialog } from "@base-ui/react/dialog";
 import { ArrowRight, Check, X } from "lucide-react";
@@ -29,7 +28,6 @@ export function ServiceDetailDialog({
 }) {
   const { ui } = useContent();
   const locale = useLocale();
-  const base = locale === "es" ? "/es" : "";
 
   // Retain the last service so content stays rendered through the close
   // animation (open is driven by `service`, content by the snapshot).
@@ -42,7 +40,6 @@ export function ServiceDetailDialog({
   const detail = s
     ? (locale === "es" ? SERVICE_DETAILS_ES : SERVICE_DETAILS)[s.slug]
     : undefined;
-  const href = s ? `${base}/services/${s.slug}` : "#";
 
   return (
     <Dialog.Root
@@ -113,21 +110,14 @@ export function ServiceDetailDialog({
                 </ul>
               )}
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-8">
                 <ContactPopupLink
                   onClick={onClose}
-                  className="shine-hover inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground shadow-lg shadow-brand-red/25 transition-all hover:bg-primary/90 active:scale-[0.98] sm:text-base"
+                  className="shine-hover inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground shadow-lg shadow-brand-red/25 transition-all hover:bg-primary/90 active:scale-[0.98] sm:text-base"
                 >
                   {ui.contactSales}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </ContactPopupLink>
-                <Link
-                  href={href}
-                  onClick={onClose}
-                  className="inline-flex h-12 flex-1 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-6 text-sm font-medium text-white backdrop-blur-sm transition-all hover:border-brand-red hover:bg-white/[0.08] active:scale-[0.98] sm:text-base"
-                >
-                  {ui.viewFullService}
-                </Link>
               </div>
             </div>
           )}

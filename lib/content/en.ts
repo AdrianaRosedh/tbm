@@ -51,7 +51,6 @@ export const EN = {
     learnMoreAbout: "Learn more about",
     serviceOverview: "Overview",
     serviceHighlights: "Highlights",
-    viewFullService: "View full page",
     moreServices: "More services",
     allServices: "All services",
     scrollToExplore: "Scroll to explore",

@@ -461,7 +461,6 @@ export const ES: Dictionary = {
     learnMoreAbout: "Ver más sobre",
     serviceOverview: "Resumen",
     serviceHighlights: "Puntos clave",
-    viewFullService: "Ver página completa",
     moreServices: "Más servicios",
     allServices: "Todos los servicios",
     scrollToExplore: "Desliza para explorar",
