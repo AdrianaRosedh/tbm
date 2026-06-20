@@ -18,6 +18,7 @@ import { Faq } from "@/components/site/faq";
 import { CrossingChips } from "@/components/site/crossing-chips";
 import { MarqueeBand } from "@/components/site/marquee-band";
 import { NetworkReveal } from "@/components/site/network-reveal";
+import { BrandMark } from "@/components/site/brand-mark";
 import { ParallaxLayer } from "@/components/site/parallax";
 import { ParallaxDrift } from "@/components/site/parallax-drift";
 import { StepProgress } from "@/components/site/step-progress";
@@ -106,6 +107,12 @@ export function SiteHome({ locale }: { locale: Locale }) {
                 />
               </span>
             ))}
+          </div>
+          {/* Brand mark gliding down the corridor — the road is the route */}
+          <div className="pointer-events-none absolute inset-0 overflow-hidden motion-reduce:hidden">
+            <div className="absolute left-1/2 top-[42%] -translate-x-1/2">
+              <BrandMark className="hero-vehicle h-8 w-auto text-brand-red-bright [filter:drop-shadow(0_0_12px_rgba(240,86,59,0.85))]" />
+            </div>
           </div>
         </div>
 

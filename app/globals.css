@@ -456,6 +456,34 @@
   animation: hero-trail 6s linear infinite;
 }
 
+/* The brand mark gliding down the corridor toward the viewer — grows with
+   perspective like a vehicle approaching on the highway. The road IS the
+   route. Disabled under reduced motion (layer uses motion-reduce:hidden). */
+@keyframes hero-vehicle {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) scale(0.22);
+  }
+  10% {
+    opacity: 1;
+  }
+  55% {
+    transform: translate(-3vw, 20vh) scale(0.66);
+  }
+  86% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-13vw, 47vh) scale(1.4);
+  }
+}
+
+@utility hero-vehicle {
+  will-change: transform, opacity;
+  animation: hero-vehicle 8s ease-in-out infinite;
+}
+
 /* Sheen that sweeps across an element on hover (CTAs, cards) */
 @utility shine-hover {
   position: relative;
