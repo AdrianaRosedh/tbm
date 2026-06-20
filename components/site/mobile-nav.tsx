@@ -16,7 +16,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { OPEN_CONTACT_EVENT } from "./contact-overlay";
-import { ContactSalesLink, TrackShipmentLink } from "./site-links";
+import { TrackShipmentLink } from "./site-links";
+import { ContactPopupLink } from "./contact-popup-link";
 import { LangToggle } from "./lang-toggle";
 import { FOOTER_LEGAL_ITEMS, NAV_ITEMS, OFFICES } from "@/lib/content/site";
 import { useContent } from "@/lib/i18n-client";
@@ -234,12 +235,12 @@ export function MobileNav() {
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                 {ui.trackShipment}
               </TrackShipmentLink>
-              <ContactSalesLink
+              <ContactPopupLink
                 onClick={() => setOpen(false)}
                 className="flex min-h-13 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-6 text-base font-medium text-white backdrop-blur-sm transition-all hover:border-brand-red hover:bg-white/[0.08] active:scale-[0.98]"
               >
                 {ui.contactSales}
-              </ContactSalesLink>
+              </ContactPopupLink>
             </div>
 
             <div className="grid grid-cols-2 gap-3">

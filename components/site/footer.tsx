@@ -5,7 +5,8 @@ import Image from "next/image";
 import { Mail, Phone, Truck } from "lucide-react";
 import { FOOTER_LEGAL_ITEMS, OFFICES, SITE } from "@/lib/content/site";
 import { useContent, useLocale } from "@/lib/i18n-client";
-import { ContactSalesLink, TrackShipmentLink } from "./site-links";
+import { TrackShipmentLink } from "./site-links";
+import { ContactPopupLink } from "./contact-popup-link";
 import { FooterNavItems } from "./footer-nav";
 import { BackToTop } from "./back-to-top";
 import { Reveal } from "./reveal";
@@ -51,10 +52,10 @@ export function Footer() {
                 </p>
               </div>
               <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-                <ContactSalesLink className="shine-hover group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-7 text-base font-medium text-primary-foreground shadow-lg shadow-brand-red/25 transition-all hover:bg-primary/90 active:scale-[0.98]">
+                <ContactPopupLink className="shine-hover group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-7 text-base font-medium text-primary-foreground shadow-lg shadow-brand-red/25 transition-all hover:bg-primary/90 active:scale-[0.98]">
                   <Mail className="h-4 w-4" aria-hidden="true" />
                   {ui.contactSales}
-                </ContactSalesLink>
+                </ContactPopupLink>
                 <TrackShipmentLink className="group inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.04] px-7 text-base font-medium text-white transition-all hover:border-brand-red hover:bg-white/[0.08] active:scale-[0.98]">
                   <Truck className="h-4 w-4 text-brand-red-bright" aria-hidden="true" />
                   {ui.trackShipment}
@@ -137,10 +138,10 @@ export function Footer() {
               </TrackShipmentLink>
             </li>
             <li>
-              <ContactSalesLink className="group inline-flex items-center gap-2 text-fg-subtle transition-colors hover:text-white">
+              <ContactPopupLink className="group inline-flex items-center gap-2 text-fg-subtle transition-colors hover:text-white">
                 <Mail className="h-3.5 w-3.5 text-brand-red-bright" aria-hidden="true" />
                 {ui.contactSales}
-              </ContactSalesLink>
+              </ContactPopupLink>
             </li>
           </ul>
         </div>

@@ -10,17 +10,21 @@ import { OPEN_CONTACT_EVENT } from "./contact-overlay";
 export function ContactPopupLink({
   className,
   children,
+  onClick,
+  ...rest
 }: {
   className?: string;
   children: ReactNode;
-}) {
+} & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
       type="button"
-      onClick={() =>
-        window.dispatchEvent(new CustomEvent(OPEN_CONTACT_EVENT))
-      }
+      onClick={(e) => {
+        window.dispatchEvent(new CustomEvent(OPEN_CONTACT_EVENT));
+        onClick?.(e);
+      }}
       className={className}
+      {...rest}
     >
       {children}
     </button>

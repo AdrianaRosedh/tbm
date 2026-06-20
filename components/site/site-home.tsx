@@ -25,7 +25,6 @@ import { Reveal } from "@/components/site/reveal";
 import { ServiceGrid } from "@/components/site/service-grid";
 import { SnapCarousel } from "@/components/site/snap-carousel";
 import { SpotlightCard } from "@/components/site/spotlight-card";
-import { ContactSalesLink } from "@/components/site/site-links";
 import { ContactPopupLink } from "@/components/site/contact-popup-link";
 import { JumpLink } from "@/components/site/jump-link";
 import { StatCounter } from "@/components/site/stat-counter";
@@ -112,7 +111,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
             className="animate-rise mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4"
             style={{ animationDelay: "220ms" }}
           >
-            <ContactSalesLink
+            <ContactPopupLink
               className={cn(
                 buttonVariants(),
                 "shine-hover group h-12 gap-2 rounded-full pl-7 pr-3 text-base font-semibold shadow-[0_12px_36px_-10px_rgba(213,61,40,0.7)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_48px_-10px_rgba(213,61,40,0.9)] active:translate-y-0 active:scale-[0.98] max-sm:w-full"
@@ -122,7 +121,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
               <span className="grid size-7 place-items-center rounded-full bg-white/20 transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-white/30">
                 <ArrowRight className="h-4 w-4" />
               </span>
-            </ContactSalesLink>
+            </ContactPopupLink>
             <JumpLink
               to="services"
               className="group inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/[0.06] pl-7 pr-3 font-display text-base font-medium text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-white/45 hover:bg-white/[0.12] active:translate-y-0 active:scale-[0.98] sm:w-auto"
@@ -811,7 +810,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
             <h2 className="mt-4 max-w-3xl font-heading text-display-sm font-extrabold tracking-tight text-balance sm:text-display-md">
               {HOME.finalCta.headline}
             </h2>
-            <ContactSalesLink
+            <ContactPopupLink
               className={cn(
                 buttonVariants(),
                 "shine-hover group mt-10 h-12 gap-2 rounded-full px-8 text-base transition-all hover:bg-primary/90 active:scale-[0.98]"
@@ -819,7 +818,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
             >
               {ui.contactSales}
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </ContactSalesLink>
+            </ContactPopupLink>
           </Reveal>
         </div>
       </section>

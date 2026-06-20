@@ -3,7 +3,8 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Mail, Truck } from "lucide-react";
-import { ContactSalesLink, TrackShipmentLink } from "./site-links";
+import { TrackShipmentLink } from "./site-links";
+import { ContactPopupLink } from "./contact-popup-link";
 import { useContent } from "@/lib/i18n-client";
 
 /**
@@ -54,13 +55,13 @@ export function MobileCtaBar() {
           <Truck className="h-4 w-4 text-brand-red" aria-hidden="true" />
           {ui.track}
         </TrackShipmentLink>
-        <ContactSalesLink
+        <ContactPopupLink
           tabIndex={visible ? 0 : -1}
           className="shine-hover inline-flex h-12 flex-[1.5] items-center justify-center gap-2 rounded-[1rem] bg-primary text-sm font-semibold text-primary-foreground shadow-lg shadow-brand-red/30 transition-all hover:bg-primary/90 active:scale-[0.96]"
         >
           <Mail className="h-4 w-4" aria-hidden="true" />
           {ui.contactSales}
-        </ContactSalesLink>
+        </ContactPopupLink>
       </div>
     </div>
   );

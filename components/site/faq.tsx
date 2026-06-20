@@ -4,7 +4,7 @@ import { Accordion } from "@base-ui/react/accordion";
 import { Plus } from "lucide-react";
 import { Reveal } from "./reveal";
 import { TextReveal } from "./text-reveal";
-import { ContactSalesLink } from "./site-links";
+import { ContactPopupLink } from "./contact-popup-link";
 import { useContent } from "@/lib/i18n-client";
 
 /**
@@ -87,9 +87,9 @@ export function Faq() {
         <p className="text-sm uppercase tracking-widest text-fg-subtle">
           {ui.stillHaveQuestion}
         </p>
-        <ContactSalesLink className="shine-hover group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 text-base font-medium text-primary-foreground shadow-lg shadow-brand-red/25 transition-all hover:bg-primary/90 active:scale-[0.98]">
+        <ContactPopupLink className="shine-hover group inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 text-base font-medium text-primary-foreground shadow-lg shadow-brand-red/25 transition-all hover:bg-primary/90 active:scale-[0.98]">
           {ui.contactSales}
-        </ContactSalesLink>
+        </ContactPopupLink>
       </Reveal>
     </div>
   );
