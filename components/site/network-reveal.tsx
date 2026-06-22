@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import dynamic from "next/dynamic";
 import {
   motion,
   useReducedMotion,
@@ -8,9 +9,26 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import { NetworkMap } from "./network-map";
 import { Reveal } from "./reveal";
 import { TextReveal } from "./text-reveal";
+
+// Defer the 770-line interactive map: its JS loads on the client, off the
+// initial bundle / critical path, so it no longer blocks first paint or hogs
+// the main thread during load. The pinned 250vh / h-dvh structure already
+// reserves all of its space, so nothing shifts (CLS stays 0); the static
+// (reduced-motion) path gets a same-height skeleton while it loads.
+const NetworkMap = dynamic(
+  () => import("./network-map").then((m) => m.NetworkMap),
+  {
+    ssr: false,
+    loading: () => (
+      <div
+        aria-hidden="true"
+        className="relative mx-auto mt-6 min-h-[max(18rem,calc(100dvh-18rem))] w-full rounded-2xl border border-white/5 bg-white/[0.02]"
+      />
+    ),
+  }
+);
 
 type NetworkRevealProps = {
   eyebrow: string;

@@ -2,7 +2,7 @@
 
 import { MapPin } from "lucide-react";
 import { Reveal } from "./reveal";
-import { FOCUS_LOCATION_EVENT } from "./network-map";
+import { FOCUS_LOCATION_EVENT } from "./network-events";
 import { useContent } from "@/lib/i18n-client";
 import { cn } from "@/lib/utils";
 

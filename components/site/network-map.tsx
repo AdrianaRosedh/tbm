@@ -25,6 +25,7 @@ import {
 import { ContactSalesLink } from "./site-links";
 import { useContent } from "@/lib/i18n-client";
 import { cn } from "@/lib/utils";
+import { FOCUS_LOCATION_EVENT } from "./network-events";
 
 type GroupKey = "terminal" | "dropyard" | "crossing" | "office";
 type Mode = "explore" | "plan";
@@ -52,9 +53,6 @@ const ROLE_TO_GROUP: Record<NetworkRole, GroupKey> = {
   office: "office",
   maintenance: "office",
 };
-
-/** The custom event other components dispatch to spotlight a location. */
-export const FOCUS_LOCATION_EVENT = "tbm:focus-location";
 
 /** Surface-road distance ≈ great-circle × detour factor. */
 const ROAD_FACTOR = 1.18;
