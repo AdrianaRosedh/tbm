@@ -106,7 +106,7 @@ export function ContactPageView({ locale }: { locale: Locale }) {
                 />
                 {i === 0 ? ui.regionUS : ui.regionMX}
               </p>
-              <p className="mt-3 font-display text-lg font-extrabold uppercase tracking-wider">
+              <p className="mt-3 font-display text-lg font-extrabold tracking-tight">
                 {office.legalName}
               </p>
               <address className="mt-2 not-italic text-sm leading-relaxed text-fg-muted">

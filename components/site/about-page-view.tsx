@@ -159,7 +159,7 @@ export function AboutPageView({ locale }: { locale: Locale }) {
                 key={pillar.title}
                 className="rounded-2xl border border-black/5 bg-muted/20 p-6"
               >
-                <h3 className="font-heading text-xl font-extrabold uppercase tracking-wider">
+                <h3 className="font-heading text-xl font-extrabold tracking-tight">
                   {pillar.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-fg-muted">

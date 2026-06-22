@@ -129,7 +129,7 @@ export function BorderJourney({
                       <span className="font-display text-sm font-extrabold tracking-[0.3em] text-brand-red-bright">
                         {stage.n}
                       </span>
-                      <h3 className="mt-3 font-heading text-xl font-extrabold uppercase tracking-wider md:text-2xl">
+                      <h3 className="mt-3 font-heading text-xl font-extrabold tracking-tight md:text-2xl">
                         {stage.title}
                       </h3>
                       <p className="mt-3 leading-relaxed text-fg-subtle">

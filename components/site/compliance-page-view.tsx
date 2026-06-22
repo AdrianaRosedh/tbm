@@ -98,7 +98,7 @@ export function CompliancePageView({ locale }: { locale: Locale }) {
       {/* CERTIFICATIONS */}
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto w-full max-w-5xl px-4 md:px-8">
-          <h2 className="font-heading text-2xl font-extrabold uppercase tracking-wider">
+          <h2 className="font-heading text-2xl font-extrabold tracking-tight">
             {ui.certifications}
           </h2>
           <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -116,7 +116,7 @@ export function CompliancePageView({ locale }: { locale: Locale }) {
                     className="h-12 w-auto object-contain"
                   />
                 </div>
-                <p className="mt-5 font-display text-base font-extrabold uppercase tracking-wider">
+                <p className="mt-5 font-display text-base font-extrabold tracking-tight">
                   {cert.short}
                 </p>
                 <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-brand-red">
@@ -135,7 +135,7 @@ export function CompliancePageView({ locale }: { locale: Locale }) {
       <section className="bg-muted/30 py-16 md:py-24">
         <div className="mx-auto grid w-full max-w-5xl gap-12 px-4 md:px-8 lg:grid-cols-[1fr_1.1fr]">
           <div>
-            <h2 className="font-heading text-2xl font-extrabold uppercase tracking-wider">
+            <h2 className="font-heading text-2xl font-extrabold tracking-tight">
               {ui.complianceHeadline}
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-fg-muted">

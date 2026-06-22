@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Oswald, Orbitron, Fraunces } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -14,33 +14,13 @@ import { ScrollProgress } from "@/components/site/scroll-progress";
 import { SkipLink } from "@/components/site/skip-link";
 import { SITE } from "@/lib/content/site";
 
-// Bold titles — squared, wide, extended techno caps in the spirit of the
-// RICHARD MILLE wordmark (Eurostile/Microgramma family). Powers every big
-// heading and the stat counters.
-const orbitron = Orbitron({
-  variable: "--font-orbitron",
+// One grotesk for the entire system — Inter (variable, full weight range).
+// Hierarchy is carried by weight + tracking, not by switching families:
+// heavy + tight-tracked display, light + neutral body. The goal is a precise,
+// "infrastructure-platform" feel rather than a freight-template look.
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800", "900"],
-  display: "swap",
-});
-
-// Structural UI — nav, buttons, eyebrows, labels. Condensed so the long nav
-// items stay compact; pairs with the wide Orbitron titles.
-const oswald = Oswald({
-  variable: "--font-oswald",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
-// The rest of the page — a high-contrast editorial serif with soft wedge
-// serifs (Canela / Austin / Noe Display family). Fraunces has true optical
-// sizing, so it stays readable as body text. Italic powers emphasis/quotes.
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -112,15 +92,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(
-        "h-full antialiased",
-        orbitron.variable,
-        oswald.variable,
-        fraunces.variable,
-        "font-sans"
-      )}
+      suppressHydrationWarning
+      className={cn("h-full antialiased", inter.variable, "font-sans")}
     >
-      <body className="flex min-h-full flex-col">
+      <body suppressHydrationWarning className="flex min-h-full flex-col">
         <JsonLd />
         <HtmlLang />
         <SkipLink />

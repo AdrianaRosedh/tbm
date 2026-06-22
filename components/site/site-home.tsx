@@ -96,13 +96,13 @@ export function SiteHome({ locale }: { locale: Locale }) {
             </span>
           </div>
           <h1
-            className="animate-rise mt-6 max-w-6xl font-heading text-display-sm font-black uppercase leading-[1.04] tracking-[-0.01em] text-brand-red sm:text-display-md lg:text-display-lg"
+            className="animate-rise mt-8 max-w-5xl font-heading text-display-lg font-black uppercase leading-[0.95] tracking-[-0.02em] text-brand-red-bright sm:text-display-xl lg:text-display-2xl"
             style={{ animationDelay: "60ms" }}
           >
             {HOME.hero.headline}
           </h1>
           <p
-            className="animate-rise mt-6 max-w-xl text-base leading-relaxed text-fg-subtle md:text-lg"
+            className="animate-rise mt-7 max-w-xl text-base leading-relaxed text-fg-subtle md:text-lg"
             style={{ animationDelay: "140ms" }}
           >
             {HOME.hero.subhead}
@@ -273,7 +273,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red ring-1 ring-brand-red/20 transition-transform duration-300 group-hover/spot:scale-110">
                       <Icon className="h-6 w-6" aria-hidden="true" />
                     </div>
-                    <h4 className="mt-6 font-heading text-xl font-extrabold uppercase tracking-wider">
+                    <h4 className="mt-6 font-heading text-xl font-extrabold tracking-tight">
                       {pillar.title}
                     </h4>
                     <p className="mt-3 text-sm leading-relaxed text-fg-muted">
@@ -314,7 +314,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
                   <span className="mb-5 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-brand-red/10 font-display text-sm font-extrabold text-brand-indigo">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="font-heading text-xl font-extrabold uppercase tracking-wider">
+                  <h3 className="font-heading text-xl font-extrabold tracking-tight">
                     {pillar.title}
                   </h3>
                   <p className="mt-3 text-base leading-relaxed text-fg-muted">
@@ -337,7 +337,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
                     <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-red/10 font-display text-sm font-extrabold text-brand-indigo">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <h3 className="mt-6 max-w-3xl font-heading text-display-sm font-extrabold uppercase tracking-wide">
+                    <h3 className="mt-6 max-w-3xl font-heading text-display-sm font-extrabold tracking-tight">
                       {pillar.title}
                     </h3>
                     <p className="mt-4 max-w-2xl text-base leading-relaxed text-fg-muted lg:text-lg">
@@ -468,7 +468,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
                     <span className="absolute -top-4 left-6 inline-flex h-8 items-center rounded-full bg-brand-red px-4 text-[10px] font-bold uppercase tracking-[0.2em] lg:left-8">
                       Step {step.n}
                     </span>
-                    <h3 className="font-heading text-2xl font-extrabold uppercase tracking-wider">
+                    <h3 className="font-heading text-2xl font-extrabold tracking-tight">
                       {step.title}
                     </h3>
                     <p className="mt-3 text-fg-subtle">{step.body}</p>
@@ -547,7 +547,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
                   <span className="font-display text-sm font-extrabold tracking-[0.3em] text-brand-red">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <h4 className="mt-3 font-heading text-xl font-extrabold uppercase tracking-wider">
+                  <h4 className="mt-3 font-heading text-xl font-extrabold tracking-tight">
                     {feature.title}
                   </h4>
                   <p className="mt-3 text-sm leading-relaxed text-fg-muted">
@@ -569,7 +569,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
                   <span className="font-display text-sm font-extrabold tracking-[0.2em] text-brand-red">
                     {item.partner}
                   </span>
-                  <h4 className="mt-2 font-display text-lg font-extrabold uppercase tracking-wider">
+                  <h4 className="mt-2 font-display text-lg font-extrabold tracking-tight">
                     {item.title}
                   </h4>
                   <p className="mt-3 text-sm leading-relaxed text-fg-muted">
@@ -664,7 +664,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red ring-1 ring-brand-red/20 transition-transform duration-300 group-hover/spot:scale-110">
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </div>
-                    <h3 className="mt-4 font-display text-lg font-extrabold uppercase tracking-wider">
+                    <h3 className="mt-4 font-display text-lg font-extrabold tracking-tight">
                       {feature.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-fg-muted">

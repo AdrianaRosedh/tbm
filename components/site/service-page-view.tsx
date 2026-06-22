@@ -126,7 +126,7 @@ export function ServicePageView({
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto grid w-full max-w-4xl gap-12 px-4 md:px-8 lg:grid-cols-[1.3fr_1fr]">
           <div>
-            <h2 className="font-heading text-2xl font-extrabold uppercase tracking-wider">
+            <h2 className="font-heading text-2xl font-extrabold tracking-tight">
               {ui.serviceOverview}
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-fg-muted">
@@ -169,7 +169,7 @@ export function ServicePageView({
       {/* RELATED */}
       <section className="bg-muted/30 py-16 md:py-20">
         <div className="mx-auto w-full max-w-4xl px-4 md:px-8">
-          <h2 className="font-heading text-xl font-extrabold uppercase tracking-wider">
+          <h2 className="font-heading text-xl font-extrabold tracking-tight">
             {ui.moreServices}
           </h2>
           <ul className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -186,7 +186,7 @@ export function ServicePageView({
                     height={131}
                     className="h-12 w-12 object-contain"
                   />
-                  <h3 className="mt-4 font-display text-base font-extrabold uppercase tracking-wider">
+                  <h3 className="mt-4 font-display text-base font-extrabold tracking-tight">
                     {r.title}
                   </h3>
                   <span className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-brand-red">

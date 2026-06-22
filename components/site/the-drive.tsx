@@ -243,7 +243,7 @@ function DriveScene({ eyebrow, headline, body, stages }: TheDriveProps) {
                   <span className="font-display text-[11px] font-extrabold tracking-[0.3em] text-brand-red-bright md:text-xs">
                     {stage.n}
                   </span>
-                  <h3 className="mt-2 font-display text-lg font-extrabold uppercase tracking-wider md:text-xl">
+                  <h3 className="mt-2 font-display text-lg font-extrabold tracking-tight md:text-xl">
                     {stage.title}
                   </h3>
                   <p className="mt-2 text-[13px] leading-relaxed text-fg-subtle md:text-sm">

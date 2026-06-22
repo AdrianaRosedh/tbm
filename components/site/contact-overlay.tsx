@@ -173,7 +173,7 @@ export function ContactOverlay() {
                     />
                     {i === 0 ? ui.regionUS : ui.regionMX}
                   </p>
-                  <p className="mt-2.5 font-display text-base font-extrabold uppercase tracking-wider">
+                  <p className="mt-2.5 font-display text-base font-extrabold tracking-tight">
                     {office.legalName}
                   </p>
                   <address className="mt-1.5 not-italic text-sm leading-relaxed text-fg-subtle">

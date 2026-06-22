@@ -19,7 +19,7 @@ function LocationCard({
       <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-brand-red">
         {label}
       </p>
-      <p className="mt-1.5 font-display text-base font-extrabold uppercase tracking-wide">
+      <p className="mt-1.5 font-display text-base font-extrabold tracking-tight">
         {city}
       </p>
       {address && <p className="mt-1 text-sm leading-relaxed text-fg-muted">{address}</p>}
@@ -142,7 +142,7 @@ export function NetworkPageView({ locale }: { locale: Locale }) {
       {/* UNITED STATES */}
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto w-full max-w-5xl space-y-10 px-4 md:px-8">
-          <h2 className="font-heading text-2xl font-extrabold uppercase tracking-wider">
+          <h2 className="font-heading text-2xl font-extrabold tracking-tight">
             {ui.regionUS}
           </h2>
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -168,7 +168,7 @@ export function NetworkPageView({ locale }: { locale: Locale }) {
       {/* MEXICO */}
       <section className="bg-muted/30 py-16 md:py-24">
         <div className="mx-auto w-full max-w-5xl space-y-10 px-4 md:px-8">
-          <h2 className="font-heading text-2xl font-extrabold uppercase tracking-wider">
+          <h2 className="font-heading text-2xl font-extrabold tracking-tight">
             {ui.regionMX}
           </h2>
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

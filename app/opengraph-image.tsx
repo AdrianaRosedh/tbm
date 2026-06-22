@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { SITE } from "@/lib/content/site";
 
 export const runtime = "edge";
 export const alt =
@@ -27,6 +28,26 @@ async function loadFont(family: string, text: string): Promise<ArrayBuffer | nul
   }
 }
 
+/**
+ * Embed the real wordmark (`/brand/TBM-2.png`) as a data URL so the card shows
+ * the actual logo, not a stand-in. Chunked base64 avoids call-stack limits;
+ * returns null on failure so we fall back to a text wordmark.
+ */
+async function loadLogo(): Promise<string | null> {
+  try {
+    const res = await fetch(new URL("/brand/TBM-2.png", SITE.url));
+    if (!res.ok) return null;
+    const bytes = new Uint8Array(await res.arrayBuffer());
+    let binary = "";
+    for (let i = 0; i < bytes.length; i += 8192) {
+      binary += String.fromCharCode(...bytes.subarray(i, i + 8192));
+    }
+    return `data:image/png;base64,${btoa(binary)}`;
+  } catch {
+    return null;
+  }
+}
+
 const TITLE_A = "DELIVERING QUALITY";
 const TITLE_B = "& RELIABILITY";
 const EYEBROW = "OPERATING SINCE 1999";
@@ -35,21 +56,23 @@ const FOOT_L = "tbmcarriers.com";
 const FOOT_R = "C-TPAT · FAST · OEA · SMARTWAY";
 
 export default async function OpengraphImage() {
-  const [orbitron, oswald, fraunces] = await Promise.all([
-    loadFont("Orbitron:wght@800", `${TITLE_A}${TITLE_B}TBM`),
-    loadFont("Oswald:wght@600", `${EYEBROW}CARRIERS${FOOT_L}${FOOT_R}`),
-    loadFont("Fraunces:opsz,wght@144,400", SUB),
+  const [bold, semi, reg, logo] = await Promise.all([
+    loadFont("Inter:wght@800", `${TITLE_A}${TITLE_B}`),
+    loadFont("Inter:wght@600", `${EYEBROW}TBM CARRIERS${FOOT_L}${FOOT_R}`),
+    loadFont("Inter:wght@400", SUB),
+    loadLogo(),
   ]);
 
   const fonts = [
-    orbitron && { name: "Orbitron", data: orbitron, weight: 800 as const, style: "normal" as const },
-    oswald && { name: "Oswald", data: oswald, weight: 600 as const, style: "normal" as const },
-    fraunces && { name: "Fraunces", data: fraunces, weight: 400 as const, style: "normal" as const },
-  ].filter(Boolean) as { name: string; data: ArrayBuffer; weight: 400 | 600 | 800; style: "normal" }[];
-
-  const titleFont = orbitron ? "Orbitron" : "serif";
-  const labelFont = oswald ? "Oswald" : "sans-serif";
-  const subFont = fraunces ? "Fraunces" : "serif";
+    bold && { name: "Inter", data: bold, weight: 800 as const, style: "normal" as const },
+    semi && { name: "Inter", data: semi, weight: 600 as const, style: "normal" as const },
+    reg && { name: "Inter", data: reg, weight: 400 as const, style: "normal" as const },
+  ].filter(Boolean) as {
+    name: string;
+    data: ArrayBuffer;
+    weight: 400 | 600 | 800;
+    style: "normal";
+  }[];
 
   return new ImageResponse(
     (
@@ -64,48 +87,35 @@ export default async function OpengraphImage() {
           background:
             "linear-gradient(135deg, #1d173b 0%, #0f0b26 55%, #241a4a 100%)",
           color: "white",
+          fontFamily: "Inter",
         }}
       >
-        {/* Top: brand mark */}
-        <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: 78,
-              height: 78,
-              borderRadius: 16,
-              background: "#e4432e",
-              fontFamily: titleFont,
-              fontSize: 30,
-              fontWeight: 800,
-            }}
-          >
-            TBM
-          </div>
-          <div
-            style={{
-              fontFamily: labelFont,
-              fontSize: 22,
-              fontWeight: 600,
-              letterSpacing: 8,
-              opacity: 0.9,
-            }}
-          >
-            CARRIERS
-          </div>
+        {/* Top: the real wordmark (text fallback if the fetch fails) */}
+        <div style={{ display: "flex", alignItems: "center" }}>
+          {logo ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={logo}
+              width={300}
+              height={92}
+              alt="TBM Carriers"
+              style={{ objectFit: "contain" }}
+            />
+          ) : (
+            <span style={{ fontSize: 30, fontWeight: 800, letterSpacing: 6 }}>
+              TBM CARRIERS
+            </span>
+          )}
         </div>
 
-        {/* Middle: hero copy in the brand fonts */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
+        {/* Middle: hero copy — matches the live site (uppercase, brand red) */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           <span
             style={{
-              fontFamily: labelFont,
               fontSize: 19,
               fontWeight: 600,
-              color: "#ff6a4d",
-              letterSpacing: 7,
+              color: "#f0563b",
+              letterSpacing: 6,
             }}
           >
             {EYEBROW}
@@ -114,11 +124,11 @@ export default async function OpengraphImage() {
             style={{
               display: "flex",
               flexDirection: "column",
-              fontFamily: titleFont,
-              fontSize: 76,
+              fontSize: 78,
               fontWeight: 800,
-              lineHeight: 1.04,
-              color: "#e4432e",
+              lineHeight: 0.98,
+              letterSpacing: -1.6,
+              color: "#f0563b",
             }}
           >
             <span>{TITLE_A}</span>
@@ -126,8 +136,8 @@ export default async function OpengraphImage() {
           </div>
           <span
             style={{
-              fontFamily: subFont,
               fontSize: 30,
+              fontWeight: 400,
               color: "rgba(255,255,255,0.82)",
               lineHeight: 1.35,
               maxWidth: 900,
@@ -143,11 +153,10 @@ export default async function OpengraphImage() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            fontFamily: labelFont,
             fontSize: 18,
             fontWeight: 600,
-            opacity: 0.55,
-            letterSpacing: 4,
+            opacity: 0.6,
+            letterSpacing: 3,
             textTransform: "uppercase",
           }}
         >

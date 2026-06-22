@@ -233,7 +233,7 @@ function ServiceCard({
             <p className="mt-8 text-xs font-semibold uppercase tracking-[0.25em] text-brand-red-bright">
               {ui.featuredService}
             </p>
-            <h3 className="mt-3 max-w-md font-heading text-3xl font-extrabold uppercase tracking-wider text-balance md:text-4xl">
+            <h3 className="mt-3 max-w-md font-heading text-3xl font-extrabold tracking-tight text-balance md:text-4xl">
               {service.title}
             </h3>
             <p className="mt-4 max-w-md text-base leading-relaxed text-fg-subtle md:text-lg">
@@ -256,7 +256,7 @@ function ServiceCard({
               height={131}
               className="h-16 w-16 object-contain transition-transform duration-300 group-hover/spot:scale-110"
             />
-            <h3 className="mt-5 font-heading text-xl font-extrabold uppercase tracking-wider">
+            <h3 className="mt-5 font-heading text-xl font-extrabold tracking-tight">
               {service.title}
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-fg-muted">
@@ -377,7 +377,7 @@ function ExpandedService({
           )}
           <h2
             id="svc-expanded-title"
-            className="mt-2 font-heading text-2xl font-extrabold uppercase tracking-wider sm:text-3xl"
+            className="mt-2 font-heading text-2xl font-extrabold tracking-tight sm:text-3xl"
           >
             {service.title}
           </h2>
