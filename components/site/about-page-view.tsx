@@ -90,10 +90,16 @@ export function AboutPageView({ locale }: { locale: Locale }) {
                 key={item.label}
                 className="rounded-2xl border border-black/5 bg-muted/20 p-6"
               >
-                <span className="font-display text-2xl font-extrabold tracking-[0.3em] text-brand-indigo/70">
-                  {["I", "II", "III", "IV", "V", "VI"][i]}
-                </span>
-                <p className="mt-3 text-sm font-semibold uppercase tracking-[0.25em] text-brand-red">
+                <div className="mb-[18px] flex items-center gap-3">
+                  <span
+                    className="shrink-0 text-brand-red"
+                    style={{ fontFamily: "var(--font-serif)", fontSize: "48px", fontStyle: "italic", fontWeight: 400, lineHeight: 1 }}
+                  >
+                    {["I", "II", "III", "IV", "V", "VI"][i]}
+                  </span>
+                  <hr className="flex-1 border-t-[0.5px] border-black/15" />
+                </div>
+                <p className="mb-[10px] text-[15px] font-medium uppercase tracking-[0.12em] text-brand-indigo">
                   {item.label}
                 </p>
                 <p className="mt-4 text-base leading-relaxed text-fg-muted">

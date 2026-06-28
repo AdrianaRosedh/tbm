@@ -24,6 +24,7 @@
   --font-sans: var(--font-inter);
   --font-display: var(--font-inter);
   --font-heading: var(--font-inter);
+  --font-serif: var(--font-serif);
 
   /* Display scale — fluid, deliberately smaller than the old freight-template
      sizes, with tight negative tracking on the large sizes (the precise modern-
