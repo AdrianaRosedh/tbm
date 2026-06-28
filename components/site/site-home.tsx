@@ -228,10 +228,10 @@ export function SiteHome({ locale }: { locale: Locale }) {
                   className="h-full rounded-2xl border border-black/5 bg-white p-8 transition-all duration-300 md:hover:-translate-y-1 hover:border-brand-red/30 md:hover:shadow-xl hover:shadow-brand-indigo/10"
                   glow="color-mix(in oklab, var(--color-brand-red) 12%, transparent)"
                 >
-                  <span className="font-display text-sm font-extrabold tracking-[0.3em] text-brand-indigo/70">
-                    {String(i + 1).padStart(2, "0")}
+                  <span className="font-display text-2xl font-extrabold tracking-[0.3em] text-brand-indigo/70">
+                    {["I", "II", "III", "IV", "V", "VI"][i]}
                   </span>
-                  <p className="mt-3 text-xs font-semibold uppercase tracking-[0.25em] text-brand-red">
+                  <p className="mt-3 text-sm font-semibold uppercase tracking-[0.25em] text-brand-red">
                     {item.label}
                   </p>
                   <p className="mt-4 text-base leading-relaxed text-fg-muted">
