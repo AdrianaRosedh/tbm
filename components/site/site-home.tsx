@@ -228,9 +228,15 @@ export function SiteHome({ locale }: { locale: Locale }) {
                   className="h-full rounded-2xl border border-black/5 bg-white p-8 transition-all duration-300 md:hover:-translate-y-1 hover:border-brand-red/30 md:hover:shadow-xl hover:shadow-brand-indigo/10"
                   glow="color-mix(in oklab, var(--color-brand-red) 12%, transparent)"
                 >
-                  <span className="font-display text-sm font-extrabold tracking-[0.3em] text-brand-indigo/70">
-                    {["I", "II", "III", "IV", "V", "VI"][i]}
-                  </span>
+                  <div className="mb-[18px] flex items-center gap-3">
+                    <span
+                      className="shrink-0 text-sm text-brand-indigo/70"
+                      style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}
+                    >
+                      {["I", "II", "III", "IV", "V", "VI"][i]}
+                    </span>
+                    <hr className="flex-1 border-t-[0.5px] border-black/15" />
+                  </div>
                   <p className="mt-3 text-base font-semibold uppercase tracking-[0.25em] text-brand-red">
                     {item.label}
                   </p>
