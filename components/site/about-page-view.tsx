@@ -99,7 +99,7 @@ export function AboutPageView({ locale }: { locale: Locale }) {
                   </span>
                   <hr className="flex-1 border-t-[0.5px] border-black/15" />
                 </div>
-                <p className="mt-3 text-base font-semibold uppercase tracking-[0.25em] text-brand-red">
+                <p className="mt-3 text-lg font-semibold uppercase tracking-[0.25em] text-brand-red">
                   {item.label}
                 </p>
                 <p className="mt-4 text-base leading-relaxed text-fg-muted">
