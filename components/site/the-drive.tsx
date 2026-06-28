@@ -240,9 +240,15 @@ function DriveScene({ eyebrow, headline, body, stages }: TheDriveProps) {
                       : "border-white/10"
                   )}
                 >
-                  <span className="font-display text-[11px] font-extrabold tracking-[0.3em] text-brand-red-bright md:text-xs">
-                    {stage.n}
-                  </span>
+                  <div className="mb-[14px] flex items-center gap-3">
+                    <span
+                      className="shrink-0 text-[11px] text-brand-red-bright md:text-xs"
+                      style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}
+                    >
+                      {["I", "II", "III", "IV", "V", "VI"][i]}
+                    </span>
+                    <hr className="flex-1 border-t-[0.5px] border-white/20" />
+                  </div>
                   <h3 className="mt-2 font-display text-lg font-extrabold tracking-tight md:text-xl">
                     {stage.title}
                   </h3>
