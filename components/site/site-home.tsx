@@ -317,9 +317,15 @@ export function SiteHome({ locale }: { locale: Locale }) {
                   className="h-full rounded-2xl border border-black/5 bg-white p-6 transition-all duration-300 md:hover:-translate-y-1 hover:border-brand-red/30 md:hover:shadow-xl hover:shadow-brand-indigo/10 lg:p-8"
                   glow="color-mix(in oklab, var(--color-brand-red) 12%, transparent)"
                 >
-                  <span className="mb-5 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-brand-red/10 font-display text-sm font-extrabold text-brand-indigo">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+                  <div className="mb-[18px] flex items-center gap-3">
+                    <span
+                      className="shrink-0 text-sm text-brand-indigo/70"
+                      style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}
+                    >
+                      {["I", "II", "III", "IV", "V", "VI"][i]}
+                    </span>
+                    <hr className="flex-1 border-t-[0.5px] border-black/15" />
+                  </div>
                   <h3 className="font-heading text-xl font-extrabold tracking-tight">
                     {pillar.title}
                   </h3>
@@ -340,9 +346,15 @@ export function SiteHome({ locale }: { locale: Locale }) {
                     className="relative overflow-hidden rounded-3xl border border-black/5 bg-white p-10 shadow-[0_24px_70px_-30px_rgba(15,11,38,0.35)] lg:p-14"
                     glow="color-mix(in oklab, var(--color-brand-red) 10%, transparent)"
                   >
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-red/10 font-display text-sm font-extrabold text-brand-indigo">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                    <div className="mb-[18px] flex items-center gap-3">
+                      <span
+                        className="shrink-0 text-sm text-brand-indigo/70"
+                        style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}
+                      >
+                        {["I", "II", "III", "IV", "V", "VI"][i]}
+                      </span>
+                      <hr className="flex-1 border-t-[0.5px] border-black/15" />
+                    </div>
                     <h3 className="mt-6 max-w-3xl font-heading text-display-sm font-extrabold tracking-tight">
                       {pillar.title}
                     </h3>
@@ -550,9 +562,15 @@ export function SiteHome({ locale }: { locale: Locale }) {
                   className="h-full rounded-2xl border border-black/5 bg-white p-6 transition-all duration-300 md:hover:-translate-y-1 hover:border-brand-red/30 md:hover:shadow-lg hover:shadow-brand-indigo/10 lg:p-8"
                   glow="color-mix(in oklab, var(--color-brand-red) 12%, transparent)"
                 >
-                  <span className="font-display text-sm font-extrabold tracking-[0.3em] text-brand-red">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
+                  <div className="mb-[18px] flex items-center gap-3">
+                    <span
+                      className="shrink-0 text-sm text-brand-indigo/70"
+                      style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}
+                    >
+                      {["I", "II", "III", "IV", "V", "VI"][i]}
+                    </span>
+                    <hr className="flex-1 border-t-[0.5px] border-black/15" />
+                  </div>
                   <h4 className="mt-3 font-heading text-xl font-extrabold tracking-tight">
                     {feature.title}
                   </h4>
