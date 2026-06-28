@@ -9,7 +9,7 @@ export const ABOUT = {
 
   mvh: {
     eyebrow: "Mission, Vision, History",
-    headline: "Twenty-five years, one direction",
+    headline: "Since 1999, one direction",
     items: [
       {
         label: "Mission",

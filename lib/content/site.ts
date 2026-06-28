@@ -143,7 +143,7 @@ export const FACILITIES = {
     offices: [
       {
         city: "Mexicali, B.C. (Corporate)",
-        address: "Av. Madero #1590, Col. Nueva, CP 21100",
+        address: "Av. Madero #1590, Col. Nueva, CP 21000",
       },
       {
         city: "Saltillo, Coah.",

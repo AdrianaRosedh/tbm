@@ -220,7 +220,7 @@ export const ES: Dictionary = {
     },
     mvh: {
       eyebrow: "Misión, visión, historia",
-      headline: "Veinticinco años, una sola dirección",
+      headline: "Desde 1999, una sola dirección",
       items: [
         {
           label: "Misión",
