@@ -90,10 +90,10 @@ export function AboutPageView({ locale }: { locale: Locale }) {
                 key={item.label}
                 className="rounded-2xl border border-black/5 bg-muted/20 p-6"
               >
-                <span className="font-display text-sm font-extrabold tracking-[0.3em] text-brand-indigo/70">
-                  {String(i + 1).padStart(2, "0")}
+                <span className="font-display text-2xl font-extrabold tracking-[0.3em] text-brand-indigo/70">
+                  {["I", "II", "III", "IV", "V", "VI"][i]}
                 </span>
-                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.25em] text-brand-red">
+                <p className="mt-3 text-sm font-semibold uppercase tracking-[0.25em] text-brand-red">
                   {item.label}
                 </p>
                 <p className="mt-4 text-base leading-relaxed text-fg-muted">
