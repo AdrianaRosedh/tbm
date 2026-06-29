@@ -163,7 +163,9 @@ function DriveScene({ eyebrow, headline, body, stages }: TheDriveProps) {
                       : "border-white/20 bg-white/[0.04] text-fg-subtle"
                   )}
                 >
-                  {s.n}
+                  <span style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}>
+                    {["I", "II", "III", "IV", "V", "VI"][i]}
+                  </span>
                 </span>
                 {i < stages.length - 1 && (
                   <span className="relative mx-1 h-px w-6 overflow-hidden rounded-full bg-white/15 sm:w-10 md:w-14">
