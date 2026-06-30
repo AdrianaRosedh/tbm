@@ -644,15 +644,15 @@ export function SiteHome({ locale }: { locale: Locale }) {
             </Reveal>
             <Reveal
               delay={0.1}
-              className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted"
+              className="relative mx-auto aspect-[3/4] w-full max-w-md overflow-hidden rounded-2xl bg-muted ring-1 ring-black/5"
             >
               <ParallaxLayer amount={32}>
                 <Image
                   src={SERVICES_AI.image}
                   alt=""
                   fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover object-[50%_25%]"
+                  sizes="(max-width: 1024px) 100vw, 28rem"
+                  className="object-cover object-center"
                 />
               </ParallaxLayer>
             </Reveal>
