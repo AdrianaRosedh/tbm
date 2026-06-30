@@ -412,17 +412,17 @@ function TruckSVG({
   return (
     <div className="animate-float [animation-duration:3.2s]">
       <svg viewBox="0 0 620 232" className="w-full drop-shadow-[0_24px_30px_rgba(0,0,0,0.45)]">
-        {/* ── Trailer ── */}
-        <rect x="14" y="34" width="346" height="130" rx="10" fill="#131031" stroke="rgba(255,255,255,0.14)" />
-        <rect x="14" y="34" width="346" height="14" rx="7" fill="rgba(255,255,255,0.06)" />
+        {/* ── Trailer (white box, like the real rig) ── */}
+        <rect x="14" y="34" width="346" height="130" rx="10" fill="#f4f4f5" stroke="rgba(0,0,0,0.18)" />
+        <rect x="14" y="34" width="346" height="14" rx="7" fill="rgba(0,0,0,0.05)" />
         {/* rear doors (left = rear, truck faces right) */}
-        <line x1="30" y1="44" x2="30" y2="154" stroke="rgba(255,255,255,0.10)" strokeWidth="2" />
-        <line x1="44" y1="44" x2="44" y2="154" stroke="rgba(255,255,255,0.06)" strokeWidth="2" />
-        {/* brand stripe */}
-        <rect x="14" y="150" width="346" height="5" fill="#e4432e" />
+        <line x1="30" y1="44" x2="30" y2="154" stroke="rgba(0,0,0,0.13)" strokeWidth="2" />
+        <line x1="44" y1="44" x2="44" y2="154" stroke="rgba(0,0,0,0.07)" strokeWidth="2" />
+        {/* thin red reflective strip along the bottom */}
+        <rect x="16" y="158" width="342" height="2.5" rx="1.25" fill="#e4432e" />
         {/* TBM logo on the trailer */}
         <image
-          href="/brand/TBM-2.png"
+          href="/brand/tbm-logo-dark.png"
           x="92"
           y="64"
           width="226"

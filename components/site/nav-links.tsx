@@ -77,7 +77,7 @@ export function NavLinks() {
   return (
     <nav
       aria-label="Main"
-      className="hidden lg:flex lg:items-center lg:gap-6 xl:gap-8"
+      className="hidden lg:flex lg:items-center lg:gap-3.5 xl:gap-8"
     >
       {NAV_ITEMS.map((item) => {
         const isActive = item.overlay
@@ -89,7 +89,7 @@ export function NavLinks() {
         const label = nav[item.labelKey];
 
         const baseClass =
-          "group/nav relative py-1.5 text-sm font-medium uppercase tracking-wider transition-colors duration-200 cursor-pointer";
+          "group/nav relative whitespace-nowrap py-1.5 text-xs font-medium uppercase tracking-wide transition-colors duration-200 cursor-pointer xl:text-sm xl:tracking-wider";
 
         const underline = (
           <span
@@ -111,7 +111,7 @@ export function NavLinks() {
               onClick={() =>
                 window.dispatchEvent(new CustomEvent(OPEN_CONTACT_EVENT))
               }
-              className="shine-hover inline-flex h-9 items-center justify-center rounded-full bg-primary px-4 text-xs font-medium uppercase tracking-wider text-primary-foreground shadow-md shadow-brand-red/25 transition-all hover:bg-primary/90 active:scale-[0.97] lg:h-10 lg:px-5 lg:text-sm"
+              className="shine-hover inline-flex h-9 items-center justify-center whitespace-nowrap rounded-full bg-primary px-3.5 text-xs font-medium uppercase tracking-wide text-primary-foreground shadow-md shadow-brand-red/25 transition-all hover:bg-primary/90 active:scale-[0.97] lg:h-10 xl:px-5 xl:text-sm xl:tracking-wider"
             >
               {label}
             </button>
