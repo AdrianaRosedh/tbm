@@ -611,13 +611,13 @@ export function SiteHome({ locale }: { locale: Locale }) {
             </p>
             <div className="mt-5 flex flex-wrap items-center justify-center gap-10 opacity-80 grayscale transition-[opacity,filter] hover:opacity-100 hover:grayscale-0">
               {TECH_PARTNERS.map((p) => (
-                <div key={p.name} className="flex h-10 w-36 items-center justify-center">
+                <div key={p.name} className="flex h-12 w-44 items-center justify-center">
                   <Image
                     src={p.logo}
                     alt={p.name}
-                    width={144}
-                    height={40}
-                    className="max-h-9 w-auto max-w-[144px] object-contain"
+                    width={176}
+                    height={48}
+                    className="max-h-11 w-auto max-w-[176px] object-contain"
                   />
                 </div>
               ))}

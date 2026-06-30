@@ -39,6 +39,8 @@ export function NavLinks() {
     );
     if (sections.length === 0) return;
 
+    const atTop = () => window.scrollY < window.innerHeight * 0.6;
+
     const visible = new Map<string, number>();
     const io = new IntersectionObserver(
       (entries) => {
@@ -46,29 +48,30 @@ export function NavLinks() {
           if (e.isIntersecting) visible.set(e.target.id, e.intersectionRatio);
           else visible.delete(e.target.id);
         }
-        // Always treat the hero as active when near the top of the page,
-        // regardless of what the IO detects below the fold.
-        if (window.scrollY < window.innerHeight * 0.6) {
-          setActiveSection("top");
-          return;
-        }
-        if (visible.size === 0) {
-          return;
-        }
+        if (atTop()) { setActiveSection("top"); return; }
+        if (visible.size === 0) return;
         let best = "";
         let bestRatio = -1;
         for (const [id, ratio] of visible) {
-          if (ratio > bestRatio) {
-            best = id;
-            bestRatio = ratio;
-          }
+          if (ratio > bestRatio) { best = id; bestRatio = ratio; }
         }
         setActiveSection(best);
       },
       { rootMargin: "-20% 0px -55% 0px", threshold: [0, 0.15, 0.4] }
     );
     sections.forEach((s) => io.observe(s));
-    return () => io.disconnect();
+
+    // Also watch scroll directly so returning to the top always highlights Home,
+    // even when the IO doesn't fire (e.g. browser scroll-restoration).
+    const onScroll = () => { if (atTop()) setActiveSection("top"); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    // Sync immediately on mount.
+    onScroll();
+
+    return () => {
+      io.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
   }, [onHome]);
 
   return (
