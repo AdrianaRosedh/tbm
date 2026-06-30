@@ -85,7 +85,7 @@ export const ES: Dictionary = {
           n: "02",
           title: "Comparte los detalles",
           body: "Proporciona los datos clave del envío, incluyendo puntos de recolección y entrega, para diseñar la solución a tu medida.",
-          image: "/brand/tbm-e.jpg",
+          image: "/brand/tbm-team-support.jpg",
         },
         {
           n: "03",

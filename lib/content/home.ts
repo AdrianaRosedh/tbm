@@ -83,7 +83,7 @@ export const HOME = {
         n: "02",
         title: "Provide Details",
         body: "Share key shipping details, including pickup and delivery locations, so we can tailor the solution to your needs.",
-        image: "/brand/tbm-e.jpg",
+        image: "/brand/tbm-team-support.jpg",
       },
       {
         n: "03",
