@@ -652,7 +652,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
                   alt=""
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover object-left"
+                  className="object-cover object-[50%_25%]"
                 />
               </ParallaxLayer>
             </Reveal>
@@ -814,6 +814,45 @@ export function SiteHome({ locale }: { locale: Locale }) {
       {/* FAQ */}
       <section id="faq" className="scroll-mt-24 bg-muted/30 py-16 md:py-24 lg:py-32">
         <Faq />
+      </section>
+
+      {/* OUR PEOPLE — real specialists, warms the page up before the contact CTA */}
+      <section className="bg-white py-16 md:py-24 lg:py-32">
+        <div className="mx-auto w-full max-w-screen-2xl px-4 md:px-8">
+          <Reveal className="max-w-3xl">
+            <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
+              {HOME.people.eyebrow}
+            </p>
+            <TextReveal
+              as="h2"
+              text={HOME.people.headline}
+              className="mt-3 font-heading text-display-sm font-extrabold tracking-tight sm:text-display-md"
+            />
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-fg-muted md:text-lg">
+              {HOME.people.body}
+            </p>
+          </Reveal>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            {HOME.people.images.map((img, i) => (
+              <Reveal key={img.src} delay={i * 0.08}>
+                <ParallaxDrift index={i}>
+                  <figure className="group relative aspect-[3/2] overflow-hidden rounded-2xl bg-muted ring-1 ring-black/5">
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-700 ease-out md:group-hover:scale-[1.03]"
+                    />
+                    <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-brand-indigo-deep/75 via-brand-indigo-deep/15 to-transparent p-5 pt-12 text-xs font-semibold uppercase tracking-[0.2em] text-white">
+                      {img.caption}
+                    </figcaption>
+                  </figure>
+                </ParallaxDrift>
+              </Reveal>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* FINAL CTA */}

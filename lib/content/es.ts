@@ -203,6 +203,24 @@ export const ES: Dictionary = {
         },
       ],
     },
+    people: {
+      eyebrow: "Nuestra gente",
+      headline: "Las personas detrás de cada cruce",
+      body: "Cuando contactas a TBM, te responde un especialista bilingüe — el mismo equipo de tráfico y operaciones que reserva tu carga, libera la frontera y te mantiene al tanto desde la recolección hasta la entrega. Personas reales, en ambos lados de la línea.",
+      images: [
+        {
+          src: "/brand/tbm-team-support.jpg",
+          alt: "Un despachador de TBM Carriers con polo de la marca y diadema coordinando un envío transfronterizo",
+          caption: "Tráfico y atención al cliente",
+        },
+        {
+          src: "/brand/tbm-team-ops.jpg",
+          alt: "Un especialista de operaciones de TBM Carriers monitoreando envíos en vivo en pantalla",
+          caption: "Operaciones y monitoreo",
+        },
+      ],
+    },
+
     finalCta: {
       eyebrow: "Envía con confianza",
       headline: "Soluciones logísticas confiables, seguras y eficientes en toda Norteamérica.",
