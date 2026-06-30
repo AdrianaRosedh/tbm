@@ -88,8 +88,11 @@ function PinnedNetwork({ eyebrow, headline, body }: NetworkRevealProps) {
   // cascade completes by ~0.72, leaving the rest of the pin as settled,
   // fully-interactive map time.
   const scale = useTransform(progress, [0, 0.3], [0.72, 1]);
-  const headerOpacity = useTransform(progress, [0.28, 0.55], [1, 0.45]);
   const headerY = useTransform(progress, [0.28, 0.55], [0, -10]);
+  // The subtext sits lowest in the header; once the map swells up under it the
+  // two collide. Fade the subtext out as the map grows so it never overlaps —
+  // the title stays put.
+  const bodyOpacity = useTransform(progress, [0.1, 0.28], [1, 0]);
 
   return (
     <div ref={wrapRef} className="relative h-[250vh]">
@@ -98,7 +101,7 @@ function PinnedNetwork({ eyebrow, headline, body }: NetworkRevealProps) {
             pointer-events-none: it overlays the card's legend row at some
             heights and must never swallow clicks meant for the map. */}
         <motion.div
-          style={{ opacity: headerOpacity, y: headerY }}
+          style={{ y: headerY }}
           className="pointer-events-none relative z-10 mx-auto w-full max-w-screen-2xl px-4 pt-24 md:px-8 md:pt-28"
         >
           <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-brand-red md:text-xs md:tracking-[0.25em]">
@@ -109,9 +112,12 @@ function PinnedNetwork({ eyebrow, headline, body }: NetworkRevealProps) {
             text={headline}
             className="mt-2 max-w-3xl font-display text-[1.45rem] font-extrabold leading-tight tracking-tight sm:text-display-sm md:mt-3 md:text-display-md"
           />
-          <p className="mt-2 max-w-2xl text-xs leading-relaxed text-fg-muted md:mt-3 md:text-sm">
+          <motion.p
+            style={{ opacity: bodyOpacity }}
+            className="mt-2 max-w-2xl text-xs leading-relaxed text-fg-muted md:mt-3 md:text-sm"
+          >
             {body}
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* The map swells to fill the frame, then populates on scroll */}
