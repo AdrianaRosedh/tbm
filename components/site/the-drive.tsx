@@ -145,7 +145,9 @@ function DriveScene({ eyebrow, headline, body, stages }: TheDriveProps) {
           <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-brand-red-bright md:text-xs md:tracking-[0.25em]">
             {eyebrow}
           </p>
-          <h2 className="mt-2 max-w-2xl font-display text-[1.45rem] font-extrabold leading-tight tracking-tight sm:text-display-sm md:mt-3 md:text-display-md">
+          {/* One line at every size: scale the type with the viewport rather
+              than wrapping (tuned so even the longer ES headline fits at 768). */}
+          <h2 className="mt-2 whitespace-nowrap font-display text-[clamp(1.4rem,3.1vw,3rem)] font-extrabold leading-tight tracking-tight md:mt-3">
             {headline}
           </h2>
           <p className="mt-2 max-w-xl text-xs leading-relaxed text-fg-subtle md:mt-3 md:text-sm lg:max-w-2xl">
