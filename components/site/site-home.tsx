@@ -610,17 +610,20 @@ export function SiteHome({ locale }: { locale: Locale }) {
               Powered by industry-leading platforms
             </p>
             <div className="mt-5 flex flex-wrap items-center justify-center gap-10 opacity-80 grayscale transition-[opacity,filter] hover:opacity-100 hover:grayscale-0">
-              {TECH_PARTNERS.map((p) => (
-                <div key={p.name} className="flex h-12 w-44 items-center justify-center">
-                  <Image
-                    src={p.logo}
-                    alt={p.name}
-                    width={176}
-                    height={48}
-                    className="max-h-11 w-auto max-w-[176px] object-contain"
-                  />
-                </div>
-              ))}
+              {TECH_PARTNERS.map((p) => {
+                const large = p.name === "Samsara" || p.name === "SmartDrive";
+                return (
+                  <div key={p.name} className={`flex items-center justify-center ${large ? "h-14 w-52" : "h-12 w-44"}`}>
+                    <Image
+                      src={p.logo}
+                      alt={p.name}
+                      width={large ? 208 : 176}
+                      height={large ? 56 : 48}
+                      className={`w-auto object-contain ${large ? "max-h-14 max-w-[208px]" : "max-h-11 max-w-[176px]"}`}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </Reveal>
 
