@@ -871,10 +871,10 @@ export function SiteHome({ locale }: { locale: Locale }) {
         </div>
         <div className="relative mx-auto flex max-w-screen-2xl flex-col items-center px-4 py-24 text-center text-white md:px-8 md:py-32">
           <Reveal>
-            <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red-bright">
+            <p className="text-sm font-medium uppercase tracking-[0.25em] text-brand-red-bright">
               {HOME.finalCta.eyebrow}
             </p>
-            <h2 className="mt-4 max-w-3xl font-heading text-display-sm font-extrabold tracking-tight text-balance sm:text-display-md">
+            <h2 className="mt-4 max-w-3xl font-heading text-display-md font-extrabold tracking-tight text-balance sm:text-display-lg">
               {HOME.finalCta.headline}
             </h2>
             <ContactPopupLink

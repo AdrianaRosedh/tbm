@@ -44,13 +44,13 @@ export function CrossingChips({ className }: { className?: string }) {
                   new CustomEvent(FOCUS_LOCATION_EVENT, { detail: { id } })
                 )
               }
-              className="group flex w-full items-center justify-between gap-4 rounded-xl border border-black/6 bg-white px-6 py-5 text-left shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-red/40 hover:shadow-md active:scale-[0.99]"
+              className="group flex w-full items-center justify-between gap-4 rounded-xl border border-black/6 bg-white px-6 py-6 text-left shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-brand-red/40 hover:shadow-md active:scale-[0.99]"
             >
-              <span className="text-base font-semibold">{c.us}</span>
+              <span className="text-lg font-semibold">{c.us}</span>
               <span aria-hidden="true" className="shrink-0 text-brand-red">
                 ↔
               </span>
-              <span className="flex items-center gap-2 text-base text-fg-muted">
+              <span className="flex items-center gap-2 text-lg text-fg-muted">
                 {c.mx}
                 <MapPin
                   className="h-3.5 w-3.5 shrink-0 text-brand-red opacity-0 transition-opacity duration-300 group-hover:opacity-100"

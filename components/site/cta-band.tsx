@@ -22,7 +22,7 @@ export function CtaBand({ eyebrow = "Ready when you are", title, body }: CtaBand
         <div className="grain-layer absolute inset-0 opacity-[0.06] mix-blend-overlay" />
       </div>
       <Reveal className="mx-auto flex max-w-3xl flex-col items-center px-4 text-center md:px-8">
-        <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red-bright">
+        <p className="text-sm font-medium uppercase tracking-[0.25em] text-brand-red-bright">
           {eyebrow}
         </p>
         <h2 className="mt-3 font-heading text-display-sm font-extrabold tracking-tight text-balance sm:text-display-md">

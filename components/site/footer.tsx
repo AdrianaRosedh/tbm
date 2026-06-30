@@ -133,7 +133,7 @@ export function Footer() {
 
         {OFFICES.map((office, i) => (
           <div key={office.region}>
-            <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand-red-bright">
+            <p className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-brand-red-bright">
               <Image
                 src={i === 0 ? "/brand/eua-flag-tbm.jpg" : "/brand/mx-flag-tbm.jpg"}
                 alt=""
@@ -168,7 +168,7 @@ export function Footer() {
         ))}
 
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-brand-red-bright">
+          <p className="text-sm font-semibold uppercase tracking-widest text-brand-red-bright">
             {ui.footerNavHeading}
           </p>
           <ul className="mt-3 space-y-2 text-sm">
