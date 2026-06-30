@@ -590,10 +590,10 @@ export function SiteHome({ locale }: { locale: Locale }) {
                   className="h-full rounded-2xl border border-black/5 bg-white p-6 transition-all duration-300 md:hover:-translate-y-1 hover:border-brand-red/30 md:hover:shadow-lg hover:shadow-brand-indigo/10 lg:p-8"
                   glow="color-mix(in oklab, var(--color-brand-red) 12%, transparent)"
                 >
-                  <span className="font-display text-sm font-extrabold tracking-[0.2em] text-brand-red">
+                  <span className="font-display text-base font-extrabold tracking-[0.2em] text-brand-red">
                     {item.partner}
                   </span>
-                  <h4 className="mt-2 font-display text-lg font-extrabold tracking-tight">
+                  <h4 className="mt-2 font-display text-xl font-extrabold tracking-tight">
                     {item.title}
                   </h4>
                   <p className="mt-3 text-sm leading-relaxed text-fg-muted">
@@ -611,20 +611,21 @@ export function SiteHome({ locale }: { locale: Locale }) {
             </p>
             <div className="mt-5 flex flex-wrap items-center justify-center gap-10 opacity-80 grayscale transition-[opacity,filter] hover:opacity-100 hover:grayscale-0">
               {TECH_PARTNERS.map((p) => (
-                <Image
-                  key={p.name}
-                  src={p.logo}
-                  alt={p.name}
-                  width={140}
-                  height={48}
-                  className="h-9 w-auto"
-                />
+                <div key={p.name} className="flex h-10 w-36 items-center justify-center">
+                  <Image
+                    src={p.logo}
+                    alt={p.name}
+                    width={144}
+                    height={40}
+                    className="max-h-9 w-auto max-w-[144px] object-contain"
+                  />
+                </div>
               ))}
             </div>
           </Reveal>
 
           {/* Utilizing AI to simplify Carta Porte (from the Services page) */}
-          <div className="mt-20 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+          <div className="mt-20 grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
             <Reveal>
               <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-red">
                 {SERVICES_AI.eyebrow}
@@ -632,7 +633,7 @@ export function SiteHome({ locale }: { locale: Locale }) {
               <TextReveal
                 as="h3"
                 text={SERVICES_AI.headline}
-                className="mt-3 font-heading text-display-sm font-extrabold tracking-tight"
+                className="mt-3 font-heading text-display-sm font-extrabold tracking-tight sm:text-display-md"
               />
               <p className="mt-5 text-base leading-relaxed text-fg-muted md:text-lg">
                 {SERVICES_AI.body}

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Check } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import {
   motion,
@@ -157,15 +158,13 @@ function DriveScene({ eyebrow, headline, body, stages }: TheDriveProps) {
               <div key={s.n} className="flex items-center">
                 <span
                   className={cn(
-                    "flex h-7 w-7 items-center justify-center rounded-full border font-display text-[10px] font-extrabold transition-all duration-300 md:h-9 md:w-9 md:text-xs",
+                    "flex h-7 w-7 items-center justify-center rounded-full border transition-all duration-500 md:h-9 md:w-9",
                     i <= active
                       ? "border-brand-red bg-brand-red text-white shadow-[0_0_14px_2px_rgba(228,67,46,0.45)]"
-                      : "border-white/20 bg-white/[0.04] text-fg-subtle"
+                      : "border-white/20 bg-transparent"
                   )}
                 >
-                  <span style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}>
-                    {["I", "II", "III", "IV", "V", "VI"][i]}
-                  </span>
+                  {i <= active && <Check className="h-3.5 w-3.5 md:h-4 md:w-4" strokeWidth={3} />}
                 </span>
                 {i < stages.length - 1 && (
                   <span className="relative mx-1 h-px w-6 overflow-hidden rounded-full bg-white/15 sm:w-10 md:w-14">

@@ -46,8 +46,13 @@ export function NavLinks() {
           if (e.isIntersecting) visible.set(e.target.id, e.intersectionRatio);
           else visible.delete(e.target.id);
         }
+        // Always treat the hero as active when near the top of the page,
+        // regardless of what the IO detects below the fold.
+        if (window.scrollY < window.innerHeight * 0.6) {
+          setActiveSection("top");
+          return;
+        }
         if (visible.size === 0) {
-          if (window.scrollY < 400) setActiveSection("top");
           return;
         }
         let best = "";
