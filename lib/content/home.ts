@@ -222,9 +222,9 @@ export const HOME = {
     body: "When you reach TBM, a bilingual specialist picks up — the same dispatch and operations team that books your load, clears the border, and keeps you posted from pickup to delivery. Real people, on both sides of the line.",
     images: [
       {
-        src: "/brand/tbm-team-support.jpg",
-        alt: "A TBM Carriers dispatcher in a branded polo and headset coordinating a cross-border shipment",
-        caption: "Dispatch & customer service",
+        src: "/brand/tbm-e.jpg",
+        alt: "A TBM Carriers company driver working the onboard computer in the cab",
+        caption: "Company drivers",
       },
       {
         src: "/brand/tbm-team-ops.jpg",

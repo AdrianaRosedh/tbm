@@ -212,9 +212,9 @@ export const ES: Dictionary = {
       body: "Cuando contactas a TBM, te responde un especialista bilingüe — el mismo equipo de tráfico y operaciones que reserva tu carga, libera la frontera y te mantiene al tanto desde la recolección hasta la entrega. Personas reales, en ambos lados de la línea.",
       images: [
         {
-          src: "/brand/tbm-team-support.jpg",
-          alt: "Un despachador de TBM Carriers con polo de la marca y diadema coordinando un envío transfronterizo",
-          caption: "Tráfico y atención al cliente",
+          src: "/brand/tbm-e.jpg",
+          alt: "Un conductor de TBM Carriers usando la computadora a bordo en la cabina",
+          caption: "Nuestros conductores",
         },
         {
           src: "/brand/tbm-team-ops.jpg",
