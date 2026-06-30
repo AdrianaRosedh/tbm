@@ -220,7 +220,7 @@ function ServiceCard({
           className="pointer-events-none absolute -bottom-2 right-0 z-0 hidden w-[44%] max-w-[420px] drop-shadow-2xl sm:block"
         >
           <Image
-            src="/brand/tbm-truck-cutout.png"
+            src="/brand/tbm-truck-cutout.webp"
             alt=""
             width={1066}
             height={1400}

@@ -68,7 +68,7 @@ export const ES: Dictionary = {
         "Desde 1999, TBM Carriers ha expandido su red por Estados Unidos, México y Canadá, ofreciendo soluciones logísticas confiables y de alto desempeño. Combinamos tecnología avanzada, procesos eficientes y un equipo experimentado para resolver demandas de transporte complejas con precisión y consistencia.",
         "Nuestra red con activos propios — terminales a ambos lados de la frontera, talleres de mantenimiento certificados y un equipo de soporte 24/7 — mantiene cada embarque confiable, seguro y responsable desde la recolección hasta la entrega.",
       ],
-      image: "/brand/tbm-carriers-91.jpg",
+      image: "/brand/tbm-about.jpg",
     },
     howItWorks: {
       eyebrow: "Cómo funciona",
