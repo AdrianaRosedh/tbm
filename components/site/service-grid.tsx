@@ -213,11 +213,31 @@ function ServiceCard({
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-red/50 to-transparent opacity-0 transition-opacity duration-300 group-hover/spot:opacity-100"
       />
 
+      {/* Featured Border Crossing card: the rig, cut out, grounded bottom-right */}
+      {featured && service.slug === "border-crossing" && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -bottom-2 right-0 z-0 hidden w-[44%] max-w-[420px] drop-shadow-2xl sm:block"
+        >
+          <Image
+            src="/brand/tbm-truck-cutout.png"
+            alt=""
+            width={1066}
+            height={1400}
+            sizes="(max-width: 1024px) 40vw, 420px"
+            className="h-auto w-full object-contain object-bottom"
+          />
+        </div>
+      )}
+
       <a
         href={`${hrefBase}/services/${service.slug}`}
         onClick={(e) => onOpen(e, service)}
         aria-haspopup="dialog"
-        className="relative z-10 flex h-full flex-col"
+        className={cn(
+          "relative z-10 flex h-full flex-col",
+          featured && service.slug === "border-crossing" && "sm:pr-[42%]"
+        )}
       >
         {featured ? (
           <>
