@@ -103,14 +103,17 @@ export const HOME = {
       {
         title: "Asset-based + integrated",
         body: "We deliver integrated, asset-based cross-border logistics that reduce costs while improving transit speed and reliability. Strategic partnerships with C-TPAT-certified carriers ensure secure, compliant operations across Mexico.",
+        image: "/brand/tbm-asset-ops.jpg",
       },
       {
         title: "Seamless international network",
         body: "Our seamless international network minimizes handling, lowers operational costs, and reduces risk — supported by a network of 25+ C-TPAT-certified partner carriers.",
+        image: "/brand/tbm-network-highway.jpg",
       },
       {
         title: "Ferromex intermodal integration",
         body: "Through our partnership with Ferromex, we integrate Mexico's intermodal rail network to deliver scalable, efficient, and cost-optimized cross-border transportation.",
+        image: "/brand/tbm-intermodal-rig.jpg",
       },
     ],
   },

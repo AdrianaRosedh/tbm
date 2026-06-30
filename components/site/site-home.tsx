@@ -314,24 +314,35 @@ export function SiteHome({ locale }: { locale: Locale }) {
             {HOME.crossBorder.pillars.map((pillar, i) => (
               <Reveal as="li" key={pillar.title} delay={i * 0.08} className="max-md:w-[82vw] max-md:shrink-0 max-md:snap-center">
                 <SpotlightCard
-                  className="h-full rounded-2xl border border-black/5 bg-white p-6 transition-all duration-300 md:hover:-translate-y-1 hover:border-brand-red/30 md:hover:shadow-xl hover:shadow-brand-indigo/10 lg:p-8"
+                  className="h-full rounded-2xl border border-black/5 bg-white transition-all duration-300 md:hover:-translate-y-1 hover:border-brand-red/30 md:hover:shadow-xl hover:shadow-brand-indigo/10"
                   glow="color-mix(in oklab, var(--color-brand-red) 12%, transparent)"
                 >
-                  <div className="mb-[18px] flex items-center gap-3">
-                    <span
-                      className="shrink-0 text-sm text-brand-indigo/70"
-                      style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}
-                    >
-                      {["I", "II", "III", "IV", "V", "VI"][i]}
-                    </span>
-                    <hr className="flex-1 border-t-[0.5px] border-black/15" />
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
+                    <Image
+                      src={pillar.image}
+                      alt=""
+                      fill
+                      sizes="82vw"
+                      className="object-cover"
+                    />
                   </div>
-                  <h3 className="font-heading text-xl font-extrabold tracking-tight">
-                    {pillar.title}
-                  </h3>
-                  <p className="mt-3 text-base leading-relaxed text-fg-muted">
-                    {pillar.body}
-                  </p>
+                  <div className="p-6">
+                    <div className="mb-[18px] flex items-center gap-3">
+                      <span
+                        className="shrink-0 text-sm text-brand-indigo/70"
+                        style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}
+                      >
+                        {["I", "II", "III", "IV", "V", "VI"][i]}
+                      </span>
+                      <hr className="flex-1 border-t-[0.5px] border-black/15" />
+                    </div>
+                    <h3 className="font-heading text-xl font-extrabold tracking-tight">
+                      {pillar.title}
+                    </h3>
+                    <p className="mt-3 text-base leading-relaxed text-fg-muted">
+                      {pillar.body}
+                    </p>
+                  </div>
                 </SpotlightCard>
               </Reveal>
             ))}
@@ -343,24 +354,37 @@ export function SiteHome({ locale }: { locale: Locale }) {
               <div key={pillar.title} className="h-[56vh]">
                 <div className="sticky" style={{ top: `${7.5 + i * 1.75}rem` }}>
                   <SpotlightCard
-                    className="relative overflow-hidden rounded-3xl border border-black/5 bg-white p-10 shadow-[0_24px_70px_-30px_rgba(15,11,38,0.35)] lg:p-14"
+                    className="relative overflow-hidden rounded-3xl border border-black/5 bg-white shadow-[0_24px_70px_-30px_rgba(15,11,38,0.35)]"
                     glow="color-mix(in oklab, var(--color-brand-red) 10%, transparent)"
                   >
-                    <div className="mb-[18px] flex items-center gap-3">
-                      <span
-                        className="shrink-0 text-sm text-brand-indigo/70"
-                        style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}
-                      >
-                        {["I", "II", "III", "IV", "V", "VI"][i]}
-                      </span>
-                      <hr className="flex-1 border-t-[0.5px] border-black/15" />
+                    <div className="grid items-stretch grid-cols-[1.1fr_minmax(0,42%)]">
+                      <div className="p-10 lg:p-14">
+                        <div className="mb-[18px] flex items-center gap-3">
+                          <span
+                            className="shrink-0 text-sm text-brand-indigo/70"
+                            style={{ fontFamily: "var(--font-serif)", fontStyle: "italic", fontWeight: 400 }}
+                          >
+                            {["I", "II", "III", "IV", "V", "VI"][i]}
+                          </span>
+                          <hr className="flex-1 border-t-[0.5px] border-black/15" />
+                        </div>
+                        <h3 className="mt-6 font-heading text-display-sm font-extrabold tracking-tight">
+                          {pillar.title}
+                        </h3>
+                        <p className="mt-4 text-base leading-relaxed text-fg-muted lg:text-lg">
+                          {pillar.body}
+                        </p>
+                      </div>
+                      <div className="relative min-h-[300px] overflow-hidden bg-muted">
+                        <Image
+                          src={pillar.image}
+                          alt=""
+                          fill
+                          sizes="42vw"
+                          className="object-cover"
+                        />
+                      </div>
                     </div>
-                    <h3 className="mt-6 max-w-3xl font-heading text-display-sm font-extrabold tracking-tight">
-                      {pillar.title}
-                    </h3>
-                    <p className="mt-4 max-w-2xl text-base leading-relaxed text-fg-muted lg:text-lg">
-                      {pillar.body}
-                    </p>
                   </SpotlightCard>
                 </div>
               </div>

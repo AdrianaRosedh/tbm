@@ -104,14 +104,17 @@ export const ES: Dictionary = {
         {
           title: "Activos propios + integración",
           body: "Entregamos logística transfronteriza integrada y con activos propios que reduce costos mientras mejora la velocidad y la confiabilidad del tránsito. Alianzas estratégicas con transportistas certificados C-TPAT aseguran operaciones seguras y en cumplimiento por todo México.",
+          image: "/brand/tbm-asset-ops.jpg",
         },
         {
           title: "Red internacional sin fricciones",
           body: "Nuestra red internacional sin fricciones minimiza el manejo, reduce costos operativos y disminuye el riesgo — respaldada por una red de más de 25 transportistas aliados certificados C-TPAT.",
+          image: "/brand/tbm-network-highway.jpg",
         },
         {
           title: "Integración intermodal con Ferromex",
           body: "A través de nuestra alianza con Ferromex, integramos la red ferroviaria intermodal de México para ofrecer transporte transfronterizo escalable, eficiente y de costo optimizado.",
+          image: "/brand/tbm-intermodal-rig.jpg",
         },
       ],
     },
