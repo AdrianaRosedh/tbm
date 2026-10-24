@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
-import { SITE } from "@/lib/content/site";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
-export const runtime = "edge";
 export const alt =
   "TBM Carriers — Cross-border logistics across the United States, Mexico, and Canada";
 export const size = { width: 1200, height: 630 };
@@ -29,24 +29,14 @@ async function loadFont(family: string, text: string): Promise<ArrayBuffer | nul
 }
 
 /**
- * Embed the real wordmark (`/brand/TBM-2.png`) as a data URL so the card shows
- * the actual logo, not a stand-in. Chunked base64 avoids call-stack limits;
- * returns null on failure so we fall back to a text wordmark.
+ * Embed the real wordmark (`public/brand/TBM-2.png`) as a data URL so the card
+ * shows the actual logo, not a stand-in. Read once from disk at module scope on
+ * the Node runtime — no request data and no self-fetch (which depended on the
+ * live URL being reachable at build). Null on failure falls back to a text mark.
  */
-async function loadLogo(): Promise<string | null> {
-  try {
-    const res = await fetch(new URL("/brand/TBM-2.png", SITE.url));
-    if (!res.ok) return null;
-    const bytes = new Uint8Array(await res.arrayBuffer());
-    let binary = "";
-    for (let i = 0; i < bytes.length; i += 8192) {
-      binary += String.fromCharCode(...bytes.subarray(i, i + 8192));
-    }
-    return `data:image/png;base64,${btoa(binary)}`;
-  } catch {
-    return null;
-  }
-}
+const LOGO_SRC = await readFile(join(process.cwd(), "public/brand/TBM-2.png"))
+  .then((buf) => `data:image/png;base64,${buf.toString("base64")}`)
+  .catch(() => null);
 
 const TITLE_A = "DELIVERING QUALITY";
 const TITLE_B = "& RELIABILITY";
@@ -56,12 +46,12 @@ const FOOT_L = "tbmcarriers.com";
 const FOOT_R = "C-TPAT · FAST · OEA · SMARTWAY";
 
 export default async function OpengraphImage() {
-  const [bold, semi, reg, logo] = await Promise.all([
+  const [bold, semi, reg] = await Promise.all([
     loadFont("Inter:wght@800", `${TITLE_A}${TITLE_B}`),
     loadFont("Inter:wght@600", `${EYEBROW}TBM CARRIERS${FOOT_L}${FOOT_R}`),
     loadFont("Inter:wght@400", SUB),
-    loadLogo(),
   ]);
+  const logo = LOGO_SRC;
 
   const fonts = [
     bold && { name: "Inter", data: bold, weight: 800 as const, style: "normal" as const },
@@ -93,7 +83,6 @@ export default async function OpengraphImage() {
         {/* Top: the real wordmark (text fallback if the fetch fails) */}
         <div style={{ display: "flex", alignItems: "center" }}>
           {logo ? (
-            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={logo}
               width={300}

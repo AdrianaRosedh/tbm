@@ -5,6 +5,7 @@ import { TrackShipmentLink } from "./site-links";
 import { ContactPopupLink } from "./contact-popup-link";
 import { getContent, type Locale } from "@/lib/i18n";
 import { SITE } from "@/lib/content/site";
+import { jsonLdHtml } from "@/lib/utils";
 
 /**
  * Shared About / Company page (EN /about, ES /es/about). Uses the fuller about
@@ -44,7 +45,7 @@ export function AboutPageView({ locale }: { locale: Locale }) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdHtml(jsonLd) }}
       />
 
       {/* HERO */}

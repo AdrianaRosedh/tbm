@@ -6,6 +6,7 @@ import { Reveal } from "./reveal";
 import { TextReveal } from "./text-reveal";
 import { ContactPopupLink } from "./contact-popup-link";
 import { useContent } from "@/lib/i18n-client";
+import { jsonLdHtml } from "@/lib/utils";
 
 /**
  * One-page FAQ. Oswald carries the questions (structure), Fraunces the
@@ -33,7 +34,7 @@ export function Faq() {
     <div className="mx-auto w-full max-w-3xl px-4 md:px-8">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdHtml(faqSchema) }}
       />
 
       <Reveal>

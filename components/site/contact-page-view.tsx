@@ -1,10 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Mail, Phone, Truck } from "lucide-react";
+import { Mail, Phone, Truck } from "lucide-react";
 import { ContactSalesLink, TrackShipmentLink } from "./site-links";
 import { getContent, type Locale } from "@/lib/i18n";
 import { OFFICES, SITE } from "@/lib/content/site";
-import { telHref } from "@/lib/utils";
+import { jsonLdHtml, telHref } from "@/lib/utils";
 
 /**
  * Shared Contact page (EN /contact, ES /es/contact). A crawlable, NAP-rich
@@ -44,7 +44,7 @@ export function ContactPageView({ locale }: { locale: Locale }) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdHtml(jsonLd) }}
       />
 
       {/* HERO */}

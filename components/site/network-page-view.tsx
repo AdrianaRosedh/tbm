@@ -4,6 +4,7 @@ import { TrackShipmentLink } from "./site-links";
 import { ContactPopupLink } from "./contact-popup-link";
 import { getContent, type Locale } from "@/lib/i18n";
 import { SITE, FACILITIES } from "@/lib/content/site";
+import { jsonLdHtml } from "@/lib/utils";
 
 function LocationCard({
   label,
@@ -105,7 +106,7 @@ export function NetworkPageView({ locale }: { locale: Locale }) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdHtml(jsonLd) }}
       />
 
       {/* HERO */}

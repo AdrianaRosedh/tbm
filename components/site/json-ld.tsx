@@ -1,4 +1,5 @@
 import { OFFICES, SITE } from "@/lib/content/site";
+import { jsonLdHtml } from "@/lib/utils";
 
 /**
  * Site-wide structured data, modeled as a connected schema.org @graph so the
@@ -147,8 +148,8 @@ export function JsonLd() {
   return (
     <script
       type="application/ld+json"
-      // JSON.stringify output is safe to inline; no user input is interpolated.
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
+      // Escaped via jsonLdHtml so the block can't break out of the <script>.
+      dangerouslySetInnerHTML={{ __html: jsonLdHtml(graph) }}
     />
   );
 }

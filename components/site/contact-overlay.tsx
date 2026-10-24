@@ -72,6 +72,10 @@ export function ContactOverlay() {
     // with ?contact=open so old links and direct visits land on the one-page
     // site with the popup already open. Strip the param so refresh/back is clean.
     if (new URLSearchParams(window.location.search).get("contact") === "open") {
+      // One-shot sync from an external system (the URL) on mount. A lazy initial
+      // state can't do this without a hydration mismatch — the server renders it
+      // closed, so opening has to happen after mount.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setOpen(true);
       window.history.replaceState(null, "", window.location.pathname);
     }

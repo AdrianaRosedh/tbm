@@ -1,11 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Check, Mail } from "lucide-react";
-import { TrackShipmentLink } from "./site-links";
 import { ContactPopupLink } from "./contact-popup-link";
 import { getContent, type Locale } from "@/lib/i18n";
 import { SITE } from "@/lib/content/site";
-import { mailtoHref } from "@/lib/utils";
+import { jsonLdHtml, mailtoHref } from "@/lib/utils";
 
 /**
  * Shared, locale-parameterized Compliance & Security landing page (EN
@@ -61,7 +60,7 @@ export function CompliancePageView({ locale }: { locale: Locale }) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdHtml(jsonLd) }}
       />
 
       {/* HERO */}

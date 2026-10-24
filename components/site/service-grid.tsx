@@ -19,6 +19,7 @@ import {
   type ServiceItem,
 } from "@/lib/content/services";
 import { useContent, useLocale } from "@/lib/i18n-client";
+import { useMounted } from "@/lib/use-mounted";
 import { cn } from "@/lib/utils";
 
 type ServiceGridProps = {
@@ -49,9 +50,8 @@ export function ServiceGrid({ variant = "bento", className }: ServiceGridProps) 
 
   const [selected, setSelected] = useState<ServiceItem | null>(null);
   const [origin, setOrigin] = useState<Origin>({ x: 0, y: 0 });
-  const [mounted, setMounted] = useState(false);
   const triggerRef = useRef<HTMLElement | null>(null);
-  useEffect(() => setMounted(true), []);
+  const mounted = useMounted();
 
   const openCard = (e: MouseEvent, service: ServiceItem) => {
     // Let modified clicks (new tab) and no-JS fall through to the page.
