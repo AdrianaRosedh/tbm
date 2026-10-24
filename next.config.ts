@@ -2,6 +2,14 @@ import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV === "development";
 
+// Vercel injects its Toolbar / Live feedback (preview comments) from
+// vercel.live + Pusher — on PREVIEW deployments only, never production. Allow
+// those origins only there, so the production policy stays as tight as it can.
+// Resolved per deployment at build time via VERCEL_ENV.
+const onPreview = process.env.VERCEL_ENV === "preview";
+const live = (directive: string, ...previewOnly: string[]) =>
+  onPreview ? [directive, ...previewOnly].join(" ") : directive;
+
 /**
  * Content Security Policy. No nonce by design: this is a (mostly) static
  * marketing site, and nonce-based CSP forces every page into dynamic rendering
@@ -9,21 +17,30 @@ const isDev = process.env.NODE_ENV === "development";
  * `'unsafe-inline'` is required for Next's hydration bootstrap scripts,
  * next/font's injected <style>, and the many inline style attributes (incl.
  * motion transforms). `'unsafe-eval'` is dev-only (React uses eval for
- * debugging; it is not used in production). Everything is same-origin except
- * Vercel Analytics / Speed Insights.
+ * debugging; it is not used in production). External origins are limited to
+ * Vercel Analytics / Speed Insights (+ the preview-only Toolbar above).
  */
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com${
-    isDev ? " 'unsafe-eval'" : ""
-  }`,
-  "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' blob: data:",
-  "font-src 'self'",
-  "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+  live(
+    `script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com${
+      isDev ? " 'unsafe-eval'" : ""
+    }`,
+    "https://vercel.live"
+  ),
+  live("style-src 'self' 'unsafe-inline'", "https://vercel.live"),
+  live("img-src 'self' blob: data:", "https://vercel.live", "https://vercel.com"),
+  live("font-src 'self'", "https://vercel.live", "https://assets.vercel.com"),
+  live(
+    "connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com",
+    "https://vercel.live",
+    "wss://*.pusher.com",
+    "https://*.pusher.com"
+  ),
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
+  live("frame-src 'self'", "https://vercel.live"),
   "frame-ancestors 'none'",
   "upgrade-insecure-requests",
 ].join("; ");
